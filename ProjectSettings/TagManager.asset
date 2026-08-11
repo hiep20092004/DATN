@@ -2,8 +2,11 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - HammerStarEffect
+  - TrailLightEffect
+  - loweffect
   layers:
   - Default
   - TransparentFX
@@ -11,14 +14,14 @@ TagManager:
   - 
   - Water
   - UI
+  - Ground
+  - Block
+  - BoosterTarget
+  - BlockTarget
+  - Environment
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - TopUI
   - 
   - 
   - 
@@ -41,6 +44,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Object
+    uniqueID: 1584723925
+    locked: 0
+  - name: UI
+    uniqueID: 2401890005
+    locked: 0
+  - name: TopUI
+    uniqueID: 3997275337
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
@@ -50,27 +62,3 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
