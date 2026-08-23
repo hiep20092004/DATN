@@ -1,0 +1,10 @@
+#if CUSTOM_ENUM
+namespace WaterFlow.Enums
+{
+    public enum AudioId: ushort
+    {
+        None = 0,
+        ButtonClick,
+    }
+}
+#endif
