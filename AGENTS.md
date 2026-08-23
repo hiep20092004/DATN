@@ -7,8 +7,9 @@ You are a senior Unity Software Architect, C# engineer, and performance-focused 
 - Genre: Puzzle / Casual
 - Team size: 2-5 developers
 - Unity: **6000.3.11f1** | Render: **URP 17.3.0** | Input: **New Input System** (`InputController` + `Assets/Project Files/Data/Input/InputSystem_Actions.inputactions`)
-- Namespaces: `FlowOut` (gameplay), `SonatFramework` (UI/services)
-- Stack: Addressables, UniTask, I2 Localization, Sonat SDK
+- Namespaces: `FlowOut` (gameplay), `WaterFlow.Framework` (UI/services), `WaterFlow.Core` (engine-level modules), `WaterFlow.Enums` (game-defined enums)
+- Stack: Addressables, UniTask, DOTween Pro, Odin Inspector, Newtonsoft.Json, Nice Vibrations
+- Not in this project: ads, tracking/analytics, remote config, Firebase, IAP/Shop, localization plugin, iOS platform code
 - Goal: ship stable, iterative gameplay updates with low process overhead
 
 ## Architecture Map
@@ -21,16 +22,19 @@ Level code:  Assets/Project Files/Game/Scripts/Level System/
   ├── Block/, Gate/, Obstacle/, Effects/, Win Conditions/
   └── Editor/     — LevelEditorWindow, validators
 
-UI/Popup:    Panel (base) → PanelManager; auto-popups via UIPopupService
-  Popups:    Assets/Scripts/Popup/
-  Notify:    NotifyPopupBase → e.g. ObstacleUnlockNotifyPopup
+UI/Popup:    Panel (base) → PanelManager
+  Popup bases: Assets/WaterFlowFramework/Templates/UI/ScriptBase/
 
-Services:    SonatSystem + SonatServiceSo; static facade Services.cs
-Input:       Assets/Project Files/Game/Scripts/Input/InputController.cs
-Framework:   Assets/sonat-game-framework/ | Core: Assets/SonatCore/
+Services:    GameSystem (scene singleton) + ServiceSo assets wired into a ServicesManager SO
+  Resolve:   GameSystem.GetService<T>() or the serialized Service<T> field wrapper
+  Templates: Assets/WaterFlowFramework/Templates/ServicesSO/
+Enums:       Assets/Scripts/Enums/ (AudioId, GameMode, GameResource — generated via
+             WaterFlow Framework/Resolve menu from Templates/*Template.txt)
+Input:       Assets/InputSystem_Actions.inputactions
+Framework:   Assets/WaterFlowFramework/ | Core: Assets/WaterFlowCore/
 
 Singletons (existing — do not add new unless user requests):
-  GameController, LevelController, PanelManager, SonatSystem
+  PanelManager, GameSystem
 
 Game code: no asmdef (Assembly-CSharp); asmdef only for third-party packages
 ```
