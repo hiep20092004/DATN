@@ -9,14 +9,13 @@ namespace WaterFlow.Game
     }
 
     /// <summary>
-    /// Resolves which <see cref="LevelData"/> a slot index maps to. Three sources, in priority order:
-    /// the editor database (play-mode authoring), a pending special level, then the baked local levels.
+    /// Resolves which <see cref="LevelData"/> a slot index maps to: the editor database
+    /// (play-mode authoring) first, then the baked local levels.
     /// </summary>
     public class LevelLoaderSystem
     {
         public const string SOURCE_SO_EDITOR = "SO_EDITOR";
         public const string SOURCE_LOCAL_SO = "LOCAL_SO";
-        public const string SOURCE_SPECIAL_SO = "SPECIAL_SO";
 
         public const string LoaderModeEditorPrefsKey = "WaterFlow.LevelLoaderSystem.LoaderMode";
 
@@ -47,36 +46,15 @@ namespace WaterFlow.Game
             if (LevelDatabase.EditorPlayModeLevelOverrideSlot == levelIndex &&
                 TryLoadFromEditorDatabase(levelIndex, out LevelData overrideLevel, forceEditorDatabase: true))
             {
-                EnsureInactiveWhenLoadingMainLevel(overrideLevel);
                 return overrideLevel;
             }
-#endif
 
-            if (Services.SpecialLevelService.TryConsumePendingLevel(out SpecialLevelData specialLevelData) &&
-                specialLevelData)
-            {
-                LastLoadSource = SOURCE_SPECIAL_SO;
-                return specialLevelData;
-            }
-
-#if UNITY_EDITOR
             if (TryLoadFromEditorDatabase(levelIndex, out LevelData editorLevel))
             {
-                EnsureInactiveWhenLoadingMainLevel(editorLevel);
                 return editorLevel;
             }
 #endif
-            LevelData runtimeLevel = ResolveRuntimeLevelData(levelIndex);
-            EnsureInactiveWhenLoadingMainLevel(runtimeLevel);
-            return runtimeLevel;
-        }
-
-        private static void EnsureInactiveWhenLoadingMainLevel(LevelData levelData)
-        {
-            if (levelData is SpecialLevelData)
-                return;
-
-            Services.SpecialLevelService?.DeactivateForMainLevelLoad();
+            return ResolveRuntimeLevelData(levelIndex);
         }
 
         public LevelType GetLevelType(int levelIndex)
@@ -110,12 +88,6 @@ namespace WaterFlow.Game
 
             LastLoadSource = SOURCE_SO_EDITOR;
             levelData = _database.GetLevelDirectly(levelIndex);
-            if (levelData is SpecialLevelData editorSpecialLevel)
-            {
-                Services.SpecialLevelService.Begin(editorSpecialLevel);
-                LastLoadSource = SOURCE_SPECIAL_SO;
-            }
-
             return true;
         }
 #endif

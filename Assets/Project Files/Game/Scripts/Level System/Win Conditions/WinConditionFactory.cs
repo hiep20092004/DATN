@@ -13,7 +13,6 @@ namespace WaterFlow.Game
             conditions = new Dictionary<GameMode, IWinCondition>
             {
                 { GameMode.Classic, new ClassicWinCondition() },
-                { GameMode.GoldMode, new GoldModeWinCondition() },
             };
         }
 

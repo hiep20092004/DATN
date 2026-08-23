@@ -31,7 +31,6 @@ namespace WaterFlow.Game
         private LevelRepresentation stagingRepresentation;
         private int stagingLevelIndex;
         private LevelRuntimePrecomputedCache runtimePrecomputedCache;
-        private GoldBlockCoinManager goldBlockCoinManager;
         private readonly IWinConditionFactory winConditionFactory = new WinConditionFactory();
         private IWinCondition winCondition;
         private GameMode activeGameMode;
@@ -56,9 +55,6 @@ namespace WaterFlow.Game
         public BlockConfig BlockConfig => blockConfig;
         public BlockMovementManager MovementManager => movementManager;
         public BlockTheme BlockTheme => blockTheme;
-
-        /// <summary>Total collectible gold for the current Gold Mode level (0 when not a Gold Mode level). Denominator for gold-mode completion tracking.</summary>
-        public int GoldMaxReward => goldBlockCoinManager?.MaxPossibleGold ?? 0;
 
         public bool LevelStarted { get; private set; }
         
@@ -93,13 +89,6 @@ namespace WaterFlow.Game
 #if UNITY_EDITOR
             isEditorTestPlay = LevelDatabase.IsEditorPlayModeLevelOverrideActive;
 #endif
-            if (!isEditorTestPlay)
-            {
-                Services.SpecialLevelService.TryScheduleForUpcomingLevel(
-                    levelDatabase != null ? levelDatabase.SpecialLevelScheduleConfig : null,
-                    displayedLevelIndex);
-            }
-
             int levelIndex = activeSession.GetLevelIndex(displayedLevelIndex);
             LoadLevel(levelIndex);
         }
@@ -171,11 +160,6 @@ namespace WaterFlow.Game
 
         void OnLevelCompleted()
         {
-            if (Services.SpecialLevelService.IsActive)
-            {
-                return;
-            }
-
             ActiveSession activeSession = ActiveSession.Current;
             activeSession.OnLevelCompleted();
         }
@@ -252,7 +236,6 @@ namespace WaterFlow.Game
             LevelRepresentation.Spawn();
 
             SetupWinCondition();
-            SetupGoldBlockCoins();
 
             movementManager.SetLevelRepresentation(LevelRepresentation);
 
@@ -301,11 +284,8 @@ namespace WaterFlow.Game
             // Start a fresh play session (Begin internally clears previous data).
             LevelRuntimeData.Current.Begin(currentLevel, LevelRepresentation?.LevelData);
 
-            SpecialLevelService special = Services.SpecialLevelService;
-            bool isSpecial = special.IsActive && special.CurrentLevel != null;
-            GameMode gameMode = isSpecial ? special.CurrentLevel.Mode.ToGameMode() : GameMode.Classic;
-            // Special modes are numbered within their own sequence; classic uses the main display level.
-            int trackedLevel = isSpecial ? special.CurrentOrderIndex + 1 : ActiveSession.Current.DisplayLevelIndex + 1;
+            GameMode gameMode = GameMode.Classic;
+            int trackedLevel = ActiveSession.Current.DisplayLevelIndex + 1;
 
             int analyticsLevel = trackedLevel;
 
@@ -362,29 +342,19 @@ namespace WaterFlow.Game
         }
 
         /// <summary>
-        /// Editor-only sandbox flag: true while a Special "Test" level is being played from the Level Editor.
+        /// Editor-only sandbox flag: true while a level is being test-played from the Level Editor.
         /// Power-ups query this to force-unlock and skip consumption. Always false in player builds.
         /// </summary>
         public static bool IsTestModeActive
         {
 #if UNITY_EDITOR
-            get => LevelDatabase.IsEditorSpecialTestPlay;
+            get => LevelDatabase.IsEditorTestPlay;
 #else
             get => false;
 #endif
         }
 
-        private static GameMode ResolveActiveGameMode()
-        {
-#if UNITY_EDITOR
-            if (LevelDatabase.IsEditorSpecialTestPlay)
-                return GameMode.Test;
-#endif
-            SpecialLevelService special = Services.SpecialLevelService;
-            if (special is { IsActive: true } && special.CurrentLevel)
-                return special.CurrentLevel.Mode.ToGameMode();
-            return GameMode.Classic;
-        }
+        private static GameMode ResolveActiveGameMode() => GameMode.Classic;
 
         private void SetupWinCondition()
         {
@@ -394,22 +364,6 @@ namespace WaterFlow.Game
             activeGameMode = ResolveActiveGameMode();
             winCondition = winConditionFactory.Create(activeGameMode);
             levelRepresentation.SetWinCondition(winCondition);
-        }
-
-        private void SetupGoldBlockCoins()
-        {
-            goldBlockCoinManager?.Dispose();
-            goldBlockCoinManager = null;
-
-            if (activeGameMode != GameMode.GoldMode)
-                return;
-
-            SpecialLevelService special = Services.SpecialLevelService;
-            if (special?.GoldCoinInBlockPrefab == null)
-                return;
-
-            goldBlockCoinManager = new GoldBlockCoinManager(special.GoldCoinInBlockPrefab, levelRepresentation);
-            goldBlockCoinManager.SpawnCoinsForGoldBlocks();
         }
 
         public void UnloadLevel()
@@ -433,8 +387,6 @@ namespace WaterFlow.Game
                 GameController.Instance.UnblockUI("mapSpawn");
             }
 
-            goldBlockCoinManager?.Dispose();
-            goldBlockCoinManager = null;
             winCondition = null;
             activeGameMode = GameMode.Classic;
 
@@ -492,9 +444,6 @@ namespace WaterFlow.Game
             if (rep != levelRepresentation) return;
             rep.SetBlocksInterpolation(RigidbodyInterpolation.Interpolate);
             GameController.Instance.OnLevelSpawnCompleted();
-
-            if (activeGameMode == GameMode.GoldMode)
-                goldBlockCoinManager?.TryShowIntroMessage();
         }
 
         #endregion
@@ -539,7 +488,6 @@ namespace WaterFlow.Game
             LevelRuntimeData.Current.Clear();
 
             SetupWinCondition();
-            SetupGoldBlockCoins();
 
             UnsubscribeRepresentationEvents(oldRepresentation);
             oldRepresentation?.Cleanup();
@@ -953,8 +901,7 @@ namespace WaterFlow.Game
         private void InitTimer()
         {
             LevelData levelData = LevelRepresentation.LevelData;
-            bool useRandomDuration = !Services.SpecialLevelService.IsActive &&
-                                     ActiveSession.Current.IsPlayingRandomLevel;
+            bool useRandomDuration = ActiveSession.Current.IsPlayingRandomLevel;
             float time = useRandomDuration ? levelData.RandomDuration : levelData.Duration;
 
             GameplayTimer.SetMaxTime(time);

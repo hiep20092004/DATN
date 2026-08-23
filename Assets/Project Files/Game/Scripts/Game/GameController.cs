@@ -104,15 +104,12 @@ namespace WaterFlow.Game
             int completedLevel = ActiveSession.Current.DisplayLevelIndex + 1;
             var type = (int)completedLevelData.Type;
 
-            SpecialLevelService specialLevelService = Services.SpecialLevelService;
-            bool isSpecialLevel = specialLevelService is { IsActive: true };
-
-            int endTurnLevel = isSpecialLevel ? specialLevelService.CurrentOrderIndex + 1 : completedLevel;
+            int endTurnLevel = completedLevel;
             int realLevel = ActiveSession.ResolveRealLevelNumber(endTurnLevel);
 
             EventBus<LevelEndedEvent>.Raise(new LevelEndedEvent()
             {
-                gameMode = ResolveGameMode(specialLevelService),
+                gameMode = GameMode.Classic,
                 level = completedLevel,
                 realLevel = realLevel,
                 success = true,
@@ -121,16 +118,13 @@ namespace WaterFlow.Game
 
             EventBus<LevelEndTurnEvent>.Raise(new LevelEndTurnEvent()
             {
-                gameMode = ResolveGameMode(specialLevelService),
+                gameMode = GameMode.Classic,
                 level = endTurnLevel,
                 realLevel = realLevel,
                 levelType = type,
                 success = true,
                 continueTimes = RevivedTime,
             });
-
-            if (isSpecialLevel)
-                specialLevelService.FinalizeLevel();
 
             LevelController.Instance.OnGameEnd(true);
             OnLevelCompleted();
@@ -141,12 +135,6 @@ namespace WaterFlow.Game
             await UniTask.WaitForSeconds(0.25f,
                 cancellationToken: this.GetCancellationTokenOnDestroy());
             UnblockUI("completeLevelUI");
-
-            if (isSpecialLevel)
-            {
-                PanelManager.Instance.OpenForget<PopupPreWin>();
-                return;
-            }
 
             PanelManager.Instance.OpenForget<PopupPreWin>();
         }
@@ -163,11 +151,10 @@ namespace WaterFlow.Game
             LevelController.Instance.OnGameEnd(false);
 
             int failLevel = ActiveSession.Current.DisplayLevelIndex + 1;
-            SpecialLevelService specialLevelService = Services.SpecialLevelService;
 
             EventBus<LevelEndedEvent>.Raise(new LevelEndedEvent()
             {
-                gameMode = ResolveGameMode(specialLevelService),
+                gameMode = GameMode.Classic,
                 level = failLevel,
                 realLevel = ActiveSession.ResolveRealLevelNumber(failLevel),
                 success = false,
@@ -354,23 +341,8 @@ namespace WaterFlow.Game
             ActiveSession currentSession = ActiveSession.Current;
             int levelIndex = currentSession.DisplayLevelIndex;
 
-            if (Services.SpecialLevelService is { IsActive: true })
-                return;
-
             int nextMainLevelIndex = levelIndex + 1;
             currentSession.SetLevelIndex(nextMainLevelIndex);
-
-            TryScheduleSpecialLevel(nextMainLevelIndex);
-        }
-
-        private void TryScheduleSpecialLevel(int nextMainLevelIndex)
-        {
-            SpecialLevelScheduleConfig config = levelDatabase != null ? levelDatabase.SpecialLevelScheduleConfig : null;
-            if (config == null) return;
-
-            // nextMainLevelIndex is the 0-based index the session was just advanced to,
-            // i.e. the level the player is about to play.
-            Services.SpecialLevelService.TryScheduleForUpcomingLevel(config, nextMainLevelIndex);
         }
 
         private void CollectNewFeatures() { }
@@ -379,12 +351,6 @@ namespace WaterFlow.Game
         {
             GameWinFlowService.GrantWinReward(completedLevelData);
             SaveController.Save(true);
-
-            if (Services.SpecialLevelService is { HasPendingSpecialLevel: true })
-            {
-                Services.TransitionService.SwitchScene(GamePlacement.Game);
-                return;
-            }
 
             ActiveSession activeSession = ActiveSession.Current;
             int displayedLevelIndex = activeSession.DisplayLevelIndex;
@@ -448,16 +414,6 @@ namespace WaterFlow.Game
             bool shouldBlock = blockUiReasons.Count > 0;
             MainUI.blocksRaycasts = !shouldBlock;
             MainUI.interactable = !shouldBlock;
-        }
-
-        private static GameMode ResolveGameMode(SpecialLevelService specialLevelService)
-        {
-            if (specialLevelService is not { IsActive: true })
-                return GameMode.Classic;
-
-            return specialLevelService.CurrentLevel != null
-                ? specialLevelService.CurrentLevel.Mode.ToGameMode()
-                : GameMode.RescueBlock;
         }
     }
 }

@@ -58,12 +58,6 @@ public class PopupSetting : Panel
     {
         Close();
 
-        if (Services.SpecialLevelService.IsActive)
-        {
-            Services.SpecialLevelService.Complete(GamePlacement.Home);
-            return;
-        }
-
         if (!LevelController.Instance.LevelStarted)
         {
             ToHome();

@@ -16,11 +16,6 @@ namespace WaterFlow.Game
     {
 #if UNITY_EDITOR
         [SerializeField, LevelEditorSetting] LevelData[] levels;
-        [SerializeField, LevelEditorSetting] SpecialLevelData[] specialLevels = Array.Empty<SpecialLevelData>();
-
-        [Space]
-        [Tooltip("Per-mode max level cutoff for special levels. Assets with order index > MaxLevel are removed from the Active folder during build.")]
-        [SerializeField, LevelEditorSetting] SpecialLevelModeMaxConfig[] specialModeLimits = Array.Empty<SpecialLevelModeMaxConfig>();
 
         [Space]
         [Tooltip("Per-base-level variants and which asset is used when building active level assets.")]
@@ -47,7 +42,6 @@ namespace WaterFlow.Game
         
         [Space]
         [SerializeField] ObstacleUnlockDatabase obstacleUnlockDatabase;
-        [SerializeField] SpecialLevelScheduleConfig specialLevelScheduleConfig;
 
         public int AmountOfLevels
         {
@@ -85,31 +79,6 @@ namespace WaterFlow.Game
             obstacleUnlockDatabase != null ? obstacleUnlockDatabase.Entries : null;
         
         public ObstacleUnlockDatabase ObstacleUnlockDatabase => obstacleUnlockDatabase;
-        public SpecialLevelScheduleConfig SpecialLevelScheduleConfig => specialLevelScheduleConfig;
-
-#if UNITY_EDITOR
-        public int SpecialLevelCount => specialLevels != null ? specialLevels.Length : 0;
-        public SpecialLevelData[] SpecialLevels => specialLevels;
-        public SpecialLevelModeMaxConfig[] SpecialModeLimits => specialModeLimits;
-
-        /// <summary>Returns the configured cutoff for <paramref name="mode"/>, or -1 (no limit) if no entry exists.</summary>
-        public int GetSpecialModeMaxLevel(SpecialLevelMode mode)
-        {
-            if (specialModeLimits == null)
-                return -1;
-
-            for (int i = 0; i < specialModeLimits.Length; i++)
-            {
-                SpecialLevelModeMaxConfig config = specialModeLimits[i];
-                if (config != null && config.Mode == mode)
-                    return config.MaxLevel;
-            }
-
-            return -1;
-        }
-#else
-        public int SpecialLevelCount => 0;
-#endif
 
 #if UNITY_EDITOR
         private const string PREFS_TEST_VARIANT_ASSET_PATH = "editor_test_variant_asset_path";
@@ -122,16 +91,16 @@ namespace WaterFlow.Game
         private const int NO_OVERRIDE_SLOT = -1;
 
         /// <summary>
-        /// Marks the current play session as a Special "Test" level launched from the Level Editor, which
-        /// runs in <see cref="GameMode.Test"/> (all power-ups force-unlocked and free). Cleared on play exit
-        /// via <see cref="ClearEditorPlayModeLevelOverride"/>, so it never leaks into a normal Play session.
+        /// Marks the current play session as a test play launched from the Level Editor, which force-unlocks
+        /// power-ups and makes them free. Cleared on play exit via <see cref="ClearEditorPlayModeLevelOverride"/>,
+        /// so it never leaks into a normal Play session.
         /// </summary>
-        public static void SetEditorSpecialTestPlay(bool active)
+        public static void SetEditorTestPlay(bool active)
         {
             EditorPrefs.SetBool(PREFS_SPECIAL_TEST_PLAY, active);
         }
 
-        public static bool IsEditorSpecialTestPlay => EditorPrefs.GetBool(PREFS_SPECIAL_TEST_PLAY, false);
+        public static bool IsEditorTestPlay => EditorPrefs.GetBool(PREFS_SPECIAL_TEST_PLAY, false);
 
         public static void SetEditorPlayModeLevelOverride(int slotIndex, LevelData levelData)
         {
@@ -428,39 +397,6 @@ namespace WaterFlow.Game
             return TryGetLevelRuntimeInfo(index, out LevelType type, out _) ? type : LevelType.Normal;
         }
 
-        public SpecialLevelData GetSpecialLevel(int index)
-        {
-#if UNITY_EDITOR
-            if (specialLevels == null || index < 0 || index >= specialLevels.Length)
-                return null;
-            return specialLevels[index];
-#else
-            return null;
-#endif
-        }
-
-        public SpecialLevelData GetSpecialLevelByModeAndOrder(SpecialLevelMode mode, int orderIndex)
-        {
-#if UNITY_EDITOR
-            if (specialLevels == null || specialLevels.Length == 0 || orderIndex < 0)
-                return null;
-
-            int matched = 0;
-            for (int i = 0; i < specialLevels.Length; i++)
-            {
-                SpecialLevelData specialLevel = specialLevels[i];
-                if (!specialLevel || specialLevel.Mode != mode)
-                    continue;
-
-                if (matched == orderIndex)
-                    return specialLevel;
-
-                matched++;
-            }
-#endif
-            return null;
-        }
-
 #if UNITY_EDITOR
         public LevelData GetLevelDirectly(int index)
         {
@@ -645,76 +581,9 @@ namespace WaterFlow.Game
             // Generate obstacle unlock data based on first appearance of effects
             Editor_GenerateObstacleUnlockData(loadedLevels);
 
-            Editor_PopulateSpecialLevels();
-            Editor_ValidateSpecialLevels();
-            Editor_RebuildSpecialLevelSchedule();
-
             Validate();
 
             EditorUtility.SetDirty(this);
-        }
-
-        /// <summary>
-        /// Rebuilds the <see cref="specialLevels"/> array from the assets on disk in
-        /// <see cref="LevelSystemUtils.SpecialActiveLevelsFolder"/>. The folder is source-of-truth (GD edits the
-        /// assets directly and they sync via git), so Populate must scan it — otherwise files added outside the
-        /// editor's Add button (e.g. pulled from another branch) never register and stay invisible in the editor.
-        /// Entries are ordered by mode then by the numeric suffix in the file name ("GoldMode 008" -> 8), which is
-        /// the per-mode order index consumed by <see cref="LevelAddressableBuilder"/> and the schedule rebuild.
-        /// </summary>
-        public void Editor_PopulateSpecialLevels()
-        {
-            string folder = LevelSystemUtils.SpecialActiveLevelsFolder;
-            string fullPath = Path.Combine(Application.dataPath.Replace("Assets", ""), folder);
-            if (!Directory.Exists(fullPath))
-                return;
-
-            string[] files = Directory.GetFiles(fullPath, "*" + ASSET_SUFFIX);
-            List<(SpecialLevelMode mode, int order, string name, SpecialLevelData asset)> found =
-                new List<(SpecialLevelMode, int, string, SpecialLevelData)>();
-
-            foreach (string filePath in files)
-            {
-                string assetPath = folder + PATH_SEPARATOR + Path.GetFileName(filePath);
-                SpecialLevelData asset = AssetDatabase.LoadAssetAtPath<SpecialLevelData>(assetPath);
-                if (!asset)
-                    continue;
-
-                found.Add((asset.Mode, ParseTrailingNumber(asset.name), asset.name, asset));
-            }
-
-            found.Sort((a, b) =>
-            {
-                int byMode = a.mode.CompareTo(b.mode);
-                if (byMode != 0) return byMode;
-                int byOrder = a.order.CompareTo(b.order);
-                return byOrder != 0 ? byOrder : string.CompareOrdinal(a.name, b.name);
-            });
-
-            SerializedObject so = new SerializedObject(this);
-            SerializedProperty prop = so.FindProperty("specialLevels");
-            if (prop == null) return;
-
-            prop.arraySize = found.Count;
-            for (int i = 0; i < found.Count; i++)
-                prop.GetArrayElementAtIndex(i).objectReferenceValue = found[i].asset;
-            so.ApplyModifiedProperties();
-        }
-
-        /// <summary>Parses the trailing integer of a special level asset name ("GoldMode 008" -> 8); int.MaxValue when absent.</summary>
-        private static int ParseTrailingNumber(string assetName)
-        {
-            if (string.IsNullOrEmpty(assetName))
-                return int.MaxValue;
-
-            int end = assetName.Length;
-            int start = end;
-            while (start > 0 && char.IsDigit(assetName[start - 1]))
-                start--;
-
-            return start < end && int.TryParse(assetName.Substring(start, end - start), out int number)
-                ? number
-                : int.MaxValue;
         }
 
         /// <summary>Removes variant entries whose base level is no longer in the <see cref="levels"/> array.</summary>
@@ -774,22 +643,6 @@ namespace WaterFlow.Game
             }
 
             obstacleUnlockDatabase.Editor_GenerateObstacleUnlockData(loadedLevels);
-        }
-
-        public bool Editor_ValidateSpecialLevels()
-        {
-            return SpecialLevelValidator.Validate(specialLevels, this);
-        }
-
-        public void Editor_RebuildSpecialLevelSchedule()
-        {
-            if (!specialLevelScheduleConfig)
-            {
-                Debug.LogWarning("[LevelDatabase] SpecialLevelScheduleConfig is missing. Assign it on the LevelDatabase asset.", this);
-                return;
-            }
-
-            specialLevelScheduleConfig.Editor_Rebuild(specialLevels);
         }
 
         /// <summary>Palette color from <see cref="editorColorData"/> for level editor UI (inspector pickers).</summary>

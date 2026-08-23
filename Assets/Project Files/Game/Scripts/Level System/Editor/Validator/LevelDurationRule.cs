@@ -5,8 +5,7 @@ using UnityEngine;
 namespace WaterFlow.Game
 {
     /// <summary>
-    /// Main-flow level duration must stay inside the recommended solve-time budget. Special levels
-    /// (<see cref="SpecialLevelData"/>) have their own pacing and are skipped.
+    /// Level duration must stay inside the recommended solve-time budget.
     /// </summary>
     public sealed class LevelDurationRule : ILevelValidationRule
     {
@@ -20,9 +19,6 @@ namespace WaterFlow.Game
         {
             SerializedObject levelObject = itemsProperty?.serializedObject;
             if (levelObject == null)
-                yield break;
-
-            if (levelObject.targetObject is SpecialLevelData)
                 yield break;
 
             SerializedProperty durationProperty = levelObject.FindProperty(DURATION_PROPERTY_NAME);

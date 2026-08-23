@@ -36,30 +36,8 @@ namespace WaterFlow.Game
 
         public static void GrantWinReward(LevelData levelData)
         {
-            SpecialLevelService specialSession = Services.SpecialLevelService;
-            if (specialSession &&
-                specialSession.IsActive &&
-                !specialSession.RuleSet.ShouldGrantNormalWinReward)
-            {
-                return;
-            }
-
             ResourceData winReward = GetWinReward(levelData);
             GrantWinCoinPendingReward(winReward, "win_level", "win_level");
-        }
-
-        /// <summary>
-        /// Queues Gold Mode coin earnings into the same pending bucket as classic wins
-        /// (<see cref="WinCoinPendingSource"/>), delivered on Home via
-        /// <see cref="TryDeliverPendingWinCoinOnHomeAsync"/>.
-        /// </summary>
-        public static void GrantSpecialLevelGoldPendingReward(int goldAmount)
-        {
-            if (goldAmount <= 0)
-                return;
-
-            ResourceData reward = new ResourceData(GameResource.Coin, goldAmount);
-            GrantWinCoinPendingReward(reward, "special_level_gold", "special_level_gold");
         }
 
         private static void GrantWinCoinPendingReward(ResourceData reward, string spendType, string spendId)

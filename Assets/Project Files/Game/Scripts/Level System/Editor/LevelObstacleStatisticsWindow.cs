@@ -15,12 +15,6 @@ namespace WaterFlow.Game
             EffectCombos = 2
         }
 
-        private enum OverviewGroup
-        {
-            Levels = 0,
-            SpecialLevels = 1
-        }
-
         private enum SearchCategory
         {
             BlockEffect = 0,
@@ -63,8 +57,6 @@ namespace WaterFlow.Game
         {
             public LevelData Level;
             public int LevelIndex;
-            public bool IsSpecial;
-            public string SpecialModeLabel;
             public readonly List<BlockWithEffects> BlocksWithEffects = new List<BlockWithEffects>();
             public readonly List<GateWithEffects> GatesWithEffects = new List<GateWithEffects>();
             public readonly List<GeneratorEntry> GeneratorBlocks = new List<GeneratorEntry>();
@@ -89,12 +81,7 @@ namespace WaterFlow.Game
             {
                 string levelType = Level != null ? Level.Type.ToString() : "-";
                 string size = Level != null ? $"{Level.Size.x}x{Level.Size.y}" : "-";
-                string prefix = IsSpecial ? $"Special {LevelIndex + 1}" : $"Level {LevelIndex + 1}";
-
-                if (IsSpecial && !string.IsNullOrEmpty(SpecialModeLabel))
-                    return $"{prefix} [{SpecialModeLabel}] - {levelType} {size}";
-
-                return $"{prefix} - {levelType} {size}";
+                return $"Level {LevelIndex + 1} - {levelType} {size}";
             }
         }
 
@@ -140,7 +127,6 @@ namespace WaterFlow.Game
 
         private LevelDatabase levelDatabase;
         private MainTab mainTab;
-        private OverviewGroup overviewGroup;
         private Vector2 overviewScroll;
         private Vector2 searchScroll;
         private Vector2 comboScroll;
@@ -157,7 +143,6 @@ namespace WaterFlow.Game
         private bool didRunSearch;
 
         private readonly List<LevelEffectSummary> levelSummaries = new List<LevelEffectSummary>();
-        private readonly List<LevelEffectSummary> specialLevelSummaries = new List<LevelEffectSummary>();
         private readonly Dictionary<int, bool> overviewFoldouts = new Dictionary<int, bool>();
         private readonly Dictionary<int, bool> searchFoldouts = new Dictionary<int, bool>();
         private readonly List<EffectComboEntry> comboEntries = new List<EffectComboEntry>();
@@ -227,7 +212,7 @@ namespace WaterFlow.Game
                 BuildCache();
 
             GUILayout.Label(
-                $"Main Levels: {levelSummaries.Count} | Special Levels: {specialLevelSummaries.Count}",
+                $"Levels: {levelSummaries.Count}",
                 EditorStyles.boldLabel);
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndVertical();
@@ -235,8 +220,6 @@ namespace WaterFlow.Game
 
         private void DrawOverviewTab()
         {
-            overviewGroup = (OverviewGroup)GUILayout.Toolbar((int)overviewGroup, new[] { "Levels", "Special Levels" });
-
             EditorGUILayout.Space(6f);
             EditorGUILayout.BeginHorizontal();
             levelNameFilter = EditorGUILayout.TextField("Filter by name", levelNameFilter);
@@ -246,8 +229,7 @@ namespace WaterFlow.Game
             EditorGUILayout.Space(6f);
             overviewScroll = EditorGUILayout.BeginScrollView(overviewScroll);
 
-            List<LevelEffectSummary> activeList =
-                overviewGroup == OverviewGroup.Levels ? levelSummaries : specialLevelSummaries;
+            List<LevelEffectSummary> activeList = levelSummaries;
 
             int shown = 0;
             for (int i = 0; i < activeList.Count; i++)
@@ -630,7 +612,6 @@ namespace WaterFlow.Game
             searchResults.Clear();
 
             AddSearchResults(levelSummaries);
-            AddSearchResults(specialLevelSummaries);
         }
 
         private void AddSearchResults(List<LevelEffectSummary> summaries)
@@ -879,7 +860,6 @@ namespace WaterFlow.Game
         private void BuildCache()
         {
             levelSummaries.Clear();
-            specialLevelSummaries.Clear();
             overviewFoldouts.Clear();
             searchFoldouts.Clear();
             comboFoldouts.Clear();
@@ -899,20 +879,9 @@ namespace WaterFlow.Game
                 if (level == null)
                     continue;
 
-                levelSummaries.Add(BuildSummary(level, i, false));
+                levelSummaries.Add(BuildSummary(level, i));
             }
 
-            SpecialLevelData[] specialLevels = levelDatabase.SpecialLevels ?? Array.Empty<SpecialLevelData>();
-            for (int i = 0; i < specialLevels.Length; i++)
-            {
-                SpecialLevelData specialLevel = specialLevels[i];
-                if (specialLevel == null)
-                    continue;
-
-                LevelEffectSummary summary = BuildSummary(specialLevel, i, true);
-                summary.SpecialModeLabel = specialLevel.Mode.ToString();
-                specialLevelSummaries.Add(summary);
-            }
 
             RebuildComboEntries();
         }
@@ -920,7 +889,6 @@ namespace WaterFlow.Game
         private void RebuildComboEntries()
         {
             BuildCombosForList(levelSummaries);
-            BuildCombosForList(specialLevelSummaries);
 
             comboEntries.Sort((left, right) =>
             {
@@ -1078,13 +1046,12 @@ namespace WaterFlow.Game
             return levels ?? Array.Empty<LevelData>();
         }
 
-        private static LevelEffectSummary BuildSummary(LevelData level, int levelIndex, bool isSpecial)
+        private static LevelEffectSummary BuildSummary(LevelData level, int levelIndex)
         {
             LevelEffectSummary summary = new LevelEffectSummary
             {
                 Level = level,
-                LevelIndex = levelIndex,
-                IsSpecial = isSpecial
+                LevelIndex = levelIndex
             };
 
             LevelElementData[] elements = level.Elements;
@@ -1329,18 +1296,17 @@ namespace WaterFlow.Game
                 return;
             }
 
-            // Preferred path: deferred jump that keeps the list/grid UI in sync (Normal + Special).
+            // Preferred path: deferred jump that keeps the list/grid UI in sync.
             if (editorWindow is LevelEditorWindow levelEditor)
             {
-                levelEditor.JumpToLevel(summary.Level, summary.LevelIndex, summary.IsSpecial);
+                levelEditor.JumpToLevel(summary.Level, summary.LevelIndex);
                 Selection.activeObject = summary.Level;
                 EditorGUIUtility.PingObject(summary.Level);
                 return;
             }
 
             // Fallback for any other LevelEditorBase implementation.
-            int openIndex = summary.IsSpecial ? 0 : summary.LevelIndex;
-            editorWindow.OpenLevel(summary.Level, openIndex);
+            editorWindow.OpenLevel(summary.Level, summary.LevelIndex);
             Selection.activeObject = summary.Level;
             EditorGUIUtility.PingObject(summary.Level);
         }

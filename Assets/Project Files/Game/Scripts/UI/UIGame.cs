@@ -24,14 +24,12 @@ namespace WaterFlow.Game
         [SerializeField] LevelPanel normalLevelPanelPrefab;
 
         [BoxGroup("Top Panel")]
-        [SerializeField] GoldModeLevelPanel goldModeLevelPanelPrefab;
         
         [BoxGroup("Message Box")]
         [SerializeField] MessageBox messageBox;
         
         public Button SettingBtn;
         public Button ReplayBtn;
-        public Button SkipSpecialBtn;
         
         private LevelPanelBase levelPanel;
         private RectTransform levelPanelRect;
@@ -63,8 +61,6 @@ namespace WaterFlow.Game
         {
             SettingBtn.onClick.AddListener(OnSettingButtonClicked);
             ReplayBtn.onClick.AddListener(OnReplayButtonClicked);
-            if (SkipSpecialBtn)
-                SkipSpecialBtn.onClick.AddListener(OnSkipSpecialButtonClicked);
 
             levelPanel = SpawnLevelPanel();
             levelPanel.Init();
@@ -81,7 +77,6 @@ namespace WaterFlow.Game
             settingButtonCanvasGroup = GetOrAddCanvasGroup(SettingBtn.gameObject);
             replayButtonCanvasGroup = GetOrAddCanvasGroup(ReplayBtn.gameObject);
 
-            RefreshSpecialLevelButtons();
         }
 
         private void Start()
@@ -100,8 +95,6 @@ namespace WaterFlow.Game
         {
             SettingBtn.onClick.RemoveListener(OnSettingButtonClicked);
             ReplayBtn.onClick.RemoveListener(OnReplayButtonClicked);
-            if (SkipSpecialBtn)
-                SkipSpecialBtn.onClick.RemoveListener(OnSkipSpecialButtonClicked);
         }
 
         public override void Init()
@@ -109,7 +102,6 @@ namespace WaterFlow.Game
             NotchSaveArea.RegisterRectTransform(safeAreaRectTransform);
             
             messageBox.Init();
-            RefreshSpecialLevelButtons();
         }
 
         public override void PlayHideAnimation()
@@ -166,7 +158,6 @@ namespace WaterFlow.Game
         public void RefreshForNextLevel(int levelIndex)
         {
             levelPanel.RefreshForNextLevel(levelIndex);
-            RefreshSpecialLevelButtons();
         }
 
         public void PlayFadeOutTopButtonAnimation()
@@ -255,36 +246,11 @@ namespace WaterFlow.Game
             PanelManager.Instance.OpenForget<PopupSetting>();
         }
 
-        private void OnSkipSpecialButtonClicked()
-        {
-            Services.SpecialLevelService.Skip();
-        }
-
         private LevelPanelBase SpawnLevelPanel()
         {
             Transform container = levelPanelContainer ? levelPanelContainer : transform;
 
-            SpecialLevelService specialLevelService = Services.SpecialLevelService;
-            bool isGoldMode = specialLevelService != null
-                && specialLevelService.TryGetActiveOrPendingMode(out SpecialLevelMode mode)
-                && mode == SpecialLevelMode.GoldMode;
-
-            LevelPanelBase prefab = isGoldMode
-                ? (LevelPanelBase)goldModeLevelPanelPrefab
-                : normalLevelPanelPrefab;
-
-            return Instantiate(prefab, container);
-        }
-
-        private void RefreshSpecialLevelButtons()
-        {
-            bool isSpecialActive = Services.SpecialLevelService.IsActive;
-
-            if (SkipSpecialBtn)
-                SkipSpecialBtn.gameObject.SetActive(isSpecialActive);
-
-            if (ReplayBtn)
-                ReplayBtn.gameObject.SetActive(!isSpecialActive);
+            return Instantiate(normalLevelPanelPrefab, container);
         }
     }
 }

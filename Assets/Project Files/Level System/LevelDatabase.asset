@@ -663,18 +663,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 791ec2232bfd799478cfaece15fdaa77, type: 2}
   - {fileID: 11400000, guid: 6ec7ce1f193f98749b577f496d5aa60d, type: 2}
   - {fileID: 11400000, guid: 2a2c1d769b54e934385523e706d5494a, type: 2}
-  specialLevels:
-  - {fileID: 11400000, guid: 75203820203b8294cb64fd6a40a470f2, type: 2}
-  - {fileID: 11400000, guid: b19cab000c230384d940750d2cff0f34, type: 2}
-  - {fileID: 11400000, guid: c399229955bff6d48b7896a185ddd303, type: 2}
-  - {fileID: 11400000, guid: 691acd2a202e7594c87a240a3e0f0d98, type: 2}
-  - {fileID: 11400000, guid: cf96ff6eb03acd54c937d278c2122dac, type: 2}
-  - {fileID: 11400000, guid: 7dd7d600b1bf6be4c8acb6f5bc6735be, type: 2}
-  - {fileID: 11400000, guid: 849df25d91a0bca458106dedc5c30030, type: 2}
-  - {fileID: 11400000, guid: 00df376ddb413b34892ba4d787047230, type: 2}
-  - {fileID: 11400000, guid: 5a51c045d9c9c3e4f8438bb736b45ccb, type: 2}
-  - {fileID: 11400000, guid: 0328acbdf7dc69e4bb3fe11a754758f4, type: 2}
-  specialModeLimits: []
   variantEntries:
   - baseLevel: {fileID: 11400000, guid: 887317f285ee74d48a89d43bc4545c3e, type: 2}
     variants:
@@ -4247,4 +4235,3 @@ MonoBehaviour:
   - type: 1
     useInRandomizer: 1
   obstacleUnlockDatabase: {fileID: 11400000, guid: 26f3da8583df6b34283ee5a359c7990e, type: 2}
-  specialLevelScheduleConfig: {fileID: 11400000, guid: ad7460e499965444f9003466acbc74be, type: 2}

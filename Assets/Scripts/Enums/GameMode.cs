@@ -2,11 +2,7 @@
 {
     public enum GameMode : byte
     {
-        Classic,
-        GoldMode,
-        RescueColor,
-        RescueBlock,
-        Test
+        Classic
     }
 
     public enum GameState : byte

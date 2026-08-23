@@ -211,14 +211,11 @@ namespace WaterFlow.Game
         /// <summary>
         /// Level number of the asset actually being played (<c>Level 038</c> → 38). Differs from the
         /// display level whenever the randomizer picked the level — endless play past the last
-        /// authored level, and every Super League round. Special modes have no main-line number, so
-        /// they keep <paramref name="specialLevelNumber"/> (their per-mode order index).
+        /// authored level.
         /// </summary>
         public static int ResolveRealLevelNumber(int specialLevelNumber)
         {
-            return Services.SpecialLevelService is { IsActive: true }
-                ? specialLevelNumber
-                : Current.LevelIndex + 1;
+            return Current.LevelIndex + 1;
         }
 
         private void PushRecentLevelIndex(int realLevelIndex)

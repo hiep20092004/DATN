@@ -21,11 +21,6 @@ namespace WaterFlow.Game
         // Persisted so a special level is offered exactly once even when the player is parked
         // on its unlock boundary (e.g. reached the boundary in a previous build, before the
         // special-level feature shipped).
-        public List<string> CompletedSpecialLevels = new List<string>();
-
-        // True once the player has seen the one-time Gold Mode intro message (shown the first
-        // time they ever enter any Gold Mode level). Persisted so the bubble appears exactly once.
-        public bool HasSeenGoldModeIntro = false;
 
         // Field names that have ever existed on this save object. Used for the
         // content-based recovery fallback so that even if a user’s old save was

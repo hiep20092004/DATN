@@ -16,9 +16,7 @@ namespace WaterFlow.Game
     public static class LevelAddressableBuilder
     {
         private const string MainGroupName = "LevelActive";
-        private const string SpecialGroupName = "LevelSpecialActive";
         private const string ActiveLevelsFolder = LevelSystemUtils.ActiveLevelsFolder;
-        private const string SpecialActiveLevelsFolder = LevelSystemUtils.SpecialActiveLevelsFolder;
         private const string SlotAssetPrefix = "Level ";
 
         #region Menu Items
@@ -34,10 +32,8 @@ namespace WaterFlow.Game
             }
 
             EnsureActiveLevelsFolder();
-            EnsureAssetFolder(SpecialActiveLevelsFolder);
 
             var processedPaths = new List<string>();
-            var keptSpecialSlotPaths = new HashSet<string>();
 
             foreach (string guid in guids)
             {
@@ -45,12 +41,6 @@ namespace WaterFlow.Game
                 LevelDatabase db = AssetDatabase.LoadAssetAtPath<LevelDatabase>(path);
                 if (db == null)
                     continue;
-
-                // Resync specialLevels from the Special folder before the keep/delete pass below.
-                // RemoveStaleSpecialSlotAssets deletes any folder asset not referenced by the array, so a stale
-                // array (e.g. assets pulled from another branch but never re-Populated) would permanently delete
-                // those files and drop them from the build. The folder is source-of-truth, so reconcile first.
-                db.Editor_PopulateSpecialLevels();
 
                 LevelActiveBuildSlotInfo[] plan = db.ComputeActiveBuildSlots();
 
@@ -70,14 +60,6 @@ namespace WaterFlow.Game
 
                 RemoveStaleActiveSlotAssets(keptSlotPaths);
 
-                if (!db.Editor_ValidateSpecialLevels())
-                {
-                    Debug.LogError(
-                        $"[LevelActiveBuilder] Validation reported issues on special levels for '{db.name}'. Build will continue.");
-                }
-
-                BuildSpecialLevelSlots(db, keptSpecialSlotPaths);
-
                 db.Editor_GenerateObstacleUnlockData(obstacleSourceLevels);
                 BakeRuntimeLevelInfos(db, plan);
 
@@ -87,8 +69,6 @@ namespace WaterFlow.Game
                 EditorUtility.SetDirty(db);
                 processedPaths.Add(path);
             }
-
-            RemoveStaleSpecialSlotAssets(keptSpecialSlotPaths);
 
             if (processedPaths.Count > 0)
             {
@@ -201,7 +181,6 @@ namespace WaterFlow.Game
             }
 
             RegisterAddressableFolder(settings, MainGroupName, ActiveLevelsFolder);
-            RegisterAddressableFolder(settings, SpecialGroupName, SpecialActiveLevelsFolder);
             ImportGeneratedActiveLevelAssets();
         }
 
@@ -212,7 +191,6 @@ namespace WaterFlow.Game
                 return;
 
             CleanupAddressableGroupEntries(settings, MainGroupName);
-            CleanupAddressableGroupEntries(settings, SpecialGroupName);
             AssetDatabase.SaveAssetIfDirty(settings);
         }
 
@@ -363,118 +341,8 @@ namespace WaterFlow.Game
             return slotAsset;
         }
 
-        /// <summary>
-        /// Special level source assets live directly in <see cref="LevelSystemUtils.SpecialActiveLevelsFolder"/>;
-        /// this method does NOT copy. It marks the referenced assets (within the per-mode MaxLevel cutoff) as kept
-        /// so that <see cref="RemoveStaleSpecialSlotAssets"/> can delete unreferenced / out-of-range files.
-        /// </summary>
-        private static int BuildSpecialLevelSlots(LevelDatabase database, HashSet<string> keptAssetPaths)
-        {
-            if (database == null || keptAssetPaths == null)
-                return 0;
-
-            SpecialLevelData[] sourceSpecialLevels = database.SpecialLevels;
-            if (sourceSpecialLevels == null || sourceSpecialLevels.Length == 0)
-                return 0;
-
-            var perModeCounters = new Dictionary<SpecialLevelMode, int>();
-            int kept = 0;
-            int skippedOverMax = 0;
-
-            for (int i = 0; i < sourceSpecialLevels.Length; i++)
-            {
-                SpecialLevelData source = sourceSpecialLevels[i];
-                if (!source)
-                    continue;
-
-                SpecialLevelMode mode = source.Mode;
-                int order = perModeCounters.TryGetValue(mode, out int count) ? count + 1 : 1;
-                perModeCounters[mode] = order;
-
-                int maxLevel = database.GetSpecialModeMaxLevel(mode);
-                if (maxLevel >= 0 && order > maxLevel)
-                {
-                    skippedOverMax++;
-                    continue;
-                }
-
-                string sourcePath = AssetDatabase.GetAssetPath(source);
-                if (string.IsNullOrEmpty(sourcePath))
-                    continue;
-
-                string expectedFolder = LevelSystemUtils.SpecialActiveLevelsFolder;
-                if (!sourcePath.StartsWith(expectedFolder, System.StringComparison.Ordinal))
-                {
-                    Debug.LogError(
-                        $"[LevelActiveBuilder] Special level '{source.name}' is not under '{expectedFolder}'. " +
-                        $"Move the asset into the Active folder or remove it from the database.",
-                        source);
-                    continue;
-                }
-
-                keptAssetPaths.Add(sourcePath);
-                kept++;
-            }
-
-            if (kept > 0 || skippedOverMax > 0)
-            {
-                Debug.Log(
-                    $"[LevelActiveBuilder] Special levels for '{database.name}': kept={kept}, skipped(over MaxLevel)={skippedOverMax}.");
-            }
-
-            return kept;
-        }
-
-        private static void RemoveStaleActiveSlotAssets(HashSet<string> keptAssetPaths)
-        {
-            string fullFolderPath = Path.Combine(Application.dataPath.Replace("Assets", ""), ActiveLevelsFolder);
-            if (!Directory.Exists(fullFolderPath))
-                return;
-
-            foreach (string file in Directory.GetFiles(fullFolderPath, "*" + LevelSystemUtils.LevelDataAssetExtension))
-            {
-                string fileName = Path.GetFileName(file);
-                string assetPath = $"{ActiveLevelsFolder}/{fileName}";
-                if (keptAssetPaths.Contains(assetPath))
-                    continue;
-
-                if (AssetDatabase.DeleteAsset(assetPath))
-                    continue;
-
-                File.Delete(file);
-                string metaPath = file + ".meta";
-                if (File.Exists(metaPath))
-                    File.Delete(metaPath);
-            }
-        }
-
-        private static void RemoveStaleSpecialSlotAssets(HashSet<string> keptAssetPaths)
-        {
-            string fullFolderPath = Path.Combine(Application.dataPath.Replace("Assets", ""), SpecialActiveLevelsFolder);
-            if (!Directory.Exists(fullFolderPath))
-                return;
-
-            foreach (string file in Directory.GetFiles(fullFolderPath, "*" + LevelSystemUtils.LevelDataAssetExtension))
-            {
-                string fileName = Path.GetFileName(file);
-                string assetPath = $"{SpecialActiveLevelsFolder}/{fileName}";
-                if (keptAssetPaths.Contains(assetPath))
-                    continue;
-
-                if (AssetDatabase.DeleteAsset(assetPath))
-                    continue;
-
-                File.Delete(file);
-                string metaPath = file + ".meta";
-                if (File.Exists(metaPath))
-                    File.Delete(metaPath);
-            }
-        }
-
         private static void CleanupActiveLevelAssets()
         {
-            // Special level assets in SpecialActiveLevelsFolder are source-of-truth (GD edits them directly),
-            // so Cleanup must skip them. Use Prepare Build for cutoff-based cleanup of stale special slots.
             string fullFolderPath = Path.Combine(Application.dataPath.Replace("Assets", ""), ActiveLevelsFolder);
             if (!Directory.Exists(fullFolderPath))
                 return;

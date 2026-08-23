@@ -59,18 +59,8 @@ public class PopupWin : Panel
 
         var coinReward = GameWinFlowService.GetWinReward().quantity;
 
-        SpecialLevelService specialLevelService = Services.SpecialLevelService;
-        bool isSpecialLevel = specialLevelService is { IsActive: true };
-        if (isSpecialLevel)
-        {
-            // Gold Mode: total already includes per-block x2 from GoldBlockCoinManager.
-            coinReward = specialLevelService.GetGoldReward();
-        }
-
         int completedLevel = ActiveSession.Current.Save.DisplayLevelIndex;
-        string levelTitle = isSpecialLevel
-            ? "SPECIAL"
-            : LevelLabel.ForCompletedLevel(completedLevel).ToUpper();
+        string levelTitle = LevelLabel.ForCompletedLevel(completedLevel).ToUpper();
 
         var levelConfig = winConfig.GetValueOrDefault(levelType);
         if (levelConfig != null)
@@ -129,13 +119,6 @@ public class PopupWin : Panel
     {
         if (_hasAwarded) return;
         _hasAwarded = true;
-
-        SpecialLevelService specialLevelService = Services.SpecialLevelService;
-        if (specialLevelService is { IsActive: true })
-        {
-            specialLevelService.Complete(gamePlacement);
-            return;
-        }
 
         GameWinFlowService.GrantWinReward();
         GameWinFlowService.SaveAndSwitchScene(gamePlacement);

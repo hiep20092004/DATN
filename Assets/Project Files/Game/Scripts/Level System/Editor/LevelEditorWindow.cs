@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+bool testStarted = hasSelectedMain && TestLevel();            bool hasSelectedMain = levelsHandler != null && levelsHandler.SelectedLevelIndex != -1;
+            bool testStarted = hasSelectedMain && TestLevel();            bool hasSelectedMain = levelsHandler != null && levelsHandler.SelectedLevelIndex != -1;
+            bool testStarted = hasSelectedMain && TestLevel();﻿using UnityEngine;
 using UnityEditor;
 using System;
 using System.Collections.Generic;
@@ -22,8 +24,6 @@ namespace WaterFlow.Game
 
         //used variables
         private const string LEVELS_PROPERTY_NAME = "levels";
-        private const string SPECIAL_LEVELS_PROPERTY_NAME = "specialLevels";
-        private const string SPECIAL_MODE_LIMITS_PROPERTY_NAME = "specialModeLimits";
         private const string CELLS_PROPERTY_NAME = "cells";
         private const string EDITOR_COLORS_DATA_PROPERTY_NAME = "editorColorData";
         private const string LEVEL_GENERAL_CONFIG_DATA_PROPERTY_NAME = "levelGeneralConfigData";
@@ -32,8 +32,6 @@ namespace WaterFlow.Game
         private const string TEXTURE_PROPERTY_NAME = "texture";
 
         private SerializedProperty levelsSerializedProperty;
-        private SerializedProperty specialLevelsSerializedProperty;
-        private SerializedProperty specialModeLimitsSerializedProperty;
         private SerializedProperty cellsSerializedProperty;
         private SerializedProperty editorColorsDataSerializedProperty;
         private SerializedProperty levelGeneralConfigDataSerializedProperty;
@@ -64,7 +62,6 @@ namespace WaterFlow.Game
         private double lastDebouncedLevelPreviewRequestTime;
         private const double LevelPreviewDebounceSeconds = 0.3;
         private LevelsHandler levelsHandler;
-        private SpecialLevelsHandler specialLevelsHandler;
         private CellTypesHandler cellTypeHandler;
         private CellTypesHandler cellColorHandler;
 
@@ -81,19 +78,15 @@ namespace WaterFlow.Game
         private const int LEVEL_GRID_MIN_SIZE = 2;
 
         // EditorPrefs keys for restoring the tested variant after exiting play mode
-        private const int SPECIAL_LEVEL_TEST_SLOT = 0;
 
         // Last editor session (main vs special list + asset) — survives window close and play mode
-        private const string PREFS_SHOW_SPECIAL_LEVELS = "editor_show_special_levels";
         private const string PREFS_LAST_MAIN_LEVEL_ASSET_GUID = "editor_last_main_level_asset_guid";
-        private const string PREFS_LAST_SPECIAL_LEVEL_ASSET_GUID = "editor_last_special_level_asset_guid";
         private const string PREFS_LAST_MAIN_LEVEL_INDEX = "editor_last_main_level_index";
         private const string PREFS_HAS_EDITOR_SESSION = "editor_has_saved_session";
 
         // Collapsible section states for the Editor tab (persisted per-user).
         private const string PREFS_SECTION_EDITOR_SETTINGS = "editor_section_editor_settings";
         private const string PREFS_SECTION_GENERAL_CONFIG = "editor_section_general_config";
-        private const string PREFS_SECTION_SPECIAL_MODE = "editor_section_special_mode";
         private const string PREFS_SECTION_LEVEL_CONFIGURE = "editor_section_level_configure";
         private const string PREFS_SECTION_EFFECTS = "editor_section_effects";
         private const string PREFS_SECTION_OTHER = "editor_section_other";
@@ -110,8 +103,6 @@ namespace WaterFlow.Game
 
         /// <summary>Blocks handler init from overwriting saved session via <see cref="OpenLevel"/>.</summary>
         private bool suppressEditorSessionPersistence;
-
-        public bool ShowSpecialLevelsList => showSpecialLevelsList;
 
         //instructions
         private const string LEVEL_INSTRUCTION =
@@ -234,7 +225,6 @@ namespace WaterFlow.Game
         private InteractableObjectType selectedInteractableType = InteractableObjectData.EditorPaintedType;
         private string[] interactableTypeLabels;
         private PlayModeInspectorModule playModeInspector;
-        private bool showSpecialLevelsList;
         private bool isExtraLayerTabActive;
         private readonly Dictionary<int, LevelValidationResult> levelValidationCacheByInstanceId =
             new Dictionary<int, LevelValidationResult>();
@@ -243,7 +233,6 @@ namespace WaterFlow.Game
         private bool pendingJumpActive;
         private UnityEngine.Object pendingJumpLevel;
         private int pendingJumpIndex;
-        private bool pendingJumpIsSpecial;
 
         public bool IsBlockSelected
         {
@@ -321,9 +310,6 @@ namespace WaterFlow.Game
         protected override void ReadLevelDatabaseFields()
         {
             levelsSerializedProperty = levelsDatabaseSerializedObject.FindProperty(LEVELS_PROPERTY_NAME);
-            specialLevelsSerializedProperty = levelsDatabaseSerializedObject.FindProperty(SPECIAL_LEVELS_PROPERTY_NAME);
-            specialModeLimitsSerializedProperty =
-                levelsDatabaseSerializedObject.FindProperty(SPECIAL_MODE_LIMITS_PROPERTY_NAME);
             cellsSerializedProperty = levelsDatabaseSerializedObject.FindProperty(CELLS_PROPERTY_NAME);
             editorColorsDataSerializedProperty =
                 levelsDatabaseSerializedObject.FindProperty(EDITOR_COLORS_DATA_PROPERTY_NAME);
@@ -385,9 +371,8 @@ namespace WaterFlow.Game
                 return;
             }
 
-            bool hasSelectedSpecial = showSpecialLevelsList && specialLevelsHandler != null && specialLevelsHandler.HasSelection;
             bool hasSelectedMain = levelsHandler != null && levelsHandler.SelectedLevelIndex != -1;
-            bool testStarted = (hasSelectedSpecial || hasSelectedMain) && TestLevel();
+            bool testStarted = hasSelectedMain && TestLevel();
 
             if (!testStarted)
             {
@@ -483,24 +468,12 @@ namespace WaterFlow.Game
 
         private void SaveEditorSessionState()
         {
-            EditorPrefs.SetBool(PREFS_SHOW_SPECIAL_LEVELS, showSpecialLevelsList);
             EditorPrefs.SetBool(PREFS_HAS_EDITOR_SESSION, true);
 
-            bool isSpecial = showSpecialLevelsList && specialLevelsHandler != null && specialLevelsHandler.HasSelection;
             int mainIndex = levelsHandler != null ? levelsHandler.SelectedLevelIndex : -1;
             string assetGuid = string.Empty;
 
-            if (isSpecial)
-            {
-                Object specialObj = specialLevelsHandler.SelectedLevelObject;
-                if (specialObj)
-                {
-                    string path = AssetDatabase.GetAssetPath(specialObj);
-                    assetGuid = AssetDatabase.AssetPathToGUID(path);
-                }
-
-            }
-            else if (mainIndex >= 0 && levelsSerializedProperty != null &&
+            if (mainIndex >= 0 && levelsSerializedProperty != null &&
                      mainIndex < levelsSerializedProperty.arraySize)
             {
                 PlayerPrefs.SetInt(PREFS_LEVEL, mainIndex);
@@ -515,12 +488,7 @@ namespace WaterFlow.Game
             }
 
             if (!string.IsNullOrEmpty(assetGuid))
-            {
-                if (isSpecial)
-                    EditorPrefs.SetString(PREFS_LAST_SPECIAL_LEVEL_ASSET_GUID, assetGuid);
-                else
-                    EditorPrefs.SetString(PREFS_LAST_MAIN_LEVEL_ASSET_GUID, assetGuid);
-            }
+                EditorPrefs.SetString(PREFS_LAST_MAIN_LEVEL_ASSET_GUID, assetGuid);
         }
 
         private void RestoreLastEditorSession()
@@ -530,9 +498,7 @@ namespace WaterFlow.Game
 
             bool hasSessionFlag = EditorPrefs.GetBool(PREFS_HAS_EDITOR_SESSION, false);
             bool hasLevelIndex = PlayerPrefs.HasKey(PREFS_LEVEL) || EditorPrefs.HasKey(PREFS_LAST_MAIN_LEVEL_INDEX);
-            bool wantsSpecial = EditorPrefs.GetBool(PREFS_SHOW_SPECIAL_LEVELS, false);
             string savedMainGuid = EditorPrefs.GetString(PREFS_LAST_MAIN_LEVEL_ASSET_GUID, string.Empty);
-            string savedSpecialGuid = EditorPrefs.GetString(PREFS_LAST_SPECIAL_LEVEL_ASSET_GUID, string.Empty);
             int savedMainIndex = -1;
             if (EditorPrefs.HasKey(PREFS_LAST_MAIN_LEVEL_INDEX))
                 savedMainIndex = EditorPrefs.GetInt(PREFS_LAST_MAIN_LEVEL_INDEX, 0);
@@ -541,28 +507,6 @@ namespace WaterFlow.Game
 
             if (!hasSessionFlag && !hasLevelIndex)
             {
-                lastActiveLevelOpened = true;
-                return;
-            }
-
-            showSpecialLevelsList = wantsSpecial;
-
-            if (showSpecialLevelsList)
-            {
-                if (specialLevelsHandler == null)
-                    return;
-
-                if (!string.IsNullOrEmpty(savedSpecialGuid))
-                {
-                    string assetPath = AssetDatabase.GUIDToAssetPath(savedSpecialGuid);
-                    Object asset = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
-                    if (asset && specialLevelsHandler.SelectLevel(asset))
-                    {
-                        lastActiveLevelOpened = true;
-                        return;
-                    }
-                }
-
                 lastActiveLevelOpened = true;
                 return;
             }
@@ -653,13 +597,6 @@ namespace WaterFlow.Game
                     levelsHandler.IgnoreDragEvents = !LevelListDragReorderEnabled;
                     // Keep the freshly-created handler in sync with the window's active tag filter.
                     levelsHandler.ApplyTagFilter(selectedTagMask);
-                    if (specialLevelsSerializedProperty != null)
-                    {
-                        specialLevelsHandler =
-                            new SpecialLevelsHandler(levelsDatabaseSerializedObject, specialLevelsSerializedProperty);
-                        specialLevelsHandler.IgnoreDragEvents = !LevelListDragReorderEnabled;
-                    }
-
                     ApplyMultiColumnLayoutToLevelList();
 
                     if (SceneManager.GetActiveScene().name == EDITOR_SCENE_NAME)
@@ -705,12 +642,10 @@ namespace WaterFlow.Game
                 editingVariantAsset = null;
 
             bool shouldPersistSession = !suppressEditorSessionPersistence;
-            if (!showSpecialLevelsList && levelObject is SpecialLevelData)
-                shouldPersistSession = false;
 
             if (shouldPersistSession)
             {
-                if (!showSpecialLevelsList && index >= 0)
+                if (index >= 0)
                 {
                     PlayerPrefs.SetInt(PREFS_LEVEL, index);
                     PlayerPrefs.Save();
@@ -722,15 +657,10 @@ namespace WaterFlow.Game
                     string path = AssetDatabase.GetAssetPath(levelObject);
                     if (!string.IsNullOrEmpty(path))
                     {
-                        string guid = AssetDatabase.AssetPathToGUID(path);
-                        if (showSpecialLevelsList)
-                            EditorPrefs.SetString(PREFS_LAST_SPECIAL_LEVEL_ASSET_GUID, guid);
-                        else
-                            EditorPrefs.SetString(PREFS_LAST_MAIN_LEVEL_ASSET_GUID, guid);
+                        EditorPrefs.SetString(PREFS_LAST_MAIN_LEVEL_ASSET_GUID, AssetDatabase.AssetPathToGUID(path));
                     }
                 }
 
-                EditorPrefs.SetBool(PREFS_SHOW_SPECIAL_LEVELS, showSpecialLevelsList);
                 EditorPrefs.SetBool(PREFS_HAS_EDITOR_SESSION, true);
             }
 
@@ -751,14 +681,13 @@ namespace WaterFlow.Game
 
         /// <summary>
         /// Public API: jump to (open) any level in the editor without breaking the list/grid UI.
-        /// Handles both Normal levels and Special levels. The request is deferred and applied during the
+        /// The request is deferred and applied during the
         /// next <see cref="DrawContent"/> so it is safe to call right after opening/focusing the window
         /// (before its handlers and the Editor scene are ready).
         /// </summary>
-        /// <param name="levelObject">Level asset to open (a <see cref="LevelData"/> for normal, a SpecialLevelData for special).</param>
-        /// <param name="levelIndex">Slot index in the main levels list (ignored for special levels).</param>
-        /// <param name="isSpecial">True when <paramref name="levelObject"/> is a special level.</param>
-        public void JumpToLevel(UnityEngine.Object levelObject, int levelIndex, bool isSpecial)
+        /// <param name="levelObject">Level asset to open.</param>
+        /// <param name="levelIndex">Slot index in the levels list.</param>
+        public void JumpToLevel(UnityEngine.Object levelObject, int levelIndex)
         {
             if (levelObject == null)
             {
@@ -769,7 +698,6 @@ namespace WaterFlow.Game
             pendingJumpActive = true;
             pendingJumpLevel = levelObject;
             pendingJumpIndex = levelIndex;
-            pendingJumpIsSpecial = isSpecial;
 
             // The Editor scene is required for the level grid; open it if necessary.
             if (SceneManager.GetActiveScene().name != EDITOR_SCENE_NAME)
@@ -799,20 +727,7 @@ namespace WaterFlow.Game
             tabHandler?.SetTabIndex(0);
             IsBlockSelected = false;
 
-            if (pendingJumpIsSpecial)
             {
-                if (specialLevelsHandler == null)
-                    return;
-
-                showSpecialLevelsList = true;
-                if (!specialLevelsHandler.SelectLevel(target))
-                    Debug.LogWarning(
-                        $"[LevelEditor] Could not locate special level '{target.name}' in any mode list.");
-            }
-            else
-            {
-                showSpecialLevelsList = false;
-
                 int maxIndex = Mathf.Max(0, levelsSerializedProperty.arraySize - 1);
                 int index = Mathf.Clamp(pendingJumpIndex, 0, maxIndex);
 
@@ -1002,10 +917,7 @@ namespace WaterFlow.Game
                 if (Event.current.type == EventType.MouseDown)
                 {
                     separatorIsDragged = true;
-                    if (showSpecialLevelsList && specialLevelsHandler != null)
-                        specialLevelsHandler.IgnoreDragEvents = true;
-                    else
-                        levelsHandler.IgnoreDragEvents = true;
+                    levelsHandler.IgnoreDragEvents = true;
                     Event.current.Use();
                 }
             }
@@ -1015,10 +927,7 @@ namespace WaterFlow.Game
                 if (Event.current.type == EventType.MouseUp)
                 {
                     separatorIsDragged = false;
-                    if (showSpecialLevelsList && specialLevelsHandler != null)
-                        specialLevelsHandler.IgnoreDragEvents = !LevelListDragReorderEnabled;
-                    else
-                        levelsHandler.IgnoreDragEvents = !LevelListDragReorderEnabled;
+                    levelsHandler.IgnoreDragEvents = !LevelListDragReorderEnabled;
                     PlayerPrefs.SetInt(PREFS_WIDTH, currentSideBarWidth);
                     PlayerPrefs.Save();
                     Event.current.Use();
@@ -1036,21 +945,12 @@ namespace WaterFlow.Game
             RestoreLastEditorSession();
 
             EditorGUILayout.BeginVertical(GUILayout.Width(currentSideBarWidth));
-            DrawMainSpecialToggle();
+            DrawTagFilterPanel();
+            levelsHandler.DisplayReorderableList();
 
-            if (showSpecialLevelsList && specialLevelsHandler != null)
-            {
-                specialLevelsHandler.DisplayReorderableList();
-            }
-            else
-            {
-                DrawTagFilterPanel();
-                levelsHandler.DisplayReorderableList();
-
-                // Populate renumbers/reorders the array, so it is unavailable while a tag filter is active.
-                using (new EditorGUI.DisabledScope(levelsHandler.IsTagFiltering))
-                    levelsHandler.DrawRenameLevelsButton();
-            }
+            // Populate renumbers/reorders the array, so it is unavailable while a tag filter is active.
+            using (new EditorGUI.DisabledScope(levelsHandler.IsTagFiltering))
+                levelsHandler.DrawRenameLevelsButton();
 
             if (IsBlockSelected)
             {
@@ -1247,7 +1147,6 @@ namespace WaterFlow.Game
             cachedLevelStatistics = null;
             levelStatisticsDirty = true;
             levelsHandler?.ClearSelection();
-            specialLevelsHandler?.ClearSelection();
             lastActiveLevelOpened = false;
             EditorSceneController sceneController = FindExistingSceneController();
             sceneController?.Unsubscribe();
@@ -1636,28 +1535,14 @@ namespace WaterFlow.Game
 
         private void DisplayMainArea()
         {
-            bool isEditingSpecial = showSpecialLevelsList && specialLevelsHandler != null;
-            if (isEditingSpecial && !specialLevelsHandler.HasSelection)
-                return;
-
-            if (!isEditingSpecial && levelsHandler.SelectedLevelIndex == -1)
+            if (levelsHandler.SelectedLevelIndex == -1)
             {
                 return;
             }
 
             EditorGUILayout.BeginVertical(GUI.skin.box);
 
-            if (isEditingSpecial)
-            {
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.PrefixLabel("File");
-                EditorGUI.BeginDisabledGroup(true);
-                EditorGUILayout.ObjectField(specialLevelsHandler.SelectedLevelObject, typeof(LevelData), false);
-                EditorGUI.EndDisabledGroup();
-                EditorGUILayout.EndHorizontal();
-                specialLevelsHandler.DrawSelectedModeConfig();
-            }
-            else if (editingVariantAsset)
+            if (editingVariantAsset)
             {
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.PrefixLabel("File");
@@ -1684,18 +1569,14 @@ namespace WaterFlow.Game
 
                 if (GUILayout.Button("Create New Level"))
                 {
-                    if (!isEditingSpecial)
-                        levelsHandler.CreateNewLevelInIndex(levelsHandler.SelectedLevelIndex, true);
+                    levelsHandler.CreateNewLevelInIndex(levelsHandler.SelectedLevelIndex, true);
                 }
 
                 EditorGUILayout.EndVertical();
                 return;
             }
 
-            if (!isEditingSpecial)
-            {
-                DrawVariantsSection();
-            }
+            DrawVariantsSection();
 
             DisplayLevelSettings();
 
@@ -1716,17 +1597,10 @@ namespace WaterFlow.Game
             
             DrawLevel();
 
-            if (!isEditingSpecial)
-            {
-                Object slotLevelForListLabel = levelsHandler.SelectedLevelProperty.objectReferenceValue;
-                InvalidateLevelValidation(slotLevelForListLabel);
-                InvalidateLevelValidation(selectedLevelRepresentation.EditedLevelObject);
-                levelsHandler.UpdateCurrentLevelLabel(null);
-            }
-            else
-            {
-                InvalidateLevelValidation(selectedLevelRepresentation.EditedLevelObject);
-            }
+            Object slotLevelForListLabel = levelsHandler.SelectedLevelProperty.objectReferenceValue;
+            InvalidateLevelValidation(slotLevelForListLabel);
+            InvalidateLevelValidation(selectedLevelRepresentation.EditedLevelObject);
+            levelsHandler.UpdateCurrentLevelLabel(null);
             selectedLevelRepresentation.ApplyChanges();
 
 
@@ -1801,9 +1675,6 @@ namespace WaterFlow.Game
 
         private void DrawVariantsSection()
         {
-            if (showSpecialLevelsList)
-                return;
-
             LevelData slotRef = levelsHandler.SelectedLevelProperty.objectReferenceValue as LevelData;
             if (!slotRef)
                 return;
@@ -2166,9 +2037,8 @@ namespace WaterFlow.Game
 
         private bool TestLevel()
         {
-            bool isSpecialSelection = showSpecialLevelsList && specialLevelsHandler != null && specialLevelsHandler.HasSelection;
-            int editorTestIndex = isSpecialSelection ? SPECIAL_LEVEL_TEST_SLOT : levelsHandler.SelectedLevelIndex;
-            LevelData levelToTest = ResolveLevelToTest(isSpecialSelection);
+            int editorTestIndex = levelsHandler.SelectedLevelIndex;
+            LevelData levelToTest = ResolveLevelToTest();
 
             if (!levelToTest || editorTestIndex < 0)
             {
@@ -2183,7 +2053,8 @@ namespace WaterFlow.Game
 
             ActiveSession.SetEditorLevelIndex(editorTestIndex);
             LevelDatabase.SetEditorPlayModeLevelOverride(editorTestIndex, levelToTest);
-            LevelDatabase.SetEditorSpecialTestPlay(isSpecialSelection && specialLevelsHandler.IsTestFilterActive);
+
+            LevelDatabase.SetEditorTestPlay(true);
 
             LevelEditorTestPlaySession.MarkStarted();
 
@@ -2193,13 +2064,10 @@ namespace WaterFlow.Game
             return true;
         }
 
-        private LevelData ResolveLevelToTest(bool isSpecialSelection)
+        private LevelData ResolveLevelToTest()
         {
             if (editingVariantAsset)
                 return editingVariantAsset;
-
-            if (isSpecialSelection)
-                return specialLevelsHandler.SelectedLevelObject as LevelData;
 
             int selectedIndex = levelsHandler.SelectedLevelIndex;
             if (levelsSerializedProperty == null || selectedIndex < 0 || selectedIndex >= levelsSerializedProperty.arraySize)
@@ -3794,9 +3662,7 @@ namespace WaterFlow.Game
 
             DrawCurrentLevelValidationErrors();
 
-            int selectedIndexForTips = showSpecialLevelsList
-                ? specialLevelsHandler != null && specialLevelsHandler.HasSelection ? 1 : 0
-                : levelsHandler.SelectedLevelIndex;
+            int selectedIndexForTips = levelsHandler.SelectedLevelIndex;
             if (selectedIndexForTips <= 0)
             {
                 EditorGUILayout.HelpBox(LEVEL_INSTRUCTION, MessageType.Info);
@@ -3952,46 +3818,11 @@ namespace WaterFlow.Game
             }
 
             levelsHandler.CustomList.enableMultiColumnLayout = enableMultiColumnLevelList;
-            if (specialLevelsHandler?.CustomList != null)
-                specialLevelsHandler.CustomList.enableMultiColumnLayout = enableMultiColumnLevelList;
-        }
-
-        private void DrawMainSpecialToggle()
-        {
-            EditorGUILayout.BeginHorizontal();
-            bool mainSelected = !showSpecialLevelsList;
-            if (GUILayout.Toggle(mainSelected, "Main", EditorStyles.toolbarButton) != mainSelected)
-            {
-                showSpecialLevelsList = false;
-                EditorPrefs.SetBool(PREFS_SHOW_SPECIAL_LEVELS, false);
-                ReopenSelectionForActiveList();
-                SaveEditorSessionState();
-            }
-
-            bool specialSelected = showSpecialLevelsList;
-            if (GUILayout.Toggle(specialSelected, "Special", EditorStyles.toolbarButton) != specialSelected)
-            {
-                showSpecialLevelsList = true;
-                EditorPrefs.SetBool(PREFS_SHOW_SPECIAL_LEVELS, true);
-                ReopenSelectionForActiveList();
-                SaveEditorSessionState();
-            }
-            EditorGUILayout.EndHorizontal();
-            EditorGUILayout.Space(2f);
         }
 
         private void ReopenSelectionForActiveList()
         {
             editingVariantAsset = null;
-
-            if (showSpecialLevelsList)
-            {
-                Object specialSelection = specialLevelsHandler != null ? specialLevelsHandler.SelectedLevelObject : null;
-                if (specialSelection)
-                    OpenLevel(specialSelection, SPECIAL_LEVEL_TEST_SLOT);
-
-                return;
-            }
 
             if (levelsHandler != null && levelsHandler.SelectedLevelIndex >= 0)
                 levelsHandler.ReopenLevel();
@@ -4005,10 +3836,6 @@ namespace WaterFlow.Game
 
             if (BeginSection(PREFS_SECTION_GENERAL_CONFIG, "Level General Config"))
                 DrawLevelGeneralConfigSection();
-            EndSection();
-
-            if (BeginSection(PREFS_SECTION_SPECIAL_MODE, "Special Level Mode Config"))
-                DrawSpecialLevelModeSection();
             EndSection();
 
             if (BeginSection(PREFS_SECTION_LEVEL_CONFIGURE, "Level Editor Configure"))
@@ -4125,18 +3952,6 @@ namespace WaterFlow.Game
             DrawDatabaseProperty("blockEffectCompatibility", "Block Effect Compatibility");
         }
 
-        private void DrawSpecialLevelModeSection()
-        {
-            if (specialModeLimitsSerializedProperty != null)
-            {
-                EditorGUILayout.PropertyField(specialModeLimitsSerializedProperty, true);
-            }
-            else
-            {
-                EditorGUILayout.HelpBox("Missing specialModeLimits on LevelDatabase.", MessageType.Warning);
-            }
-        }
-
         private void DrawLevelEditorConfigureSection()
         {
             EditorGUILayout.LabelField("Cell types:", EditorCustomStyles.labelLargeBold);
@@ -4209,7 +4024,7 @@ namespace WaterFlow.Game
         private void DrawOtherSection()
         {
             // Catch-all: every unmarked LevelDatabase field not already shown in a dedicated section above
-            // (e.g. Obstacle Unlock Database, Special Level Schedule Config, and any field added later).
+            // (e.g. Obstacle Unlock Database, and any field added later).
             bool drewAny = false;
             foreach (SerializedProperty item in unmarkedProperties)
             {

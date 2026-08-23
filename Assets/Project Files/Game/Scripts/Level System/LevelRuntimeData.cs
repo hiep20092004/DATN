@@ -39,9 +39,6 @@ namespace WaterFlow.Game
         /// <summary>Number of revives used during this play.</summary>
         public int Revives { get; private set; }
 
-        /// <summary>Total gold earned during this play (e.g. from filling blocks via a Gold gate).</summary>
-        public int GoldEarned { get; private set; }
-
         /// <summary>Order in which blocks were destroyed (block ids).</summary>
         public IReadOnlyList<int> BlockDestroyOrder => blockDestroyOrder;
         private readonly List<int> blockDestroyOrder = new List<int>();
@@ -82,7 +79,6 @@ namespace WaterFlow.Game
             BlocksDestroyed = 0;
             Moves = 0;
             Revives = 0;
-            GoldEarned = 0;
             blockDestroyOrder.Clear();
             boostersUsed.Clear();
             customData.Clear();
@@ -112,13 +108,6 @@ namespace WaterFlow.Game
         {
             if (!IsActive) return;
             Revives++;
-        }
-
-        /// <summary>Add <paramref name="amount"/> gold to the running total earned this play.</summary>
-        public void AddGold(int amount)
-        {
-            if (!IsActive || amount <= 0) return;
-            GoldEarned += amount;
         }
 
         public void RecordBoosterUsed(GameResource booster)

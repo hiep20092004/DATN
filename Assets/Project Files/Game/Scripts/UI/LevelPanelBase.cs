@@ -5,7 +5,7 @@ namespace WaterFlow.Game
     /// <summary>
     /// Common contract for the top-of-screen level panel. UIGame spawns the concrete
     /// implementation (<see cref="LevelPanel"/> for normal/difficulty levels,
-    /// <see cref="GoldModeLevelPanel"/> for gold-mode special levels) based on the
+    /// based on the
     /// active level, instead of having one panel hard-wired into the UIGame prefab.
     /// </summary>
     public abstract class LevelPanelBase : MonoBehaviour

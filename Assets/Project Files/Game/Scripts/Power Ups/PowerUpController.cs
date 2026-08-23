@@ -204,7 +204,7 @@ namespace WaterFlow.Game
 
         private static void ConsumeBooster(GameResource boosterType)
         {
-            // Test sandbox (Special Test levels in the editor): power-ups are free, never touch inventory.
+            // Test sandbox (Level Editor test play): power-ups are free, never touch inventory.
             if (LevelController.IsTestModeActive)
                 return;
 
