@@ -7,6 +7,7 @@ using WaterFlow.Framework.UIModule;
 using Spine.Unity;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PopupWin : Panel

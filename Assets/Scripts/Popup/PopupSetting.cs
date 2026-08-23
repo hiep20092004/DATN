@@ -1,5 +1,4 @@
 using System;
-using Cheat;
 using Cysharp.Threading.Tasks;
 using WaterFlow.Game;
 using WaterFlow.Enums;
@@ -19,7 +18,6 @@ public class PopupSetting : Panel
     public Button PrivacyPolicyBtn;
     public TMP_Text VersionText;
 
-    public Button CheatBtn;
 
     public override void OnSetup()
     {
@@ -29,7 +27,6 @@ public class PopupSetting : Panel
         LanguageBtn.onClick.AddListener(Language);
         RestoreBtn.onClick.AddListener(Restore);
         VersionText.text = "Ver " + Application.version;
-        SetupCheatButton();
         HomeBtn.onClick.AddListener(OnHomeBtnClick);
         PrivacyPolicyBtn.onClick.AddListener(OnPrivacyPolicyBtnClick);
         HomeBtn.gameObject.SetActive(Services.TransitionService.GetCurrentGamePlacement() != GamePlacement.Home);
@@ -58,7 +55,6 @@ public class PopupSetting : Panel
         RateBtn.onClick.RemoveListener(Rate);
         LanguageBtn.onClick.RemoveListener(Language);
         RestoreBtn.onClick.RemoveListener(Restore);
-        if (CheatBtn != null) CheatBtn.onClick.RemoveListener(OpenCheatPanel);
         HomeBtn.onClick.RemoveListener(OnHomeBtnClick);
         PrivacyPolicyBtn.onClick.RemoveListener(OnPrivacyPolicyBtnClick);
     }
@@ -91,33 +87,6 @@ public class PopupSetting : Panel
     {
         SaveController.Save(true);
         Services.TransitionService.SwitchScene(GamePlacement.Home);
-    }
-
-    private void SetupCheatButton()
-    {
-        if (CheatBtn == null) return;
-
-        // The hidden tap area stays wired for everyone: without remote access the taps only reveal
-        // the device id, and hiding it would leave a tester unable to report the id to be allowlisted.
-        CheatBtn.onClick.AddListener(OpenCheatPanel);
-    }
-
-    private void OpenCheatPanel()
-    {
-        // Editor: direct open. Device: 8 taps + password, and only on an allowlisted device.
-        CheatManager.HandleCheatButtonTap();
-    }
-
-    private void Rate()
-    {
-        Close();
-        PanelManager.Instance.OpenForget<PopupRate>();
-    }
-
-    private void Language()
-    {
-        Close();
-        PanelManager.Instance.OpenForget<PopupLanguage>();
     }
 
     private void Restore()

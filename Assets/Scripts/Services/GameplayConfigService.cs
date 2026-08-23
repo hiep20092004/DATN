@@ -10,7 +10,7 @@ using UnityEditor;
 namespace WaterFlow.Game
 {
     [CreateAssetMenu(fileName = "GameplayConfigService", menuName = "Services/InGame/GameplayConfigService")]
-    public class GameplayConfigService : ServiceSo, IServiceInitialize, IServiceWaitingRemoteConfig
+    public class GameplayConfigService : ServiceSo, IServiceInitialize
     {
         [SerializeField] LevelDatabase levelDatabase;
 
@@ -31,10 +31,6 @@ namespace WaterFlow.Game
         }
 
         public void Initialize()
-        {
-        }
-
-        public void OnRemoteConfigReady()
         {
             remoteBlockTheme = FetchRemoteBlockTheme();
             currentBlockTheme = remoteBlockTheme;

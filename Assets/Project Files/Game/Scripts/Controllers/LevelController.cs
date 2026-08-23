@@ -144,19 +144,6 @@ namespace WaterFlow.Game
             if (isWin)
             {
                 LevelRuntimeData.Current.End();
-
-                // TUD dynamic difficulty: record the win (win-only model). Win time is active play time
-                // (excludes pauses); GD-set time is the level's designer duration, not the controlled time.
-                // Special levels are excluded from the model — they are not part of the main-line difficulty
-                // progression and would skew the segment classification.
-                if (!Services.SpecialLevelService.IsActive)
-                {
-                    LevelSegmentationBridge.RecordWin(
-                        LevelRuntimeData.Current.Level,
-                        levelRepresentation.LevelData.Type,
-                        LevelRuntimeData.Current.ElapsedPlayTime,
-                        levelRepresentation.LevelData.Duration);
-                }
             }
 
             if (GameplayTimer != null && GameplayTimer.IsActive)
@@ -969,12 +956,6 @@ namespace WaterFlow.Game
             bool useRandomDuration = !Services.SpecialLevelService.IsActive &&
                                      ActiveSession.Current.IsPlayingRandomLevel;
             float time = useRandomDuration ? levelData.RandomDuration : levelData.Duration;
-
-            // TUD dynamic difficulty: pull the latest RC payload (no-op if unchanged) and apply the
-            // player's personalized time control. Falls back to the designer duration when the player
-            // is not yet classified or the service is unavailable. We never mutate LevelData (shared SO).
-            LevelSegmentationBridge.ApplyRemoteConfig();
-            time = LevelSegmentationBridge.GetLevelTime(LevelRepresentation.LevelData.Type, time);
 
             GameplayTimer.SetMaxTime(time);
         }

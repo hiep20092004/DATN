@@ -242,18 +242,7 @@ namespace WaterFlow.Game
         
         private void OnReplayButtonClicked()
         {
-            if (!LevelController.Instance.LevelStarted)
-            {
-                var data = new PopupPreBooster.Data(GamePlacement.Game);
-                data.NotResetJuiceStep();
-                data.SetGoHome(false);
-                Retry();
-                return;
-            }
-
-            UIData uiData = new UIData();
-            uiData.Add("OpenPlacement", OpenPlacement.Retry);
-            PanelManager.Instance.OpenPanelByNameAsync<PopupReduceLive>("PopupReduceLive", uiData).Forget();
+            Retry();
         }
 
         private void Retry()

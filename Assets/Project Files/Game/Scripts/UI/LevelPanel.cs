@@ -161,12 +161,10 @@ namespace WaterFlow.Game
             ObstacleUnlockNotifyPopup.BeginFlow();
             try
             {
-                await PreBoosterController.Instance.PlayPreBooster();
-
                 // Snapshot the level context so level transitions mid-await don't corrupt data.
                 LevelRepresentation capturedRep = levelRepresentation;
 
-                // If the level changed while we were awaiting PreBooster, abort.
+                // If the level changed while we were awaiting, abort.
                 if (capturedRep != LevelController.Instance.LevelRepresentation) return;
 
                 LevelDatabase levelDatabase = LevelController.Instance.LevelDatabase;
