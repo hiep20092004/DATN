@@ -38,7 +38,7 @@ public class PopupLose : Panel
 
         LevelTMP.text = LevelLabel.Current().ToUpper();
         
-        CoinAnim.AnimationState.SetAnimation(0, "Idle", true);
+        CoinAnim.GetAnimationState().SetAnimation(0, "Idle", true);
 
         LevelRepresentation levelRepresentation = LevelController.Instance.LevelRepresentation;
         var levelType = levelRepresentation.LevelData.Type;

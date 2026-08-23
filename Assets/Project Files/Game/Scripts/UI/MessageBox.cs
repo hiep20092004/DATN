@@ -44,7 +44,6 @@ namespace WaterFlow.Game
 
         public void ActivateTutorial()
         {
-            TutorialCanvasController.ActivateTutorialCanvas(rectTransform, false, false);
         }
     }
 }

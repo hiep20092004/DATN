@@ -99,7 +99,7 @@ namespace WaterFlow.Game
                     }
 
                     SetSkin(config.skinName);
-                    TrackEntry entry = levelAnim.AnimationState.SetAnimation(0, config.animationName, false);
+                    TrackEntry entry = levelAnim.GetAnimationState().SetAnimation(0, config.animationName, false);
                     entry.Complete += OnLevelAnimComplete;
                     // RaycastController.Enable and UnblockUI called in OnLevelAnimComplete
                 }
@@ -206,7 +206,7 @@ namespace WaterFlow.Game
 
         private void SetSkin(string skinName)
         {
-            levelAnim.AnimationState.ClearTracks();
+            levelAnim.GetAnimationState().ClearTracks();
             levelAnim.initialSkinName = skinName;
             levelAnim.Initialize(true);
         }

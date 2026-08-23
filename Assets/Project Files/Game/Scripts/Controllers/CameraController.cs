@@ -149,7 +149,7 @@ namespace WaterFlow.Game
         private float GetVerticalPadding()
         {
             if (config == null) return 0f;
-            return AdsUtilities.IsShowBanner() ? config.verticalPadding + config.bannerAdsPadding : config.verticalPadding;
+            return config.verticalPadding;
         }
         public void StartShake(float duration, float strength)
         {

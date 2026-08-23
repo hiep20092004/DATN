@@ -78,7 +78,7 @@ namespace WaterFlow.Game
         
         private void Start()
         {
-            containerInitialAnchoredPosition = AdsUtilities.IsShowBanner() ? botContainer.anchoredPosition : new Vector2(0, heightWhenNoBannerAds);
+            containerInitialAnchoredPosition = new Vector2(0, heightWhenNoBannerAds);
             PrepareContainerForSpawnTween();
             containerTween?.Kill();
             containerTween = DOVirtual.DelayedCall(ContainerSpawnDelay, () => { containerTween = CreateContainerTween(false); });

@@ -141,7 +141,7 @@ namespace WaterFlow.Game
             }
 
             FrameworkUtils.DelayCall(delayCallHaptic.Value / 1000f, () => 
-            WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.Expand));
+            global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.Expand));
             
             expandBorderCall = DOVirtual.DelayedCall(expandConfig.DelayExpandBorder, () =>
             {

@@ -212,7 +212,7 @@ namespace WaterFlow.Game
             });
             Tween.DelayedCall(1.44f, () =>
             {
-                WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.Hammer);
+                global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.Hammer);
                 
                 ParticleCase particleCase = ParticlesController.PlayParticle(PARTICLE_HASH);
                 particleCase.SetPosition(particlePosition);

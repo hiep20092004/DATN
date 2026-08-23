@@ -36,17 +36,17 @@ public class PopupPreWin : Panel
         StartCoroutine(EnableSkipAfterDelay());
         delayCallHaptic = new IntDataPref("PopupPreWin_DelayCallHaptic", 525);
 
-        WinAnim.AnimationState.SetAnimation(0, "PreWin_In", false).Complete += (track) =>
+        WinAnim.GetAnimationState().SetAnimation(0, "PreWin_In", false).Complete += (track) =>
         {
             if (_isSkipped) return;
-            WinAnim.AnimationState.SetAnimation(0, "PreWin_Out", false).Complete += (track) =>
+            WinAnim.GetAnimationState().SetAnimation(0, "PreWin_Out", false).Complete += (track) =>
             {
                 if (_isSkipped) return;
                 Close();
             };
         };
         Services.AudioService.PlaySound(AudioId.Win);
-        FrameworkUtils.DelayCall(delayCallHaptic.Value / 1000f, () => WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.Win));
+        FrameworkUtils.DelayCall(delayCallHaptic.Value / 1000f, () => global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.Win));
     }
 
     private void OnEnable()
@@ -82,7 +82,7 @@ public class PopupPreWin : Panel
         _isSkipped = true;
 
         Services.AudioService.StopSound();
-        WinAnim.AnimationState.ClearTracks();
+        WinAnim.GetAnimationState().ClearTracks();
 
         Close();
     }

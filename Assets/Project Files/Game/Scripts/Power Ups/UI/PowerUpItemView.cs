@@ -124,9 +124,7 @@ namespace WaterFlow.Game
         private void UpdateLockText()
         {
             if (boosterConfig == null) return;
-            lockText.text = StringParameterReplacer.ReplaceParameters(ScriptLocalization.level_value, new Dictionary<string, string> {
-                    { "value", EffectiveLevelUnlock.ToString() }
-            });
+            lockText.text = $"Level {EffectiveLevelUnlock}";
         }
 
         void OnButtonClicked()
@@ -162,9 +160,7 @@ namespace WaterFlow.Game
 
         private void PlayLockDeniedTween()
         {
-            var message = StringParameterReplacer.ReplaceParameters(ScriptLocalization.unlock_at_lvvalue, new Dictionary<string, string> {
-                { "value", EffectiveLevelUnlock.ToString() }
-            });
+            var message = $"Unlock at level {EffectiveLevelUnlock}";
             PopupTooltip.Instance.Show(message);
             
             if (lockImage != null)

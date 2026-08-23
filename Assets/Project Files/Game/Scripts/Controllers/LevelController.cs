@@ -669,7 +669,7 @@ namespace WaterFlow.Game
                 NotifyBlockPickedIncludingLinked(levelBlockBehavior);
             Services.AudioService.PlaySound(AudioId.Block_Pick);
             //HapticPatterns.PlayPreset(HapticPatterns.PresetType.SoftImpact);
-            WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.Block_Select);
+            global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.Block_Select);
         }
 
         public void TryToCollectBlock(LevelBlockBehavior levelBlockBehavior)
@@ -829,7 +829,7 @@ namespace WaterFlow.Game
             if (shouldPlayPutSound)
                 Services.AudioService.PlaySound(AudioId.Block_Put);
 
-            WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.Block_Select);
+            global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.Block_Select);
         }
 
         public void OnBlockDestructed(LevelBlockBehavior destructedBlock)

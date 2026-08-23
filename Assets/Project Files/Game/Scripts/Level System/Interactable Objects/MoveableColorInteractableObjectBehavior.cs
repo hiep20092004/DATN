@@ -127,7 +127,7 @@ namespace WaterFlow.Game
             lastDesiredPosition = rigidbodyPosition;
 
             Services.AudioService.PlaySound(AudioId.Block_Pick);
-            WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.Block_Select);
+            global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.Block_Select);
         }
 
         private Vector3 GetWorldPosFromMouse()
@@ -227,7 +227,7 @@ namespace WaterFlow.Game
             snapRetargeted = false;
 
             Services.AudioService.PlaySound(AudioId.Block_Put);
-            WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.Block_Select);
+            global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.Block_Select);
         }
 
         private void UpdateSnapMovement()

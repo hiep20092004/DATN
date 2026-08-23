@@ -16,6 +16,7 @@ public class Services
     public static BoosterService BoosterService => GameSystem.GetService<BoosterService>();
     public static GameplayConfigService GameplayConfig => GameSystem.GetService<GameplayConfigService>();
     public static TransitionService TransitionService => GameSystem.GetService<TransitionService>();
+    public static GameResourceService GameResourceService => GameSystem.GetService<GameResourceService>();
     public static SpecialLevelService SpecialLevelService => GameSystem.GetService<SpecialLevelService>();
 
     public static InventoryService InventoryService => GameSystem.GetService<InventoryService>();

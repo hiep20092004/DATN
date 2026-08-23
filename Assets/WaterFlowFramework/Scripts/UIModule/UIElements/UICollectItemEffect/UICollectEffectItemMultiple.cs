@@ -9,8 +9,8 @@ using WaterFlow.Framework.Systems.ObjectPooling;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.UI;
-using HapticType = WaterFlow.Core.HapticType;
-using HapticFeedback = WaterFlow.Core.HapticFeedback;
+using HapticType = global::WaterFlow.Core.HapticType;
+using HapticFeedback = global::WaterFlow.Core.HapticFeedback;
 
 public class UICollectEffectItemMultiple : UICollectEffectItem
 {

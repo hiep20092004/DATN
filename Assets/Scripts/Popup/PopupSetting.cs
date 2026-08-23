@@ -10,9 +10,6 @@ using UnityEngine.UI;
 public class PopupSetting : Panel
 {
     public Button CloseBtn;
-    public Button RateBtn;
-    public Button LanguageBtn;
-    public Button RestoreBtn;
     public Button HomeBtn;
 
     public Button PrivacyPolicyBtn;
@@ -23,14 +20,10 @@ public class PopupSetting : Panel
     {
         base.OnSetup();
         CloseBtn.onClick.AddListener(Close);
-        RateBtn.onClick.AddListener(Rate);
-        LanguageBtn.onClick.AddListener(Language);
-        RestoreBtn.onClick.AddListener(Restore);
         VersionText.text = "Ver " + Application.version;
         HomeBtn.onClick.AddListener(OnHomeBtnClick);
         PrivacyPolicyBtn.onClick.AddListener(OnPrivacyPolicyBtnClick);
         HomeBtn.gameObject.SetActive(Services.TransitionService.GetCurrentGamePlacement() != GamePlacement.Home);
-        RestoreBtn.gameObject.SetActive(Services.TransitionService.GetCurrentGamePlacement() == GamePlacement.Home);
     }
 
     public override void Open(UIData uiData)
@@ -52,9 +45,6 @@ public class PopupSetting : Panel
     {
         base.OnCloseCompleted();
         CloseBtn.onClick.RemoveListener(Close);
-        RateBtn.onClick.RemoveListener(Rate);
-        LanguageBtn.onClick.RemoveListener(Language);
-        RestoreBtn.onClick.RemoveListener(Restore);
         HomeBtn.onClick.RemoveListener(OnHomeBtnClick);
         PrivacyPolicyBtn.onClick.RemoveListener(OnPrivacyPolicyBtnClick);
     }
@@ -89,11 +79,4 @@ public class PopupSetting : Panel
         Services.TransitionService.SwitchScene(GamePlacement.Home);
     }
 
-    private void Restore()
-    {
-        Services.ShopService.RestorePurchase((items) => { 
-            Debug.LogError("Restore success!");
-            PopupToast.Create("Restore success!"); 
-            });
-    }
 }

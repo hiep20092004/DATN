@@ -39,7 +39,6 @@ namespace WaterFlow.Game
             pendingOrderIndex = 0;
             returnMainDisplayLevelIndex = -1;
             isFinalized = false;
-            SpecialLevelSessionBridge.IsSpecialLevelActive = false;
         }
 
         /// <summary>
@@ -184,7 +183,6 @@ namespace WaterFlow.Game
             isFinalized = false;
             RuleSet = new DefaultSpecialLevelRuleSet();
             IsActive = true;
-            SpecialLevelSessionBridge.IsSpecialLevelActive = true;
 
             // Editor/direct play calls Begin without Schedule; keep a valid return index.
             if (returnMainDisplayLevelIndex < 0)
@@ -206,7 +204,6 @@ namespace WaterFlow.Game
             IsActive = false;
             CurrentLevel = null;
             RuleSet = new DefaultSpecialLevelRuleSet();
-            SpecialLevelSessionBridge.IsSpecialLevelActive = false;
         }
 
         public void End()

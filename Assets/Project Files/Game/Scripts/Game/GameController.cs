@@ -61,9 +61,6 @@ namespace WaterFlow.Game
             var boosterNavController = gameObject.GetOrAdd<BoosterNavigationController>();
             boosterNavController.Init();
 
-            var tutorialController = gameObject.GetOrAdd<TutorialController>();
-            tutorialController.Init();
-
             gameObject.GetOrAdd<NotifyPopupQueue>();
         }
 
@@ -95,9 +92,6 @@ namespace WaterFlow.Game
             UIController.ShowPage<UIGame>();
             int level = ActiveSession.Current.DisplayLevelIndex + 1;
             PowerUpController.OnLevelLoaded(level);
-
-            if (level >= NOTIFICATION_PERMISSION_LEVEL_THRESHOLD)
-                NotificationPermissionPrompt.RequestOnce();
         }
 
         public async UniTask OnCompleteLevel(bool isForce = false)
@@ -159,7 +153,6 @@ namespace WaterFlow.Game
 
         // Entering a level at or above this 1-based index counts as the player being engaged
         // enough to be prompted for notifications.
-        private const int NOTIFICATION_PERMISSION_LEVEL_THRESHOLD = 7;
 
         public void GameOver(LoseReason reason, float delayVisual = 0f)
         {

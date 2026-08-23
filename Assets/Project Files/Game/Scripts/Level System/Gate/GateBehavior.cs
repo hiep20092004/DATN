@@ -465,19 +465,19 @@ namespace WaterFlow.Game
             switch (floorCount)
             {
                 case 1:
-                    WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.WaterFlowShort);
+                    global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.WaterFlowShort);
                     break;
                 case 2:
-                    WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.WaterFlowMedium);
+                    global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.WaterFlowMedium);
                     break;
                 case 3:
-                    WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.WaterFlowLong);
+                    global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.WaterFlowLong);
                     break;
                 case 4:
-                    WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.WaterFlowSuperLong);
+                    global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.WaterFlowSuperLong);
                     break;
                 default:
-                    WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.WaterFlowMax);
+                    global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.WaterFlowMax);
                     break;
             }
         }

@@ -51,9 +51,9 @@ public class PopupWin : Panel
 
         LevelType levelType = LevelController.Instance.LevelRepresentation.LevelData.Type;
 
-        CoinAnim.AnimationState.SetAnimation(0, "Appear", false).Complete += (track) =>
+        CoinAnim.GetAnimationState().SetAnimation(0, "Appear", false).Complete += (track) =>
         {
-            CoinAnim.AnimationState.SetAnimation(0, "Idle", true);
+            CoinAnim.GetAnimationState().SetAnimation(0, "Idle", true);
         };
         Services.AudioService.PlaySound(AudioId.Win);
 

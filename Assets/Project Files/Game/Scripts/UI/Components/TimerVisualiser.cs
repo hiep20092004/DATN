@@ -158,7 +158,7 @@ namespace WaterFlow.Game
         private void OnAddTime(int deltaSeconds)
         {
             addTimeEffect?.Play();
-            WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.ClickButton);
+            global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.ClickButton);
             PlayPunchAnimation();
 
             if (!addTimeText) return;

@@ -4,8 +4,8 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 // Aliased instead of `using WaterFlow.Core` — that namespace also declares inspector
 // attributes (ShowIf, Button, …) that collide with Odin's.
-using HapticType = WaterFlow.Core.HapticType;
-using HapticFeedback = WaterFlow.Core.HapticFeedback;
+using HapticType = global::WaterFlow.Core.HapticType;
+using HapticFeedback = global::WaterFlow.Core.HapticFeedback;
 
 namespace WaterFlow.Framework.UIModule
 {

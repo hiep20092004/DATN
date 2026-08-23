@@ -225,7 +225,7 @@ namespace WaterFlow.Game
                 addDeltaParticle.Play();
 
             if (playHapticOnAdd)
-                WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.ClickButton);
+                global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.ClickButton);
 
             if (!addDeltaText) return;
 

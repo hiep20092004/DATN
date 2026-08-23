@@ -41,7 +41,6 @@ public class PopupReward : Panel
     [SerializeField] private float doubleRewardScale = 1.15f;
 
     [Tooltip("Delay (s) sau khi chuyển về Home, chờ tab slide ổn định trước khi bắn item collect.")]
-    [SerializeField] private float switchHomeSettleDelay = 0.35f;
 
     private Action onClaimComplete;
     private string claimSource;
@@ -77,7 +76,7 @@ public class PopupReward : Panel
             UIItem itemUI = Instantiate(prefabReward, parentReward);
             _ = itemUI.transform.DOScale(Vector3.one * itemScale, 0.3f).SetEase(Ease.OutBack).From(Vector3.zero);
             Services.AudioService.PlaySound(AudioId.Booster_Unlock);
-            WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.ItemAppear);
+            global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.ItemAppear);
             itemUI.gameObject.SetActive(true);
             itemUI.SetData(resource);
             rewardItems.Add(itemUI);
@@ -185,7 +184,6 @@ public class PopupReward : Panel
 
     private async UniTaskVoid ClaimFlow()
     {
-        await TrySwitchToHomeForCollectAsync();
 
         if (rewardData?.resourceUnits != null && rewardData.resourceUnits.Count > 0)
         {
@@ -199,26 +197,6 @@ public class PopupReward : Panel
         }
 
         Close();
-    }
-
-    // Tab Shop không có UICurrency/UICollectBoostersPoint nhận thưởng nên item bay không có đích.
-    // Chuyển về Home trước (giống UIJourney.ClaimReward) để animation UICollectEffectItemMultiple
-    // đáp vào coin counter của Home. Các popup mở sẵn trên Home không bị ảnh hưởng.
-    private async UniTask TrySwitchToHomeForCollectAsync()
-    {
-        HomeManager homeManager = HomeManager.Instance;
-        if (homeManager == null || homeManager.CurrentNavigationType != NavigationType.Shop)
-        {
-            return;
-        }
-
-        await homeManager.SwitchTab(NavigationType.Home);
-
-        if (switchHomeSettleDelay > 0f)
-        {
-            await UniTask.Delay(TimeSpan.FromSeconds(switchHomeSettleDelay),
-                cancellationToken: this.GetCancellationTokenOnDestroy());
-        }
     }
 
     private async UniTaskVoid ReceiveItems()

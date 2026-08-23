@@ -1,5 +1,5 @@
-using HapticType = WaterFlow.Core.HapticType;
-using HapticFeedback = WaterFlow.Core.HapticFeedback;
+using HapticType = global::WaterFlow.Core.HapticType;
+using HapticFeedback = global::WaterFlow.Core.HapticFeedback;
 using System;
 using System.Collections;
 using Cysharp.Threading.Tasks;

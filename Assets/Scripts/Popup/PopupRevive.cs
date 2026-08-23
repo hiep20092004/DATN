@@ -153,7 +153,7 @@ public class PopupRevive : Panel
 //Run haptic when revive popup open
     private void PlayLoseHaptic()
     {
-        WaterFlow.Core.HapticFeedback.Play(WaterFlow.Core.HapticType.Lose);
+        global::WaterFlow.Core.HapticFeedback.Play(global::WaterFlow.Core.HapticType.Lose);
     }
 
     private void OnDestroy()
@@ -327,9 +327,7 @@ public class PopupRevive : Panel
     {
         int seconds = GetContinueSeconds(currentLoseReason);
         TitleText.text = currentConfig.title;
-        DescriptionText.text = StringParameterReplacer.ReplaceParameters(currentConfig.descriptionFormat, new Dictionary<string, string> {
-            { "value", seconds.ToString() }
-        });
+        DescriptionText.text = currentConfig.descriptionFormat?.Replace("{[value]}", seconds.ToString());
     }
 
     private ReviveReasonConfig GetReviveConfig(LoseReason reason)
