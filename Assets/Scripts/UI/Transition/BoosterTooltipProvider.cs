@@ -23,17 +23,10 @@ namespace WaterFlow.Game
         [SerializeField] private TMP_Text descriptionText;
         [Tooltip("Shared full-screen background behind the transition panel; swapped per booster and restored on Hide().")]
         [SerializeField] private Image background;
-        [Tooltip("Localize component on the description text; its SecondaryTerm is swapped to match the background color.")]
-        [SerializeField] private Localize descriptionLocalize;
-        [Tooltip("Localize component on the shared \"Loading...\" text; its SecondaryTerm is swapped to match the background color.")]
-        [SerializeField] private Localize loadingTextLocalize;
 
         private readonly List<BasePowerUpConfig> candidateBuffer = new();
         private Sprite defaultBackgroundSprite;
         private bool defaultBackgroundCached;
-        private string defaultDescriptionSecondaryTerm;
-        private string defaultLoadingSecondaryTerm;
-        private bool defaultSecondaryTermsCached;
 
         public override bool TryShow(GamePlacement from, GamePlacement to)
         {
@@ -71,12 +64,6 @@ namespace WaterFlow.Game
         {
             if (root) root.SetActive(false);
             if (background && defaultBackgroundCached) background.sprite = defaultBackgroundSprite;
-
-            if (defaultSecondaryTermsCached)
-            {
-                if (descriptionLocalize) descriptionLocalize.SecondaryTerm = defaultDescriptionSecondaryTerm;
-                if (loadingTextLocalize) loadingTextLocalize.SecondaryTerm = defaultLoadingSecondaryTerm;
-            }
         }
 
         private void ApplyConfig(BasePowerUpConfig config)
@@ -92,21 +79,6 @@ namespace WaterFlow.Game
                     defaultBackgroundCached = true;
                 }
                 if (config.TooltipBackground) background.sprite = config.TooltipBackground;
-            }
-
-            // Secondary term (font/material swap) must be applied before the text itself,
-            // matching LevelPanel's convention — otherwise I2's re-localize pass on term
-            // change can stomp the literal text we're about to set.
-            if (!defaultSecondaryTermsCached)
-            {
-                if (descriptionLocalize) defaultDescriptionSecondaryTerm = descriptionLocalize.SecondaryTerm;
-                if (loadingTextLocalize) defaultLoadingSecondaryTerm = loadingTextLocalize.SecondaryTerm;
-                defaultSecondaryTermsCached = true;
-            }
-            if (!string.IsNullOrEmpty(config.TooltipTextSecondaryTerm))
-            {
-                if (descriptionLocalize) descriptionLocalize.SecondaryTerm = config.TooltipTextSecondaryTerm;
-                if (loadingTextLocalize) loadingTextLocalize.SecondaryTerm = config.TooltipTextSecondaryTerm;
             }
 
             if (titleTexts != null)
