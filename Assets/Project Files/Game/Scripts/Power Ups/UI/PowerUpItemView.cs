@@ -164,7 +164,7 @@ namespace WaterFlow.Game
             PopupTooltip.Instance.Show(message);
             
             if (lockImage != null)
-                WaterFlow.Game.TweenCommon.LockSwing.Play(lockImage.rectTransform);
+                global::WaterFlow.Game.TweenCommon.LockSwing.Play(lockImage.rectTransform);
 
             if (lockText != null)
             {

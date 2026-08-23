@@ -159,7 +159,7 @@ namespace WaterFlow.Game
 
         public static void SaveAndSwitchScene(GamePlacement gamePlacement)
         {
-            WaterFlow.Core.SaveController.Save(true);
+            global::WaterFlow.Core.SaveController.Save(true);
             GameController.Instance.Unload(false, () =>
             {
                 Services.TransitionService.SwitchScene(gamePlacement);

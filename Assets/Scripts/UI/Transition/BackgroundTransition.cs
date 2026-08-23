@@ -19,7 +19,6 @@ namespace WaterFlow.Game
 
         // [Header("Loading Text")]
         // [SerializeField] private TMP_Text loadingTxt;
-        // [ValueDropdown(nameof(GetAllTerms))]
         // [SerializeField] private string loadingTerm;
         
         
@@ -116,11 +115,6 @@ namespace WaterFlow.Game
             // StopLoadingText();
         }
         
-        public static IEnumerable<string> GetAllTerms()
-        {
-            return I2Utils.GetAllTerms();
-        }
-
         /// <summary>First eligible provider (in list order) shows itself; the rest stay hidden.</summary>
         private void ShowTooltip(GamePlacement from, GamePlacement to)
         {
