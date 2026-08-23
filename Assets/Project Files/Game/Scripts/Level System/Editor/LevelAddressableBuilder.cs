@@ -341,6 +341,29 @@ namespace WaterFlow.Game
             return slotAsset;
         }
 
+        private static void RemoveStaleActiveSlotAssets(HashSet<string> keptAssetPaths)
+        {
+            string fullFolderPath = Path.Combine(Application.dataPath.Replace("Assets", ""), ActiveLevelsFolder);
+            if (!Directory.Exists(fullFolderPath))
+                return;
+
+            foreach (string file in Directory.GetFiles(fullFolderPath, "*" + LevelSystemUtils.LevelDataAssetExtension))
+            {
+                string fileName = Path.GetFileName(file);
+                string assetPath = $"{ActiveLevelsFolder}/{fileName}";
+                if (keptAssetPaths.Contains(assetPath))
+                    continue;
+
+                if (AssetDatabase.DeleteAsset(assetPath))
+                    continue;
+
+                File.Delete(file);
+                string metaPath = file + ".meta";
+                if (File.Exists(metaPath))
+                    File.Delete(metaPath);
+            }
+        }
+
         private static void CleanupActiveLevelAssets()
         {
             string fullFolderPath = Path.Combine(Application.dataPath.Replace("Assets", ""), ActiveLevelsFolder);
