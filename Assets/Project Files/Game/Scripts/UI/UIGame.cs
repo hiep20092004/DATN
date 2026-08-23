@@ -23,8 +23,6 @@ namespace WaterFlow.Game
         [BoxGroup("Top Panel")]
         [SerializeField] LevelPanel normalLevelPanelPrefab;
 
-        [BoxGroup("Top Panel")]
-        
         [BoxGroup("Message Box")]
         [SerializeField] MessageBox messageBox;
         
