@@ -302,7 +302,6 @@ namespace WaterFlow.Game
         {
             ChainManager.Init();
             ColorManager.Init();
-            RopesManager.Init();
         }
         
         public int GetRandomLevelIndex(int displayLevelNumber, IReadOnlyList<int> recentLevelIndexes, bool forceRandom)

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -19,7 +21,20 @@ namespace WaterFlow.Game
         private static readonly Color PreviewBackgroundNone = new Color(0.35f, 0.35f, 0.35f, 1f);
         private static readonly Color PreviewBorder = new Color(0f, 0f, 0f, 0.45f);
 
-        private static readonly BlockEffectType[] AllEffectTypes = (BlockEffectType[])Enum.GetValues(typeof(BlockEffectType));
+        // Effects whose runtime behaviour is not part of this project. The enum values stay (it is
+        // append-only and serialized by integer) but designers must not be able to author them,
+        // because nothing would spawn to handle the effect.
+        private static readonly HashSet<BlockEffectType> RetiredEffectTypes = new()
+        {
+            BlockEffectType.Ropes,
+            BlockEffectType.Scissor,
+            BlockEffectType.TimeCapsule,
+            BlockEffectType.SwitchLayer,
+        };
+
+        private static readonly BlockEffectType[] AllEffectTypes = ((BlockEffectType[])Enum.GetValues(typeof(BlockEffectType)))
+            .Where(type => !RetiredEffectTypes.Contains(type))
+            .ToArray();
 
         private static GUIStyle s_previewNumberStyle;
         private static GUIStyle s_previewNumberStyleSmall;

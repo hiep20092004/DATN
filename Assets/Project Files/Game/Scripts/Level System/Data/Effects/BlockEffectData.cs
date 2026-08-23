@@ -91,7 +91,7 @@ namespace WaterFlow.Game
 
     /// <summary>
     /// Switch-layer variant of <see cref="LayeredBlockEffectData"/>: identical payload (a single layered
-    /// color), but its two layers swap on every board clear (see <see cref="SwitchLayerBlockEffectBehavior"/>).
+    /// color), but its two layers swap on every board clear.
     /// Needs its own type so level data routes it to the switch behavior instead of the plain layer one.
     /// </summary>
     [Serializable]
