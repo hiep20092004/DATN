@@ -1,0 +1,22 @@
+{
+    "name": "Core.Inspector.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:baadee4c4773a7d4c99d1ca14b0ae9f5",
+        "GUID:40f9a11e1582c284684ee16f0d1f1c70",
+        "GUID:c8e4954528dfc69438ddc21aef54129f",
+        "GUID:2c961f665b9837c489bb5664f54eeb83",
+        "GUID:10e624f502f12944499efbdeef059ad4"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
