@@ -113,7 +113,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5353391156914313331}
-        m_TargetAssemblyTypeName: SonatFramework.Scripts.UIModule.UIElements.UICurrency,
+        m_TargetAssemblyTypeName: WaterFlow.Framework.UIModule.UIElements.UICurrency,
           Assembly-CSharp
         m_MethodName: OnClickCurrency
         m_Mode: 1

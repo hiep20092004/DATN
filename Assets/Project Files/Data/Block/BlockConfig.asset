@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b086188102ba2468ec30e4ba60fb6c, type: 3}
+  m_Name: BlockConfig
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.BlockMovementConfig
+  fillWaterShortHapticClip: {fileID: -8404250095460277587, guid: 38af67b83f8eb86478edd95759f03fee, type: 3}
+  fillWaterMediumHapticClip: {fileID: -8404250095460277587, guid: ca6d4b89515f67349a1df4d625b4b0f7, type: 3}
+  fillWaterLongHapticClip: {fileID: -8404250095460277587, guid: 5f8569b5e09fef0408de38e8ee4c7d53, type: 3}
+  fillWaterSuperLongHapticClip: {fileID: -8404250095460277587, guid: 667470687898fe8458882f2990b67464, type: 3}
+  raycastDistance: 100
+  movementSpeed: 40
+  movementBoostThreshold: 0.32
+  movementBoostFactor: 0.0015
+  movementSnapDuration: 0.08
+  movementSnapStopDistance: 0.02
+  pickedModelY: 0.4
+  releasedModelY: 0
+  modelYLerpSpeed: 15
+  visualFollowSpeed: 400
+  waterFrequencyOnRotate: 3
+  waterAmplitudeOnRotate: 0.03
+  waterRotateToRightMax: 182.5
+  waterRotateToLeftMax: 172.5
+  waterRotationSpeed: 100
+  movementActiveSpeedThreshold: 0.5
+  horizontalDirectionThreshold: 0.1
+  waterAmplitudeLerpSpeed: 0.5
+  waterFrequencyLerpSpeed: 5

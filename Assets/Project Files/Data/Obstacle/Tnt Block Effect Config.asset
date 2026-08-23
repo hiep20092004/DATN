@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be06bb20f96a51a4899d4c44f14eeef1, type: 3}
+  m_Name: Tnt Block Effect Config
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.TntBlockEffectConfig
+  turnPunchScale: 0.3
+  turnPunchDuration: 0.3
+  warningColor2: {r: 1, g: 0.338101, b: 0.3160377, a: 1}
+  warningBlinkScale2: 0.25
+  warningBlinkDuration2: 0.5
+  warningColor1: {r: 1, g: 0.17671835, b: 0.10849059, a: 1}
+  warningBlinkScale1: 0.4
+  warningBlinkDuration1: 0.3
+  explodeMoveUpY: 1.2
+  explodeScaleMultiplier: 2
+  explodeMoveDuration: 0.4
+  explodeHideTextDuration: 0.2
+  explodeFinalShakeDuration: 0.4
+  explodeFinalShakeStrength: 0.3
+  extraTurnsAfterRevive: 3

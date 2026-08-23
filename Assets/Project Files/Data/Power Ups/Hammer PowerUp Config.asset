@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca45fdb7db14be7bdd92e7be6487a82, type: 3}
+  m_Name: Hammer PowerUp Config
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.HammerPowerUpConfig
+  type: 4
+  displayName:
+    mTerm: hammer
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  description:
+    mTerm: destroy_one_obstacle_ice_arrow_blocker_bomb_shutte
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  icon: {fileID: 21300000, guid: caf9c6d5cdcaae347bfa1fc1ce05ad53, type: 3}
+  resultIcon: {fileID: 21300000, guid: 6c7326beb1c793c46a891450d6a083ba, type: 3}
+  tooltipBackground: {fileID: 21300000, guid: 409a317e0e7a86449a6088e5ecb65dbf, type: 3}
+  tooltipTextSecondaryTerm: Text Pink
+  behaviorPrefab: {fileID: 8454815638961310885, guid: 39841ad9e50b92849a02bab9f16ca03a, type: 3}
+  activateSound: {fileID: 0}
+  hammerTargetVisual: {fileID: 4882032497049153659, guid: 09734653033f30843a8d47dc3e0cad3d, type: 3}
+  typesCanDestroy: 0300000009000000070000000600000001000000050000000a0000000b0000000d0000000e0000000f00000010000000
+  shakeDuration: 0.15
+  shakeStrength: 0.2

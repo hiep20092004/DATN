@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2a47eb15c946b790c27333a291e0ba, type: 3}
+  m_Name: Container Box Effect Config
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.ContainerBoxEffectConfig
+  cellColliderPrefab: {fileID: 5478812724269458084, guid: 5350935949ef96e4887836c87592d094, type: 3}
+  visualConfig:
+    rid: 3681165188134601172
+  blockedClickShakeDuration: 0.04
+  blockedClickShakeStrength: 0.15
+  references:
+    version: 2
+    RefIds:
+    - rid: 3681165188134601172
+      type: {class: ContainerBoxVisualConfig, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        showFullAlpha: 0
+        localHeightOffset: 0.6
+        shadowWidthPadding: 0
+        shadowBottomPadding: 0.2
+        lineBaseWidth: 0.765
+        lineWidthPerExtraCell: 1
+        lineVerticalPadding: 0.5
+        lineLocalHeight: 1.5
+        turnPunchScale: 0.3
+        turnPunchDuration: 0.3
+        clearStartAfterTurnPunchNormalized: 0.5
+        clearAnimation:
+          VfxHeightOffset: 1.6
+          PunchDuration: 0.11
+          PunchScale: 0.14
+          PunchScaleDecayPerExtraCell: 0.045
+          PunchScaleMinMultiplier: 0.35
+          PunchEase: 27
+          PunchLocalY: 1
+          PunchLocalZOffset: -0.2
+          CollapseDuration: 0.22
+          CollapseScale: 0.5
+          CollapseEase: 26
+          FadeEase: 8

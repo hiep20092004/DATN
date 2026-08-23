@@ -14,7 +14,7 @@ namespace WaterFlow.Core
         [SerializeField] int hash;
         public int Hash => hash;
 
-        // Stable string identifier (e.g. "FlowOut.LevelSave"). Added in v2 of
+        // Stable string identifier (e.g. "WaterFlow.Game.LevelSave"). Added in v2 of
         // the save container schema. Marked OptionalField so BinaryFormatter
         // can deserialize older blobs that don’t contain this field.
         [OptionalField(VersionAdded = 2)]

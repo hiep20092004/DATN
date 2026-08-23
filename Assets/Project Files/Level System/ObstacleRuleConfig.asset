@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5ce2f48c13af249b46f68d84a0b8d6, type: 3}
+  m_Name: ObstacleRuleConfig
+  m_EditorClassIdentifier: Assembly-CSharp::BorderSpawnModule.BorderRuleConfig
+  borderRules:
+  - ruleName: O
+    ruleType: 0
+    neighbors: 000000000200000000000000020000000000000002000000000000000200000000000000
+    prefab: {fileID: 8056505514005174752, guid: c44bf95bc972dd043b4728e03a47151c, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Edge_CornerDouble
+    ruleType: 1
+    neighbors: 000000000200000000000000010000000000000001000000020000000100000002000000
+    prefab: {fileID: 2690912105069611798, guid: da05a6728f7f12a42aa6b7a3b0224bf8, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Corner_Quadruple
+    ruleType: 0
+    neighbors: 020000000100000002000000010000000000000001000000020000000100000002000000
+    prefab: {fileID: 8056505514005174752, guid: 555a68be38098924a86a97842fd2515f, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Cormer_Triple
+    ruleType: 1
+    neighbors: 020000000100000002000000010000000000000001000000000000000100000002000000
+    prefab: {fileID: 8056505514005174752, guid: 94ccd8567e55a4a4d9e5c1e4b2cadc6a, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Cormer_Double_Opposite
+    ruleType: 1
+    neighbors: 020000000100000000000000010000000000000001000000000000000100000002000000
+    prefab: {fileID: 8056505514005174752, guid: a11c6670f1df04d40bcc66164837217f, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Inner_Corner
+    ruleType: 1
+    neighbors: 020000000100000000000000010000000000000001000000000000000100000000000000
+    prefab: {fileID: 8056505514005174752, guid: 48e30a92c84ad104d81c382c753580d5, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Inner
+    ruleType: 0
+    neighbors: 010000000100000001000000010000000000000001000000010000000100000001000000
+    prefab: {fileID: 8056505514005174752, guid: 01f6a9b5f25bfa240a4ce56f44877a59, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Corner L Double
+    ruleType: 1
+    neighbors: 000000000200000000000000010000000000000002000000020000000100000000000000
+    prefab: {fileID: 8056505514005174752, guid: a90df5d6c9775a44abf994f43ea5410d, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Edge_CornerLeft
+    ruleType: 1
+    neighbors: 000000000200000000000000010000000000000001000000020000000100000000000000
+    prefab: {fileID: 2690912105069611798, guid: 328518c4396502e41b8b2c129526e23a, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Edge_CornerRight
+    ruleType: 1
+    neighbors: 000000000200000000000000010000000000000001000000000000000100000002000000
+    prefab: {fileID: 2690912105069611798, guid: f4d2d4e3d63abe843ab46dbabe4bf1df, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Corner_Double
+    ruleType: 1
+    neighbors: 000000000000000000000000010000000000000001000000020000000100000002000000
+    prefab: {fileID: 8056505514005174752, guid: 4bb855fa381d85b4089122ccf2c45771, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Edge_Double
+    ruleType: 1
+    neighbors: 000000000100000000000000020000000000000002000000000000000100000000000000
+    prefab: {fileID: 8056505514005174752, guid: 2d11e2bff43478642ab6e0652ecff94e, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Corner L
+    ruleType: 1
+    neighbors: 000000000200000000000000010000000000000002000000000000000100000000000000
+    prefab: {fileID: 8056505514005174752, guid: e0b8b50f2fa53c54c8a617172f41bcef, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Corner Outer
+    ruleType: 1
+    neighbors: 000000000100000002000000000000000000000001000000000000000000000000000000
+    prefab: {fileID: 8056505514005174752, guid: a90df5d6c9775a44abf994f43ea5410d, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: Edge
+    ruleType: 1
+    neighbors: 000000000000000000000000010000000000000001000000000000000200000000000000
+    prefab: {fileID: 2690912105069611798, guid: b9363e84c8ac37b4989348351ebddfb0, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}
+  - ruleName: U
+    ruleType: 1
+    neighbors: 000000000200000000000000020000000000000002000000000000000100000000000000
+    prefab: {fileID: 8056505514005174752, guid: 1681c08645343304b9809c98ce75e261, type: 3}
+    positionOffset: {x: 0, y: 0, z: 0}
+    rotationOffset: {x: 0, y: 0, z: 0}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: effc3f096f0a427385fdeb8235d9095f, type: 3}
-  m_Name: SonatLevelServiceAsync
+  m_Name: DefaultLevelServiceAsync
   m_EditorClassIdentifier: 
   loadObjectServiceAsync:
     referenceType: 1

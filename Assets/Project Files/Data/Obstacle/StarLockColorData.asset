@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abeb91d60555fc74c92ff9d5f072df1f, type: 3}
+  m_Name: StarLockColorData
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.OtherColorDataSO
+  colorData:
+  - type: 1
+    sprite: {fileID: 21300000, guid: 89229c44af990044596ea46c1caaf209, type: 3}
+    texture: {fileID: 2800000, guid: 89229c44af990044596ea46c1caaf209, type: 3}
+  - type: 2
+    sprite: {fileID: 21300000, guid: f118e33458faa02498ceafc00bca6806, type: 3}
+    texture: {fileID: 2800000, guid: f118e33458faa02498ceafc00bca6806, type: 3}
+  - type: 3
+    sprite: {fileID: 21300000, guid: 31db2c16600b06540be6cdd22a9ee8e6, type: 3}
+    texture: {fileID: 2800000, guid: 31db2c16600b06540be6cdd22a9ee8e6, type: 3}
+  - type: 4
+    sprite: {fileID: 21300000, guid: bd8250907919127418fed2949c707395, type: 3}
+    texture: {fileID: 2800000, guid: bd8250907919127418fed2949c707395, type: 3}
+  - type: 5
+    sprite: {fileID: 21300000, guid: 0989240047b12c24faf27609cb66cbbf, type: 3}
+    texture: {fileID: 2800000, guid: 0989240047b12c24faf27609cb66cbbf, type: 3}
+  - type: 6
+    sprite: {fileID: 21300000, guid: 19bfc63e5bf29224c970c875c66346db, type: 3}
+    texture: {fileID: 2800000, guid: 19bfc63e5bf29224c970c875c66346db, type: 3}
+  - type: 7
+    sprite: {fileID: 21300000, guid: 5945256c3901b0f4aa86dab1a9b71ae6, type: 3}
+    texture: {fileID: 2800000, guid: 5945256c3901b0f4aa86dab1a9b71ae6, type: 3}
+  - type: 8
+    sprite: {fileID: 21300000, guid: d910c6a6eb8f53b41bd5680e4c384e72, type: 3}
+    texture: {fileID: 2800000, guid: d910c6a6eb8f53b41bd5680e4c384e72, type: 3}
+  - type: 9
+    sprite: {fileID: 21300000, guid: 1a1c454ddb52b4044a16a8a6b2e2e31f, type: 3}
+    texture: {fileID: 2800000, guid: 1a1c454ddb52b4044a16a8a6b2e2e31f, type: 3}
+  - type: 10
+    sprite: {fileID: 21300000, guid: 253771ffbb9f60a4896ef3dea6e1faac, type: 3}
+    texture: {fileID: 2800000, guid: 253771ffbb9f60a4896ef3dea6e1faac, type: 3}
+  - type: 11
+    sprite: {fileID: 21300000, guid: 9a98987b08e5c4749a8e4b7ba0453d9f, type: 3}
+    texture: {fileID: 2800000, guid: 9a98987b08e5c4749a8e4b7ba0453d9f, type: 3}
+  - type: 12
+    sprite: {fileID: 21300000, guid: 5281da4b50af9ca45ac66b2b793d7be7, type: 3}
+    texture: {fileID: 2800000, guid: 5281da4b50af9ca45ac66b2b793d7be7, type: 3}
+  - type: 13
+    sprite: {fileID: 21300000, guid: d834a9864ea09fa4383c34cee75a3649, type: 3}
+    texture: {fileID: 2800000, guid: d834a9864ea09fa4383c34cee75a3649, type: 3}
+  - type: 14
+    sprite: {fileID: 21300000, guid: bc6e8a55b7958a34aa8aa6c2156d3943, type: 3}
+    texture: {fileID: 2800000, guid: bc6e8a55b7958a34aa8aa6c2156d3943, type: 3}
+  - type: 15
+    sprite: {fileID: 21300000, guid: 542d45c94f3911d44b91cd24c8b5b21d, type: 3}
+    texture: {fileID: 2800000, guid: 542d45c94f3911d44b91cd24c8b5b21d, type: 3}

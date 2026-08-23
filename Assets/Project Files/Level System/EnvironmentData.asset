@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6dba1eb864409fae1eb3898fc97776, type: 3}
+  m_Name: EnvironmentData
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.EnvironmentData
+  spawnBorders: 1
+  spawnGates: 1
+  gatePrefab: {fileID: 2367529398831441460, guid: 9e22f92eb38fd7a46ac4710070ad4c7f, type: 3}
+  innerObstaclePrefab: {fileID: 2775968760738598297, guid: 546255536976db64ea4a6eb057d4165f, type: 3}
+  innerTile1Prefab: {fileID: 2542654094368276701, guid: 4eb141d5be06bc9469d16ac5adf8c70d, type: 3}
+  innerTile2Prefab: {fileID: 2542654094368276701, guid: 7f3239e074017cb4aa0b101ec8f30c0a, type: 3}
+  borderInnerGround: {fileID: 9210138867476080714, guid: bb70a786196b38f4cb257a0820c2ad92, type: 3}
+  generatorPrefab: {fileID: 8982392599816119008, guid: e27ca52e87de76e4b85d77ea4e38d547, type: 3}
+  extraLayerHandlers:
+  - type: 0
+    prefab: {fileID: 7176618557796512071, guid: eb0d7aae40abc674eb36610d891edca5, type: 3}
+  borderRuleConfig: {fileID: 11400000, guid: 89b21c28d9347aa45a4e7a88cd26989c, type: 2}
+  obstacleRuleConfig: {fileID: 11400000, guid: c9094b1e9265df1479d0574efaa9079e, type: 2}
+  innerTileSpawnTween:
+    enabled: 1
+    duration: 0.5
+    delay: 0.3
+    ease: 12
+  innerObstacleSpawnTween:
+    enabled: 1
+    duration: 0.5
+    delay: 0.75
+    ease: 12
+  interactiveObjectSpawnTween:
+    enabled: 1
+    duration: 0.5
+    delay: 0.75
+    ease: 12
+  gateSpawnTween:
+    enabled: 1
+    duration: 0.5
+    delay: 0.4
+    ease: 27
+  borderInnerGroundSpawnTween:
+    enabled: 1
+    duration: 0.5
+    delay: 0.7
+    ease: 12
+  borderSpawnTween:
+    enabled: 1
+    duration: 0.15
+    delay: 0.5
+    ease: 1
+  blockSpawnTween:
+    enabled: 1
+    duration: 0.5
+    delay: 0.75
+    ease: 12
+  containerBoxGroupVisualSpawnTween:
+    enabled: 1
+    duration: 0.6
+    delay: 0.65
+    ease: 21
+  liftGroupVisualSpawnTween:
+    enabled: 1
+    duration: 0.5
+    delay: 0.65
+    ease: 6

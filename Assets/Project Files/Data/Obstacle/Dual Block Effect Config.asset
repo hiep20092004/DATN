@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e8f2a17b3c405e9a0b3c7d2e6f8921, type: 3}
+  m_Name: Dual Block Effect Config
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.DualBlockEffectConfig
+  dualVisualsDatas:
+  - blockType: 2
+    visualsPrefab: {fileID: 7619586532010182135, guid: 66661105b20d2ea4d9defdc44a12869b, type: 3}
+  - blockType: 3
+    visualsPrefab: {fileID: 7619586532010182135, guid: 9c67304eb61707247bfd6f3a7fbfb170, type: 3}
+  - blockType: 1
+    visualsPrefab: {fileID: 4789868631382198874, guid: f17cba8ed2dd7e8428138c917300018c, type: 3}
+  - blockType: 10
+    visualsPrefab: {fileID: 126592252769209237, guid: c6e7893998293934692cc0c387b26ffd, type: 3}
+  - blockType: 11
+    visualsPrefab: {fileID: 126592252769209237, guid: ead8941a1de63a8459ca3d575f7670fa, type: 3}
+  - blockType: 12
+    visualsPrefab: {fileID: 7844359584401425324, guid: f48c659a260da004db6e40f85a52096e, type: 3}
+  - blockType: 13
+    visualsPrefab: {fileID: 7844359584401425324, guid: 60a3df3c6dee84f4aa04898aec60e9c3, type: 3}
+  - blockType: 14
+    visualsPrefab: {fileID: 126592252769209237, guid: bc8f12a7dd8ca3b4fb0febbff967abc6, type: 3}
+  - blockType: 15
+    visualsPrefab: {fileID: 7844359584401425324, guid: 0caefd577a68c01478999794f33f77de, type: 3}
+  - blockType: 16
+    visualsPrefab: {fileID: 126592252769209237, guid: fb9d6020b5f432a4486dca0ccfa0a0e5, type: 3}
+  - blockType: 17
+    visualsPrefab: {fileID: 7844359584401425324, guid: ae209a7e6e5551048ba471f48537d5d2, type: 3}
+  newDualVisualsDatas:
+  - blockType: 2
+    visualsPrefab: {fileID: 6739586082377991111, guid: 6a795bc48eafd5f45b0bdd3f23c6e062, type: 3}
+  - blockType: 3
+    visualsPrefab: {fileID: 1680666420089205708, guid: ae3fda061845b7a46839c372d8941d51, type: 3}
+  - blockType: 1
+    visualsPrefab: {fileID: 474383933774634679, guid: beac42d5fd4485c49938dbad01ecd6c1, type: 3}
+  - blockType: 10
+    visualsPrefab: {fileID: 2807297953073937230, guid: f7f74f42f888a4843a6194f17ac9ebe3, type: 3}
+  - blockType: 11
+    visualsPrefab: {fileID: 7476990316330624495, guid: 7f69152ef975a584ca97d41c0e3ebdcb, type: 3}
+  - blockType: 12
+    visualsPrefab: {fileID: 5250217997081275563, guid: 2deb2da4ffc85984b9bf0c4bb13addd5, type: 3}
+  - blockType: 13
+    visualsPrefab: {fileID: 5142009797525676610, guid: 3601777cda1ac1f4282d98f2ac50c0cc, type: 3}
+  - blockType: 14
+    visualsPrefab: {fileID: 2300027638646659307, guid: a2879291a98143244999990e344b88fb, type: 3}
+  - blockType: 15
+    visualsPrefab: {fileID: 3977047089910040162, guid: 64237d02ed115124ea1bf7606b524485, type: 3}
+  - blockType: 16
+    visualsPrefab: {fileID: 5679121396845322943, guid: 07847447376899148ac01109b6fbb857, type: 3}
+  - blockType: 17
+    visualsPrefab: {fileID: 2874333057993165968, guid: 1cf54527ae8b0734cb000cb0681ade5e, type: 3}

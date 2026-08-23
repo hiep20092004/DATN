@@ -7,8 +7,8 @@ using UnityEngine.UIElements;
 namespace WaterFlow.Core
 {
     public class MainToolbarButtons {
-        // Keep in sync with FlowOut.LevelLoaderSystem.LoaderModeEditorPrefsKey
-        const string kLevelLoaderModePrefsKey = "FlowOut.LevelLoaderSystem.LoaderMode";
+        // Keep in sync with WaterFlow.Game.LevelLoaderSystem.LoaderModeEditorPrefsKey
+        const string kLevelLoaderModePrefsKey = "WaterFlow.LevelLoaderSystem.LoaderMode";
 
         [MainToolbarElement(MainToolbarSceneShortcuts.LevelLoaderModeToolbarRefreshPath, defaultDockPosition = MainToolbarDockPosition.Middle)]
         public static MainToolbarElement LevelLoaderModeDropdown()

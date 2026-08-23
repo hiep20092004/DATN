@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e4f2a91b3d40e6a7f5d8c2e1b9a046, type: 3}
+  m_Name: Chain Multi Block Effect Config
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.ChainMultiBlockEffectConfig
+  offsetY: 0.2
+  chainVisualsDatas:
+  - blockType: 0
+    visualsPrefab: {fileID: 8840249700183901174, guid: c7c56cdf154c40d43b5a4366ec89f880, type: 3}
+  - blockType: 1
+    visualsPrefab: {fileID: 2421873754145578793, guid: bb560398d51f42f4a9f6029cb6dacf6e, type: 3}
+  - blockType: 2
+    visualsPrefab: {fileID: 8316454248894049605, guid: 0ce7f1321c32ef9438844124f8a25261, type: 3}
+  - blockType: 3
+    visualsPrefab: {fileID: 4246363500268091223, guid: f16c2d9974a780947ab4596a502f7bc0, type: 3}
+  - blockType: 4
+    visualsPrefab: {fileID: 3192692494304155644, guid: 4db38e4f4ca970646b234fffb351cf45, type: 3}
+  - blockType: 5
+    visualsPrefab: {fileID: 4256282256505282334, guid: 0dcb3e6006693274d9c0ceeef399ea88, type: 3}
+  - blockType: 6
+    visualsPrefab: {fileID: 1695710070840771051, guid: a996962b24c1d2b4ba0e38260143932c, type: 3}
+  - blockType: 7
+    visualsPrefab: {fileID: 4999480562116946110, guid: a75f846873b7d91458df3cf165438fda, type: 3}
+  - blockType: 8
+    visualsPrefab: {fileID: 6993265500460944701, guid: cc2b3ad64334cb341bd8ab95efcd0d0b, type: 3}
+  - blockType: 9
+    visualsPrefab: {fileID: 8621453690127243094, guid: 6cac42d297762a54ba3bbeec8ca2b0be, type: 3}
+  - blockType: 10
+    visualsPrefab: {fileID: 4683543855263670988, guid: 864153c405ddbcd429d1c98eb4bdf60b, type: 3}
+  - blockType: 11
+    visualsPrefab: {fileID: 6839115394492848947, guid: 0769f9db700ac7a42991ef37c83ea1b5, type: 3}
+  - blockType: 12
+    visualsPrefab: {fileID: 7617514861425391554, guid: 41c240a183a99d741ad77aa840a5ea85, type: 3}
+  - blockType: 13
+    visualsPrefab: {fileID: 7056682434889210520, guid: 80c332b9eb65e6f4494062e998debd45, type: 3}
+  - blockType: 14
+    visualsPrefab: {fileID: 7027398104516589803, guid: 2cae64b57169b01489ad83f3dfe5b761, type: 3}
+  - blockType: 15
+    visualsPrefab: {fileID: 1704808216799962009, guid: 41b5246a75b74914aa46df29325bcec4, type: 3}
+  - blockType: 16
+    visualsPrefab: {fileID: 7211840228273641566, guid: a66677627b331e449abd0f2cff3181b4, type: 3}
+  - blockType: 17
+    visualsPrefab: {fileID: 6083731137277220310, guid: 4cc18b655d59ece42b4545717617900a, type: 3}
+  - blockType: 18
+    visualsPrefab: {fileID: 884874294304349567, guid: 5848cf0ecb4652c4ea0a4041eb3d10c7, type: 3}
+  - blockType: 19
+    visualsPrefab: {fileID: 198158136867687494, guid: c111e5fe909985b4083064ecfde27240, type: 3}
+  - blockType: 20
+    visualsPrefab: {fileID: 8667081581899197187, guid: 45394bfa091fca74884c11639db4b1c3, type: 3}
+  - blockType: 21
+    visualsPrefab: {fileID: 4427025380410548972, guid: a5f55eb97bccc1a46b5102759e0baf8f, type: 3}
+  - blockType: 22
+    visualsPrefab: {fileID: 8620150629894664549, guid: 5360ef4a14d4ad244868c0469d377e97, type: 3}
+  - blockType: 23
+    visualsPrefab: {fileID: 1820002535023609602, guid: 12786abf85480a442b5ef44032579a2d, type: 3}
+  - blockType: 24
+    visualsPrefab: {fileID: 1820002535023609602, guid: afa5c45ef5c17c64587587c0c66d2f87, type: 3}
+  - blockType: 25
+    visualsPrefab: {fileID: 1820002535023609602, guid: f64d8e1598a88884bbafcca49cd8c604, type: 3}
+  - blockType: 26
+    visualsPrefab: {fileID: 1820002535023609602, guid: 64118404957aec242af1e669db6d6bc2, type: 3}
+  - blockType: 27
+    visualsPrefab: {fileID: 6296937194774411911, guid: a010be8e027d3384581a1f00a7d01d0f, type: 3}
+  - blockType: 28
+    visualsPrefab: {fileID: 6296937194774411911, guid: 2103a3f88ce92c847bf153d7d724d6ae, type: 3}
+  - blockType: 29
+    visualsPrefab: {fileID: 6296937194774411911, guid: d0fd0a5d7df42214a81f46bd2a4a6d79, type: 3}
+  - blockType: 30
+    visualsPrefab: {fileID: 6296937194774411911, guid: 0d55a35343555f848aa4926a1364affa, type: 3}
+  - blockType: 31
+    visualsPrefab: {fileID: 2421873754145578793, guid: a0cfbb692dc2d2a4f8d33fd8cd7d62bd, type: 3}

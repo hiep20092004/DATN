@@ -4,7 +4,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace FlowOut.EditorTools
+namespace WaterFlow.EditorTools
 {
     public static class DucMaterialRepairTool
     {

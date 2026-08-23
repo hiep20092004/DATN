@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d334f009e04e81b95c90fe34c85df0, type: 3}
+  m_Name: Expand PowerUp Config
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.ExpandPowerUpConfig
+  type: 3
+  displayName:
+    mTerm: expand
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  description:
+    mTerm: expand_the_board
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  icon: {fileID: 21300000, guid: 27f71b7b60eb33d4faa710d3ffcc6f04, type: 3}
+  resultIcon: {fileID: 21300000, guid: 187ec72b8958dc7459d1cd269cc89f06, type: 3}
+  tooltipBackground: {fileID: 21300000, guid: 359d057d53829c94a86e12746fb0c179, type: 3}
+  tooltipTextSecondaryTerm: Text Orange
+  behaviorPrefab: {fileID: 2658871536520182322, guid: 95b2eb18f7f09ce4fa0c3bd69287dbcc, type: 3}
+  activateSound: {fileID: 8300000, guid: f104c95c219315a40be0400b77bf396c, type: 3}
+  targetVisual: {fileID: 1726242821267126975, guid: c6e776c368b5fb44fb76801ebe0305c0, type: 3}
+  alphaOnSelect: 0.6
+  maskFadeDuration: 0.2
+  drillSpawnOffSet: 2.5
+  delayExpandBorder: 1.03
+  animationDuration: 1.8
+  shakeDuration: 0.2
+  shakeStrength: 0.2

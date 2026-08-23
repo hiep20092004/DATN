@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5a39693fbd14af59a81b14de6234937, type: 3}
-  m_Name: SonatConfigService
+  m_Name: DefaultConfigService
   m_EditorClassIdentifier: 
   loadObjectService:
     referenceType: 1

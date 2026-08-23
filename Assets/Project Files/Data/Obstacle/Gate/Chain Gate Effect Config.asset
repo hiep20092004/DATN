@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b7b06268d24446fb0467e18309880e9, type: 3}
+  m_Name: Chain Gate Effect Config
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.ChainGateEffectConfig
+  timeDelayDestroyVisual: 0.18
+  chainVisuals:
+  - GateDirectionType: 0
+    ChainVisualsBehavior: {fileID: 6283388519009056468, guid: 41902d79150cb3c4fa5150d6bb2dc2dc, type: 3}
+  - GateDirectionType: 1
+    ChainVisualsBehavior: {fileID: 480266870270644132, guid: 7d5bb211c79c61647ba26d586d7f161e, type: 3}
+  - GateDirectionType: 2
+    ChainVisualsBehavior: {fileID: 5516442768831380945, guid: 144180c2b70bcfa4f9f912a852502d76, type: 3}
+  - GateDirectionType: 3
+    ChainVisualsBehavior: {fileID: 6419924678036852905, guid: e6dd9948b05aece4e9fee73abb4f1fb2, type: 3}

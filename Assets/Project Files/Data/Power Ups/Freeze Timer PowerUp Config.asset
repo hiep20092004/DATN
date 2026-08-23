@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63f7d3b772344e9b0e7dc025d4707bf, type: 3}
+  m_Name: Freeze Timer PowerUp Config
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.FreezeTimerPowerUpConfig
+  type: 1
+  displayName:
+    mTerm: freeze
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  description:
+    mTerm: freeze_timer_for_15_seconds
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  icon: {fileID: 21300000, guid: 6bff80eaa04f3da45be47f0e65d10457, type: 3}
+  resultIcon: {fileID: 21300000, guid: 37ec0a37ca3387d419566ed80b08edbc, type: 3}
+  tooltipBackground: {fileID: 21300000, guid: 04051008d7d419e48a4c8546d432256b, type: 3}
+  tooltipTextSecondaryTerm: Text Blue
+  behaviorPrefab: {fileID: 4177761373336752263, guid: e78a81622b2720d4891044fdc82a8fa6, type: 3}
+  activateSound: {fileID: 8300000, guid: 619dfca156ebca747a91fa02f4563bc7, type: 3}
+  timeFreezeDuration: 15

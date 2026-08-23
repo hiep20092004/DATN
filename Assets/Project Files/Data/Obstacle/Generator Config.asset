@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28314e3d7148cba43b737c164ad018a0, type: 3}
+  m_Name: Generator Config
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.GeneratorConfig
+  visualEdgeOffset: 0.13
+  previewBlockScale: 0.25
+  editorPreviewStackSpacing: 0.5
+  spawnTravelDuration: 0.35
+  spawnTravelEase: 9
+  countTextPopupDuration: 0.28
+  countTextPunchStrength: 0.22
+  toggleReadyMaterial: {fileID: 2100000, guid: 922147faf803b08469eafdfe886b5520, type: 2}
+  toggleBusyMaterial: {fileID: 2100000, guid: 52dda4fcfe3146b48bb359ccdaea2e9d, type: 2}
+  toggleAnimDuration: 0.25
+  toggleAnimEase: 9
+  toggleLocalPos: 0.22
+  doorOpenLocalZ: 0
+  doorClosedLocalZ: 1
+  doorOpenDuration: 0.2
+  doorCloseDuration: 0.2
+  doorOpenEase: 9
+  doorCloseEase: 8
+  blockSpawnPresets:
+  - blockType: 0
+    spawnCellPerDirection:
+    - {x: 1, y: 0}
+    - {x: 1, y: 0}
+    - {x: 1, y: 0}
+    - {x: 1, y: 0}
+  - blockType: 1
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+  - blockType: 2
+    spawnCellPerDirection:
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+  - blockType: 3
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+  - blockType: 4
+    spawnCellPerDirection:
+    - {x: 1, y: 0}
+    - {x: 1, y: 2}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+  - blockType: 5
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 1, y: 2}
+    - {x: 1, y: 0}
+  - blockType: 6
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+  - blockType: 7
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+  - blockType: 8
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+  - blockType: 9
+    spawnCellPerDirection:
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+  - blockType: 10
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 1, y: 0}
+  - blockType: 11
+    spawnCellPerDirection:
+    - {x: 1, y: 0}
+    - {x: 1, y: 2}
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+  - blockType: 12
+    spawnCellPerDirection:
+    - {x: 1, y: 0}
+    - {x: 1, y: 2}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+  - blockType: 13
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 0, y: 0}
+  - blockType: 14
+    spawnCellPerDirection:
+    - {x: 2, y: 0}
+    - {x: 2, y: 1}
+    - {x: 0, y: 0}
+    - {x: 0, y: 2}
+  - blockType: 15
+    spawnCellPerDirection:
+    - {x: 1, y: 0}
+    - {x: 1, y: 2}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+  - blockType: 16
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 2}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+  - blockType: 17
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 1, y: 0}
+  - blockType: 18
+    spawnCellPerDirection:
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+  - blockType: 19
+    spawnCellPerDirection:
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+  - blockType: 20
+    spawnCellPerDirection:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 1, y: 0}
+  - blockType: 21
+    spawnCellPerDirection:
+    - {x: 1, y: 0}
+    - {x: 1, y: 2}
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+  - blockType: 22
+    spawnCellPerDirection:
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+  - blockType: 23
+    spawnCellPerDirection:
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+  - blockType: 24
+    spawnCellPerDirection:
+    - {x: 0, y: 1}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+  - blockType: 25
+    spawnCellPerDirection:
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 0, y: 1}
+    - {x: 0, y: 1}
+  - blockType: 26
+    spawnCellPerDirection:
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+  - blockType: 27
+    spawnCellPerDirection:
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+  - blockType: 28
+    spawnCellPerDirection:
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+  - blockType: 29
+    spawnCellPerDirection:
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+  - blockType: 30
+    spawnCellPerDirection:
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 0}
+  - blockType: 31
+    spawnCellPerDirection:
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+    - {x: 1, y: 1}
+  allowedBlockEffectsForQueue: 010000000200000003000000050000000600000007000000080000000a0000000b0000000d0000000e0000000f00000010000000

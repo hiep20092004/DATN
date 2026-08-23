@@ -1,0 +1,588 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aafc1ca0b84426881bccef3317c660a, type: 3}
+  m_Name: Level 017
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.LevelData
+  size: {x: 7, y: 9}
+  duration: 120
+  type: 0
+  elements:
+  - rid: 266889289103835505
+  - rid: 7111407520536592861
+  - rid: 7111407522283782540
+  - rid: 7111407522283782300
+  - rid: 7111407522283782541
+  - rid: 7111407522283782302
+  - rid: 7111407522283782303
+  - rid: 7111407522283782535
+  - rid: 5328318359449370937
+  - rid: 3857708537811829148
+  - rid: 3857708537811829141
+  - rid: 5328318359449370930
+  - rid: 5328318359449370929
+  - rid: 7111407522283782536
+  - rid: 7111407522283782353
+  - rid: 5328318359449370921
+  - rid: 3857708537811829150
+  - rid: 3857708537811829136
+  - rid: 7111407522283782357
+  - rid: 5328318359449370925
+  - rid: 7111407522283782424
+  - rid: 7111407522283782539
+  - rid: 7111407522283782493
+  - rid: 7111407522283782500
+  - rid: 7111407522283782498
+  - rid: 7111407522283782496
+  - rid: 7111407522283782366
+  - rid: 7111407522283782423
+  - rid: 3857708537811829194
+  - rid: 7111407522283782486
+  - rid: 7111407522283782459
+  - rid: 7111407522283782484
+  - rid: 7111407522283782469
+  - rid: 7111407522283782477
+  - rid: 7111407522283782537
+  - rid: 7111407522283782538
+  - rid: 7111407522283782452
+  - rid: 7111407522283782481
+  - rid: 7111407522283782482
+  - rid: 7111407522283782488
+  - rid: 7111407522283782478
+  - rid: 7111407522283782427
+  - rid: 7111407522283782385
+  - rid: 7111407522283782434
+  - rid: 7111407522283782519
+  - rid: 7111407522283782520
+  - rid: 7111407522283782389
+  - rid: 7111407522283782390
+  - rid: 7111407522283782422
+  - rid: 7111407522283782393
+  - rid: 7111407522283782394
+  - rid: 7111407522283782395
+  - rid: 7111407522283782396
+  - rid: 7111407522283782440
+  - rid: 7111407522283782398
+  - rid: 7111407522283782428
+  - rid: 7111407522283782401
+  - rid: 7111407522283782418
+  - rid: 7111407522283782430
+  - rid: 7111407522283782429
+  - rid: 7111407522283782419
+  - rid: 7111407522283782420
+  - rid: 7111407522283782421
+  useInRandomizer: 1
+  randomDuration: 0
+  hasExtraLayer: 0
+  extraLayerType: 0
+  extraLayerElements: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 266889289103835505
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 0, y: 0}
+        blockId: 0
+        isExtendable: 0
+    - rid: 3857708537811829136
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 3, y: 2}
+        blockId: 7
+        blockType: 2
+        blockColor: 3
+        blockEffects: []
+    - rid: 3857708537811829141
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 3, y: 1}
+        blockId: 3
+        blockType: 2
+        blockColor: 1
+        blockEffects:
+        - rid: 3857708537811829142
+    - rid: 3857708537811829142
+      type: {class: FixedDirectionBlockEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        horizontalDirection: 1
+    - rid: 3857708537811829148
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 2, y: 1}
+        blockId: 2
+        blockType: 0
+        blockColor: 8
+        blockEffects: []
+    - rid: 3857708537811829150
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 2, y: 2}
+        blockId: 6
+        blockType: 0
+        blockColor: 1
+        blockEffects: []
+    - rid: 3857708537811829194
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 0, y: 4}
+        blockId: 0
+        isExtendable: 0
+    - rid: 5328318359449370921
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 1, y: 2}
+        blockId: 5
+        blockType: 3
+        blockColor: 7
+        blockEffects: []
+    - rid: 5328318359449370925
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 5, y: 2}
+        blockId: 8
+        blockType: 3
+        blockColor: 7
+        blockEffects: []
+    - rid: 5328318359449370929
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 5, y: 1}
+        blockId: 4
+        blockType: 0
+        blockColor: 8
+        blockEffects: []
+    - rid: 5328318359449370930
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 4, y: 1}
+        blockId: 0
+    - rid: 5328318359449370937
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 1, y: 1}
+        blockId: 1
+        blockType: 0
+        blockColor: 3
+        blockEffects: []
+    - rid: 7111407520536592861
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 1, y: 0}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782300
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 3, y: 0}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782302
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 5, y: 0}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782303
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 6, y: 0}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782353
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 0, y: 2}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782357
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 4, y: 2}
+        blockId: 0
+    - rid: 7111407522283782366
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 5, y: 3}
+        blockId: 0
+    - rid: 7111407522283782385
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 0, y: 6}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782389
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 4, y: 6}
+        blockId: 0
+    - rid: 7111407522283782390
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 5, y: 6}
+        blockId: 0
+    - rid: 7111407522283782393
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 0, y: 7}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782394
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 1, y: 7}
+        blockId: 0
+    - rid: 7111407522283782395
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 2, y: 7}
+        blockId: 0
+    - rid: 7111407522283782396
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 3, y: 7}
+        blockId: 0
+    - rid: 7111407522283782398
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 5, y: 7}
+        blockId: 0
+    - rid: 7111407522283782401
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 0, y: 8}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782418
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 1, y: 8}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782419
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 4, y: 8}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782420
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 5, y: 8}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782421
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 6, y: 8}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782422
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 6, y: 6}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782423
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 6, y: 3}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782424
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 6, y: 2}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782427
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 6, y: 5}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782428
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 6, y: 7}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782429
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 3, y: 8}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782430
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 2, y: 8}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782434
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 1, y: 6}
+        blockId: 18
+        blockType: 8
+        blockColor: 7
+        blockEffects: []
+    - rid: 7111407522283782440
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 4, y: 7}
+        blockId: 20
+        blockType: 9
+        blockColor: 7
+        blockEffects: []
+    - rid: 7111407522283782452
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 1, y: 5}
+        blockId: 15
+        blockType: 0
+        blockColor: 1
+        blockEffects: []
+    - rid: 7111407522283782459
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 2, y: 4}
+        blockId: 0
+    - rid: 7111407522283782469
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 4, y: 4}
+        blockId: 0
+    - rid: 7111407522283782477
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 5, y: 4}
+        blockId: 14
+        blockType: 0
+        blockColor: 3
+        blockEffects: []
+    - rid: 7111407522283782478
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 5, y: 5}
+        blockId: 0
+    - rid: 7111407522283782481
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 2, y: 5}
+        blockId: 16
+        blockType: 2
+        blockColor: 8
+        blockEffects: []
+    - rid: 7111407522283782482
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 3, y: 5}
+        blockId: 0
+    - rid: 7111407522283782484
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 3, y: 4}
+        blockId: 13
+        blockType: 2
+        blockColor: 7
+        blockEffects: []
+    - rid: 7111407522283782486
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 1, y: 4}
+        blockId: 12
+        blockType: 2
+        blockColor: 3
+        blockEffects:
+        - rid: 7111407522283782531
+    - rid: 7111407522283782488
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 4, y: 5}
+        blockId: 17
+        blockType: 2
+        blockColor: 1
+        blockEffects:
+        - rid: 7111407522283782532
+    - rid: 7111407522283782493
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 1, y: 3}
+        blockId: 0
+    - rid: 7111407522283782496
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 4, y: 3}
+        blockId: 11
+        blockType: 0
+        blockColor: 8
+        blockEffects:
+        - rid: 7111407522283782547
+    - rid: 7111407522283782498
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 3, y: 3}
+        blockId: 10
+        blockType: 0
+        blockColor: 1
+        blockEffects:
+        - rid: 7111407522283782572
+    - rid: 7111407522283782500
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 2, y: 3}
+        blockId: 9
+        blockType: 0
+        blockColor: 8
+        blockEffects:
+        - rid: 7111407522283782545
+    - rid: 7111407522283782519
+      type: {class: BlockLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 2, y: 6}
+        blockId: 19
+        blockType: 21
+        blockColor: 3
+        blockEffects:
+        - rid: 7111407522283782546
+    - rid: 7111407522283782520
+      type: {class: InnerTileLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 3, y: 6}
+        blockId: 0
+    - rid: 7111407522283782531
+      type: {class: FixedDirectionBlockEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        horizontalDirection: 1
+    - rid: 7111407522283782532
+      type: {class: FixedDirectionBlockEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        horizontalDirection: 1
+    - rid: 7111407522283782535
+      type: {class: BorderLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 0, y: 1}
+        blockId: 0
+        isExtendable: 0
+    - rid: 7111407522283782536
+      type: {class: GateLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 6, y: 1}
+        blockId: -3
+        gateData:
+        - color: 8
+          colorCount: 1
+        - color: 1
+          colorCount: 3
+        - color: 8
+          colorCount: 1
+        gateEffects: []
+    - rid: 7111407522283782537
+      type: {class: GateLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 6, y: 4}
+        blockId: -5
+        gateData:
+        - color: 7
+          colorCount: 2
+        - color: 8
+          colorCount: 2
+        - color: 3
+          colorCount: 2
+        gateEffects:
+        - rid: 7111407522283782617
+    - rid: 7111407522283782538
+      type: {class: GateLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 0, y: 5}
+        blockId: -6
+        gateData:
+        - color: 1
+          colorCount: 2
+        - color: 7
+          colorCount: 3
+        gateEffects:
+        - rid: 7111407522283782623
+    - rid: 7111407522283782539
+      type: {class: GateLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 0, y: 3}
+        blockId: -4
+        gateData:
+        - color: 7
+          colorCount: 2
+        - color: 1
+          colorCount: 2
+        gateEffects:
+        - rid: 7111407522283782614
+    - rid: 7111407522283782540
+      type: {class: GateLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 2, y: 0}
+        blockId: -1
+        gateData:
+        - color: 8
+          colorCount: 1
+        - color: 3
+          colorCount: 4
+        - color: 7
+          colorCount: 5
+        gateEffects:
+        - rid: 7111407522283782620
+    - rid: 7111407522283782541
+      type: {class: GateLevelElementData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        position: {x: 4, y: 0}
+        blockId: -2
+        gateData:
+        - color: 8
+          colorCount: 1
+        - color: 3
+          colorCount: 4
+        gateEffects:
+        - rid: 7111407522283782608
+    - rid: 7111407522283782545
+      type: {class: FixedDirectionBlockEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        horizontalDirection: 0
+    - rid: 7111407522283782546
+      type: {class: FixedDirectionBlockEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        horizontalDirection: 0
+    - rid: 7111407522283782547
+      type: {class: FixedDirectionBlockEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        horizontalDirection: 0
+    - rid: 7111407522283782572
+      type: {class: FixedDirectionBlockEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        horizontalDirection: 1
+    - rid: 7111407522283782608
+      type: {class: IceGateEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        iceTurnsAmount: 4
+    - rid: 7111407522283782614
+      type: {class: IceGateEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        iceTurnsAmount: 8
+    - rid: 7111407522283782617
+      type: {class: IceGateEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        iceTurnsAmount: 10
+    - rid: 7111407522283782620
+      type: {class: IceGateEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        iceTurnsAmount: 13
+    - rid: 7111407522283782623
+      type: {class: IceGateEffectData, ns: WaterFlow.Game, asm: Assembly-CSharp}
+      data:
+        iceTurnsAmount: 14

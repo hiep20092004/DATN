@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7b15a378d1d4cd0853fbc2a1517c7b3, type: 3}
   m_Name: Editor Data
-  m_EditorClassIdentifier: Core.Inspector.Editor::SonatCore.EditorData
+  m_EditorClassIdentifier: Core.Inspector.Editor::WaterFlow.Core.EditorData
   defaultGUISkin: {fileID: 11400000, guid: 0d392f0bb1dfefc468ce526540dec8dc, type: 2}
   proGUISkin: {fileID: 11400000, guid: 7cb41da2d0df60a4aa915ae804bf7786, type: 2}
   icons: []

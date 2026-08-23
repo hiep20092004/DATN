@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91b3447760ea427bb79d82fc309313c9, type: 3}
   m_Name: Core Settings
-  m_EditorClassIdentifier: Core.Settings::SonatCore.CoreSettings
+  m_EditorClassIdentifier: Core.Settings::WaterFlow.Core.CoreSettings
   dataFolder: Assets\Project Files\Data
   scenesFolder: Assets\Project Files\Game\Scenes
   initSceneName: Loading

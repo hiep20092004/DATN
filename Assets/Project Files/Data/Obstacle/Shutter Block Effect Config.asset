@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9c0d3138e24e5db6e0a78c9a295b34, type: 3}
+  m_Name: Shutter Block Effect Config
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.ShutterBlockEffectConfig
+  transitionDuration: 0.25
+  shutterVisualsDatas:
+  - blockType: 0
+    visualsPrefab: {fileID: 919132149155446097, guid: b6bfbf2693fd25249b08bf0a79dd7c83, type: 3}
+    minValue: 0.34
+    maxValue: 1
+    texture: {fileID: 2800000, guid: edc00edca05173c458ab1c2070f37f27, type: 3}
+  - blockType: 1
+    visualsPrefab: {fileID: 919132149155446097, guid: 418a5f4710516754b8b05ae22312f574, type: 3}
+    minValue: 0.11
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 018e0d0e98d9fd24580d69baf6efd158, type: 3}
+  - blockType: 2
+    visualsPrefab: {fileID: 919132149155446097, guid: e94ef464b6bc9f24aaaf0cb51d3b97a2, type: 3}
+    minValue: 0.157
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 750d072b981fc2049949eeffc9c200eb, type: 3}
+  - blockType: 3
+    visualsPrefab: {fileID: 919132149155446097, guid: e94ef464b6bc9f24aaaf0cb51d3b97a2, type: 3}
+    minValue: 0.157
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 750d072b981fc2049949eeffc9c200eb, type: 3}
+  - blockType: 4
+    visualsPrefab: {fileID: 919132149155446097, guid: 9013961cbe302ed49b479c6c057ccbdc, type: 3}
+    minValue: 0.11
+    maxValue: 1
+    texture: {fileID: 2800000, guid: f6c3ed8690fb8ba46862ccbd53f7aa4d, type: 3}
+  - blockType: 5
+    visualsPrefab: {fileID: 919132149155446097, guid: 9013961cbe302ed49b479c6c057ccbdc, type: 3}
+    minValue: 0.11
+    maxValue: 1
+    texture: {fileID: 2800000, guid: f6c3ed8690fb8ba46862ccbd53f7aa4d, type: 3}
+  - blockType: 6
+    visualsPrefab: {fileID: 919132149155446097, guid: 084b956c106eb7f4ab7771dde955d47c, type: 3}
+    minValue: 0.17
+    maxValue: 1
+    texture: {fileID: 2800000, guid: a3492ee0281ff7541b3ad866c96b02a9, type: 3}
+  - blockType: 7
+    visualsPrefab: {fileID: 919132149155446097, guid: 084b956c106eb7f4ab7771dde955d47c, type: 3}
+    minValue: 0.17
+    maxValue: 1
+    texture: {fileID: 2800000, guid: a3492ee0281ff7541b3ad866c96b02a9, type: 3}
+  - blockType: 8
+    visualsPrefab: {fileID: 919132149155446097, guid: 084b956c106eb7f4ab7771dde955d47c, type: 3}
+    minValue: 0.17
+    maxValue: 1
+    texture: {fileID: 2800000, guid: a3492ee0281ff7541b3ad866c96b02a9, type: 3}
+  - blockType: 9
+    visualsPrefab: {fileID: 919132149155446097, guid: 084b956c106eb7f4ab7771dde955d47c, type: 3}
+    minValue: 0.17
+    maxValue: 1
+    texture: {fileID: 2800000, guid: a3492ee0281ff7541b3ad866c96b02a9, type: 3}
+  - blockType: 10
+    visualsPrefab: {fileID: 919132149155446097, guid: d3e92203a283ae14eac741d22f795111, type: 3}
+    minValue: 0.113
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 01b5a4b8ec2749b4392420d85543f1f7, type: 3}
+  - blockType: 11
+    visualsPrefab: {fileID: 919132149155446097, guid: d3e92203a283ae14eac741d22f795111, type: 3}
+    minValue: 0.113
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 01b5a4b8ec2749b4392420d85543f1f7, type: 3}
+  - blockType: 12
+    visualsPrefab: {fileID: 919132149155446097, guid: d3e92203a283ae14eac741d22f795111, type: 3}
+    minValue: 0.113
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 01b5a4b8ec2749b4392420d85543f1f7, type: 3}
+  - blockType: 13
+    visualsPrefab: {fileID: 919132149155446097, guid: d3e92203a283ae14eac741d22f795111, type: 3}
+    minValue: 0.113
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 01b5a4b8ec2749b4392420d85543f1f7, type: 3}
+  - blockType: 14
+    visualsPrefab: {fileID: 919132149155446097, guid: cfd5d64ff90fedf4abd9cbc53bc92a20, type: 3}
+    minValue: 0.113
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 01b5a4b8ec2749b4392420d85543f1f7, type: 3}
+  - blockType: 15
+    visualsPrefab: {fileID: 919132149155446097, guid: cfd5d64ff90fedf4abd9cbc53bc92a20, type: 3}
+    minValue: 0.113
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 01b5a4b8ec2749b4392420d85543f1f7, type: 3}
+  - blockType: 16
+    visualsPrefab: {fileID: 919132149155446097, guid: cfd5d64ff90fedf4abd9cbc53bc92a20, type: 3}
+    minValue: 0.113
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 01b5a4b8ec2749b4392420d85543f1f7, type: 3}
+  - blockType: 17
+    visualsPrefab: {fileID: 919132149155446097, guid: cfd5d64ff90fedf4abd9cbc53bc92a20, type: 3}
+    minValue: 0.113
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 01b5a4b8ec2749b4392420d85543f1f7, type: 3}
+  - blockType: 18
+    visualsPrefab: {fileID: 919132149155446097, guid: 6d2c799ac07aef14ab9a3be57f755e92, type: 3}
+    minValue: 0.45
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 8c567c752fba4fe49aa696e27993342e, type: 3}
+  - blockType: 19
+    visualsPrefab: {fileID: 919132149155446097, guid: 6d2c799ac07aef14ab9a3be57f755e92, type: 3}
+    minValue: 0.45
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 8c567c752fba4fe49aa696e27993342e, type: 3}
+  - blockType: 20
+    visualsPrefab: {fileID: 919132149155446097, guid: 6d2c799ac07aef14ab9a3be57f755e92, type: 3}
+    minValue: 0.45
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 8c567c752fba4fe49aa696e27993342e, type: 3}
+  - blockType: 21
+    visualsPrefab: {fileID: 919132149155446097, guid: 6d2c799ac07aef14ab9a3be57f755e92, type: 3}
+    minValue: 0.45
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 8c567c752fba4fe49aa696e27993342e, type: 3}
+  - blockType: 22
+    visualsPrefab: {fileID: 919132149155446097, guid: b9d106e99f076f4448fe45ba46984106, type: 3}
+    minValue: 0.09
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 9155ef293c21e2b4ba40529b4a4572b6, type: 3}
+  - blockType: 23
+    visualsPrefab: {fileID: 919132149155446097, guid: 4e4cb38015d15274b96e803165e747ce, type: 3}
+    minValue: 0.45
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 4bfa4e434d0a96b489e8ca2f0524c74c, type: 3}
+  - blockType: 24
+    visualsPrefab: {fileID: 919132149155446097, guid: 42be0bcc06c6bba43b2008a169f7cb93, type: 3}
+    minValue: 0.45
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 4bfa4e434d0a96b489e8ca2f0524c74c, type: 3}
+  - blockType: 25
+    visualsPrefab: {fileID: 919132149155446097, guid: 42be0bcc06c6bba43b2008a169f7cb93, type: 3}
+    minValue: 0.45
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 4bfa4e434d0a96b489e8ca2f0524c74c, type: 3}
+  - blockType: 26
+    visualsPrefab: {fileID: 919132149155446097, guid: 4e4cb38015d15274b96e803165e747ce, type: 3}
+    minValue: 0.45
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 4bfa4e434d0a96b489e8ca2f0524c74c, type: 3}
+  - blockType: 27
+    visualsPrefab: {fileID: 919132149155446097, guid: 303f69622e0b91143ab19e17bd605f42, type: 3}
+    minValue: 0.11
+    maxValue: 1
+    texture: {fileID: 2800000, guid: eb7085da5c65de84b80da0c2270250d8, type: 3}
+  - blockType: 28
+    visualsPrefab: {fileID: 919132149155446097, guid: 303f69622e0b91143ab19e17bd605f42, type: 3}
+    minValue: 0.11
+    maxValue: 1
+    texture: {fileID: 2800000, guid: eb7085da5c65de84b80da0c2270250d8, type: 3}
+  - blockType: 29
+    visualsPrefab: {fileID: 919132149155446097, guid: 303f69622e0b91143ab19e17bd605f42, type: 3}
+    minValue: 0.11
+    maxValue: 1
+    texture: {fileID: 2800000, guid: eb7085da5c65de84b80da0c2270250d8, type: 3}
+  - blockType: 30
+    visualsPrefab: {fileID: 919132149155446097, guid: 303f69622e0b91143ab19e17bd605f42, type: 3}
+    minValue: 0.11
+    maxValue: 1
+    texture: {fileID: 2800000, guid: eb7085da5c65de84b80da0c2270250d8, type: 3}
+  - blockType: 31
+    visualsPrefab: {fileID: 919132149155446097, guid: c8945551f00c17f40a76488a7dbd9b63, type: 3}
+    minValue: 0.1
+    maxValue: 1
+    texture: {fileID: 2800000, guid: 018e0d0e98d9fd24580d69baf6efd158, type: 3}

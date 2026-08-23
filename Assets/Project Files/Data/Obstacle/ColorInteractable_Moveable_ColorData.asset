@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abeb91d60555fc74c92ff9d5f072df1f, type: 3}
+  m_Name: ColorInteractable_Moveable_ColorData
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.OtherColorDataSO
+  colorData:
+  - type: 1
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: 770df7a232ec4444e8a4f45bf7c2b9e6, type: 2}
+  - type: 2
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: f33a79c4e1e833045923904325f634e6, type: 2}
+  - type: 3
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: 892120bb058a29e41b523e2dc5bcf655, type: 2}
+  - type: 4
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: e8ca7faf1ee9d3e41b91d43236271ae8, type: 2}
+  - type: 5
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: 1ceb260f10e574f428721e8c5d15e994, type: 2}
+  - type: 6
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: d91127d1133ecaf4abd6a84eb3f9d4fb, type: 2}
+  - type: 7
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: 904deb82053e3e24eb729bd71d000827, type: 2}
+  - type: 8
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: 823e788a293a419448b34f52bb5db6db, type: 2}
+  - type: 9
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: 733c1942bdc7eed42ade86e035a094f5, type: 2}
+  - type: 10
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: 4e94dbd9854411d4ab000374d4fc49cd, type: 2}
+  - type: 11
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: 91bba6e484622224f9acb3236bbc53c9, type: 2}
+  - type: 12
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: e9c79a1d7001bed4d9a245eaf32ee99e, type: 2}
+  - type: 13
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: b25b59310edcacf44a0192a9016b7393, type: 2}
+  - type: 14
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: cd51e82b7d905f74cadec4b7bf19c976, type: 2}
+  - type: 15
+    sprite: {fileID: 0}
+    texture: {fileID: 0}
+    material: {fileID: 2100000, guid: 5aea2e34d93c50449a70defdc948fcbd, type: 2}
