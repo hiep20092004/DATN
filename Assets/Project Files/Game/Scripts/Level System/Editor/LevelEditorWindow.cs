@@ -1,6 +1,4 @@
-bool testStarted = hasSelectedMain && TestLevel();            bool hasSelectedMain = levelsHandler != null && levelsHandler.SelectedLevelIndex != -1;
-            bool testStarted = hasSelectedMain && TestLevel();            bool hasSelectedMain = levelsHandler != null && levelsHandler.SelectedLevelIndex != -1;
-            bool testStarted = hasSelectedMain && TestLevel();﻿using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System;
 using System.Collections.Generic;
