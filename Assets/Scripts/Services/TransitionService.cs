@@ -9,18 +9,28 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(fileName = "TransitionService", menuName = "Services/Transition/Service")]
 public class TransitionService : SceneService
 {
-    private GamePlacement currentPlacement = GamePlacement.Loading;
     private bool isTransitioning;
 
+    // The boot scene (Loading -> Home) is loaded by GameLoading, not by this service, so a cached
+    // placement field would stay stale at Loading for the whole Home session. Read the active scene.
     public override GamePlacement GetCurrentGamePlacement()
     {
-        return currentPlacement;
+        return SceneManager.GetActiveScene().name.FromBuildSceneName();
     }
 
     public override void SwitchScene(GamePlacement newPlacement, bool force = false, Action callback = null)
     {
         // Guard early to avoid races from multiple quick clicks
         if (isTransitioning) return;
+
+        // GamePlacement order must mirror the scene build list, so a placement whose scene is absent is a
+        // build-settings bug. Fail loudly instead of rerouting, which would hide the misconfiguration.
+        string requestedSceneName = newPlacement.ToBuildSceneName();
+        if (!Application.CanStreamedLevelBeLoaded(requestedSceneName))
+        {
+            Debug.LogError($"TransitionService: scene '{requestedSceneName}' for {newPlacement} is not in Build Settings. Aborting transition.");
+            return;
+        }
 
         isTransitioning = true; // set here so subsequent clicks are blocked immediately
         PanelManager.Instance?.CloseAllPanel();
@@ -33,6 +43,9 @@ public class TransitionService : SceneService
     {
         try
         {
+            string targetSceneName = newPlacement.ToBuildSceneName();
+            GamePlacement currentPlacement = GetCurrentGamePlacement();
+
             if (!BaseTransition.Instance)
             {
                 Debug.LogError("TransitionService: BaseTransition instance is not found (before FadeIn). Aborting transition.");
@@ -44,7 +57,7 @@ public class TransitionService : SceneService
             bool skipTransitionVisuals = currentPlacement == GamePlacement.Loading;
 
             // Start loading but don't activate yet
-            var asyncOperation = SceneManager.LoadSceneAsync(newPlacement.ToBuildSceneName());
+            var asyncOperation = SceneManager.LoadSceneAsync(targetSceneName);
             asyncOperation.allowSceneActivation = false;
 
             // Fade in (cover)
@@ -78,9 +91,7 @@ public class TransitionService : SceneService
                 await BaseTransition.Instance.FadeOut();
             }
 
-            // Callback + update placement
             callback?.Invoke();
-            currentPlacement = newPlacement;
         }
         catch (Exception ex)
         {
