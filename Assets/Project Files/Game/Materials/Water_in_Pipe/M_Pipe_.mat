@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Pipe_
+  m_Shader: {fileID: 4800000, guid: 38ea691552f4865489c4a44e2468ba11, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DissolveTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EdgeNoiseTex:
+        m_Texture: {fileID: 2800000, guid: e7dad64b57583854e8607792ab4d5de4, type: 3}
+        m_Scale: {x: 10, y: 0.75}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: f7fd8e97178a0ee4da2d8c74a55b95c4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterPatternTex:
+        m_Texture: {fileID: 2800000, guid: 8f75c688f03ea4c42b3c43438a3a6f3c, type: 3}
+        m_Scale: {x: 0.16, y: 0.1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BackfaceDarkness: 0.5
+    - _DissolveScale: 2
+    - _DissolveSize: 0.255
+    - _DissolveSmoothness: 0.5
+    - _DissolveStretchX: 1
+    - _Distortion: 0.03
+    - _DistortionVertex: 0.04
+    - _EdgeNoiseAmplitude: 0.1
+    - _EdgeNoiseScale: 0.36
+    - _FillAmount: 1
+    - _FillAmountBottom: 0
+    - _FixedHeight: 0.1
+    - _FoamThickness: 0.04
+    - _NormalScale: 2
+    - _NormalStrength: 1
+    - _NormalTiling: 1
+    - _RimIntensity: 0.5
+    - _RimPower: 2
+    - _Smoothness: 1
+    - _SpecularFloat: 2
+    - _VertexWaveAmplitude: 0
+    - _VertexWaveFrequency: 0
+    - _VertexWaveSpeed: 0
+    - _WaterPatternScale: 0.16
+    - _WaterPatternSpeed: 0.2
+    - _WaterPatternStrength: 0.68
+    - _WaveFalloff: 0
+    - _WaveHeight: 0.1
+    - _WaveSpeed: 1
+    m_Colors:
+    - _FillDirection: {r: 9.26, g: -0.49, b: 2.91, a: 0}
+    - _FlowDirection: {r: 0, g: 0, b: 0.1, a: 0}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 1, g: 0.84705883, b: 0.043137256, a: 1}
+    - _NormalSpeed: {r: 0.05, g: 0.05, b: 0, a: 0}
+    - _RimColor: {r: 0.09999997, g: 0.19999996, b: 0.39999998, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
