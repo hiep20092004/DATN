@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Core Settings
   m_EditorClassIdentifier: Core.Settings::WaterFlow.Core.CoreSettings
   dataFolder: Assets\Project Files\Data
-  scenesFolder: Assets\Project Files\Game\Scenes
+  scenesFolder: Assets\Scenes
   initSceneName: Loading
   autoLoadInitializer: 1
   useCustomInspector: 1
