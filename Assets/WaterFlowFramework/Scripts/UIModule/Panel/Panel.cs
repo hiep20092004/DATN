@@ -83,22 +83,38 @@ namespace WaterFlow.Framework.UIModule
 
         private async UniTask PlayTweens(TweenData[] tweenDatas, Action callback)
         {
-            if (tweenDatas == null)
+            var cancellationToken = this.GetCancellationTokenOnDestroy();
+
+            if (tweenDatas == null || tweenDatas.Length == 0)
             {
                 callback?.Invoke();
                 return;
             }
 
-            float maxTime = 0;
-            for (var i = 0; i < tweenDatas.Length; i++)
+            try
             {
-                UITween.Play(tweenDatas[i]).Forget();
-                if (tweenDatas[i].config.delay + tweenDatas[i].config.duration > maxTime)
-                    maxTime = tweenDatas[i].config.delay + tweenDatas[i].config.duration;
-            }
+                float maxTime = 0;
+                for (var i = 0; i < tweenDatas.Length; i++)
+                {
+                    var tweenData = tweenDatas[i];
+                    if (tweenData == null) continue;
 
-            await UniTask.Delay(TimeSpan.FromSeconds(maxTime));
-            callback?.Invoke();
+                    tweenData.SetupData();
+                    if (tweenData.config == null || !tweenData.target) continue;
+
+                    UITween.Play(tweenData, cancellationToken).Forget();
+                    var tweenTime = tweenData.config.delay + tweenData.config.duration;
+                    if (tweenTime > maxTime)
+                        maxTime = tweenTime;
+                }
+
+                await UniTask.Delay(TimeSpan.FromSeconds(maxTime), cancellationToken: cancellationToken);
+                if (this && !cancellationToken.IsCancellationRequested)
+                    callback?.Invoke();
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+            }
         }
 
         public void OnGamePause()
