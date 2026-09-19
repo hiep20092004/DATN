@@ -33,11 +33,6 @@ namespace WaterFlow.Game
         [Space][SerializeField] GameObject timerObject;
         [SerializeField] Image timerBackground;
 
-        [Space][Header("Navigation Hint")]
-        [SerializeField] private GameObject navHighlightObject;
-
-        private DG.Tweening.Tween navHighlightTween;
-
         private PowerUpBehavior behavior;
         private BoosterData boosterData;
         private BoosterConfig boosterConfig;
@@ -281,22 +276,6 @@ namespace WaterFlow.Game
                 StopCoroutine(timerCoroutine);
         }
 
-        public void SetNavigationHighlight(bool active)
-        {
-            navHighlightTween?.Kill();
-
-            if (!navHighlightObject) return;
-            
-            navHighlightObject.transform.localScale = Vector3.one;
-            if (active)
-            {
-                navHighlightTween = navHighlightObject.transform
-                    .DOScale(1.15f, 0.4f)
-                    .SetLoops(-1, LoopType.Yoyo)
-                    .SetEase(Ease.InOutSine);
-            }
-        }
-
         public void OnLevelFinished()
         {
             if (isTimerActive)
@@ -311,8 +290,6 @@ namespace WaterFlow.Game
 
                 isTimerActive = false;
             }
-
-            SetNavigationHighlight(false);
         }
 
         private IEnumerator TimerCoroutine(PUTimer timer)

@@ -13,19 +13,9 @@ MonoBehaviour:
   m_Name: Expand PowerUp Config
   m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.ExpandPowerUpConfig
   type: 3
-  displayName:
-    mTerm: expand
-    mRTL_IgnoreArabicFix: 0
-    mRTL_MaxLineLength: 0
-    mRTL_ConvertNumbers: 0
-    m_DontLocalizeParameters: 0
-  description:
-    mTerm: expand_the_board
-    mRTL_IgnoreArabicFix: 0
-    mRTL_MaxLineLength: 0
-    mRTL_ConvertNumbers: 0
-    m_DontLocalizeParameters: 0
-  icon: {fileID: 21300000, guid: 27f71b7b60eb33d4faa710d3ffcc6f04, type: 3}
+  displayName: Expand
+  description: Push back a movable wall to open up more room on the board.
+  icon: {fileID: 21300000, guid: bb1917987671a8b44a74eb8046d27890, type: 3}
   resultIcon: {fileID: 21300000, guid: 187ec72b8958dc7459d1cd269cc89f06, type: 3}
   tooltipBackground: {fileID: 21300000, guid: 359d057d53829c94a86e12746fb0c179, type: 3}
   tooltipTextSecondaryTerm: Text Orange

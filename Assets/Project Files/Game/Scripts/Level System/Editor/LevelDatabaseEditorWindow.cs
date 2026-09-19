@@ -1059,11 +1059,6 @@ namespace WaterFlow.Game
                             dual.secondDualColor = (BlockColor)ApplyColorSwaps((int)dual.secondDualColor);
                         else if (effect is KeyColorBlockEffectData kc)
                             kc.keyColor = (BlockColor)ApplyColorSwaps((int)kc.keyColor);
-                        else if (effect is RopesBlockEffectData rope && rope.ropesColors != null)
-                        {
-                            for (int i = 0; i < rope.ropesColors.Length; i++)
-                                rope.ropesColors[i] = (BlockColor)ApplyColorSwaps((int)rope.ropesColors[i]);
-                        }
                     }
                 }
             }

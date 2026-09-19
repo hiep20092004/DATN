@@ -44,7 +44,6 @@ namespace WaterFlow.Game
 
                 LevelActiveBuildSlotInfo[] plan = db.ComputeActiveBuildSlots();
 
-                var obstacleSourceLevels = new List<LevelData>();
                 var keptSlotPaths = new HashSet<string>();
 
                 foreach (LevelActiveBuildSlotInfo slot in plan)
@@ -55,12 +54,10 @@ namespace WaterFlow.Game
 
                     string slotPath = AssetDatabase.GetAssetPath(slotAsset);
                     keptSlotPaths.Add(slotPath);
-                    obstacleSourceLevels.Add(slot.SourceLevel);
                 }
 
                 RemoveStaleActiveSlotAssets(keptSlotPaths);
 
-                db.Editor_GenerateObstacleUnlockData(obstacleSourceLevels);
                 BakeRuntimeLevelInfos(db, plan);
 
                 Debug.Log(

@@ -109,7 +109,7 @@ namespace WaterFlow.Game
         }
 
         /// <summary>
-        /// Override to change click logic (e.g. test-swap in ObstacleUnlockNotifyPopup).
+        /// Override to change click logic.
         /// Default behaviour: run <see cref="OnConfirmAsync"/> then close.
         /// </summary>
         protected virtual void HandleClick()

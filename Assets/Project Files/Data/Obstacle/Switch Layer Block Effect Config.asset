@@ -14,41 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.LayerBlockEffectConfig
   layerBlockPrefabs:
   - blockGroupType: 1
-    newLayerPrefab: {fileID: 919132149155446097, guid: 8aae52945056ea947ba495318519f9b1, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: 8666bce49ac9e334aa8028198263ea1a, type: 3}
   - blockGroupType: 2
-    newLayerPrefab: {fileID: 919132149155446097, guid: 9ee0e74175717c94999d7c4b004f16a1, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: 81886825ed5f05842822be5374e96617, type: 3}
   - blockGroupType: 3
-    newLayerPrefab: {fileID: 919132149155446097, guid: be22884fb95359744846a2fd7368c4c7, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: 55040c081392909408c577cfe2e77a77, type: 3}
   - blockGroupType: 4
-    newLayerPrefab: {fileID: 919132149155446097, guid: 14a099e297727fd40ab1b91e088cef52, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: f925e3fea8586a04a86ff42f36e30e11, type: 3}
   - blockGroupType: 5
-    newLayerPrefab: {fileID: 919132149155446097, guid: 62abe51ecf8accb4aa5d68164ac5271c, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: 1c443b7a81940dc4ca4ef7f7fc30b83f, type: 3}
   - blockGroupType: 6
-    newLayerPrefab: {fileID: 919132149155446097, guid: 6a16355ba4ebbe94c9e1d699c4d17bfd, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: 1010e0355917625409a3f4853961dd95, type: 3}
   - blockGroupType: 7
-    newLayerPrefab: {fileID: 919132149155446097, guid: 771ae064031695d45a56e02a28444acb, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: 50888757be19dfc4f948f1efce38994b, type: 3}
   - blockGroupType: 8
-    newLayerPrefab: {fileID: 919132149155446097, guid: 7488b4372e3475741846a6aea47e9dd4, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: a6a4c3bf13f8c97468a84a842e493803, type: 3}
   - blockGroupType: 9
-    newLayerPrefab: {fileID: 919132149155446097, guid: 47e89cf81b52223499616bb6bd482622, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: 8aa9402516bbdfa4e97ceee8460873d9, type: 3}
   - blockGroupType: 10
-    newLayerPrefab: {fileID: 919132149155446097, guid: c9dfdf8900d979a4893201b8d80373d8, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: 7f687294672264542a87ed7912900b55, type: 3}
   - blockGroupType: 11
-    newLayerPrefab: {fileID: 919132149155446097, guid: 2e27305d12295f740be1faaa21988e5d, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: 4f724f134b154f24b9e3ef06df449b9b, type: 3}
   - blockGroupType: 12
-    newLayerPrefab: {fileID: 919132149155446097, guid: 6ad3575e24522ea4395627d04fdcbe73, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: 17ccd0c18ba7dfc438a3ec3684531665, type: 3}
   - blockGroupType: 13
-    newLayerPrefab: {fileID: 919132149155446097, guid: a39cd8ede83d41346a0d1927524b2408, type: 3}
     simpleLayerPrefab: {fileID: 919132149155446097, guid: f92abebc872d17b498ab07f542efc4bc, type: 3}

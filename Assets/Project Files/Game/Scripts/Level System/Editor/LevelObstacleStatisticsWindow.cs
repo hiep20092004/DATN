@@ -135,9 +135,9 @@ namespace WaterFlow.Game
 
         private SearchCategory searchCategory;
         private BlockEffectType searchBlockEffect;
-        private BlockEffectType searchSecondaryBlockEffect = BlockEffectType.ContainerBox;
+        private BlockEffectType searchSecondaryBlockEffect = BlockEffectType.BreakableLink;
         private GateEffectType searchGateEffect;
-        private InteractableObjectType searchInteractableType = InteractableObjectType.ColorObstacle;
+        private InteractableObjectType searchInteractableType = InteractableObjectType.Grinder;
         private readonly List<SearchLevelResult> searchResults = new List<SearchLevelResult>();
         private int totalSearchOccurrences;
         private bool didRunSearch;
@@ -1213,8 +1213,6 @@ namespace WaterFlow.Game
             {
                 case IceBlockEffectData ice:
                     return $"Ice (turns: {ice.iceTurnsAmount})";
-                case HiddenBlockEffectData:
-                    return "Hidden";
                 case BombBlockEffectData bomb:
                     return $"Bomb (duration: {bomb.bombDuration})";
                 case LayeredBlockEffectData layered:
@@ -1223,32 +1221,18 @@ namespace WaterFlow.Game
                     return $"FixedDirection ({(direction.horizontalDirection ? "Horizontal" : "Vertical")})";
                 case DualBlockEffectData dual:
                     return $"Dual (second color: {dual.secondDualColor})";
-                case ShutterBlockEffectData shutter:
-                    return $"Shutter ({(shutter.shutterIsOpen ? "Open" : "Closed")})";
                 case ChainBlockEffectData chain:
                     return $"Chain (keys: {chain.keysAmount})";
                 case KeyChainBlockEffectData:
                     return "KeyChain";
                 case KeyColorBlockEffectData keyColor:
                     return $"KeyColor ({keyColor.keyColor})";
-                case CombinesBlockEffectData combine:
-                    return $"Combines (group: {combine.combineGroupID})";
-                case RopesBlockEffectData ropes:
-                    return $"Ropes ({FormatBlockColorArray(ropes.ropesColors)})";
-                case ScissorBlockEffectData scissor:
-                    return $"Scissor ({scissor.scissorColor})";
                 case TntBlockEffectData tnt:
                     return $"Tnt (turn: {tnt.tntTurn})";
                 case BlockedBlockEffectData:
                     return "Blocked";
                 case TimeCapsuleBlockEffectData timeCapsule:
                     return $"TimeCapsule (bonus: {timeCapsule.timeBonus})";
-                case ContainerBoxBlockEffectData box:
-                    return $"ContainerBox (id: {box.containerBoxID}, clear: {box.clearCount})";
-                case ContainerMoveBoxBlockEffectData moveBox:
-                    return $"ContainerMoveBox (id: {moveBox.containerBoxID}, clear: {moveBox.clearCount})";
-                case ContainerColorBoxBlockEffectData colorBox:
-                    return $"ContainerColorBox (id: {colorBox.containerBoxID}, color: {colorBox.colorCount}, clear: {colorBox.clearCount})";
                 default:
                     return effect.Type.ToString();
             }
@@ -1276,8 +1260,6 @@ namespace WaterFlow.Game
                     return $"Valve ({(valve.isValveOpened ? "Opened" : "Closed")})";
                 case LockedColorGateEffectData locked:
                     return $"LockedColor ({locked.lockColor})";
-                case MovingLockGateEffectData moving:
-                    return $"MovingLock ({(moving.isClockwise ? "Clockwise" : "CounterClockwise")})";
                 default:
                     return effect.Type.ToString();
             }

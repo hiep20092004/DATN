@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c990f96e2ccb4ebeb0cfafc13dfd21a1, type: 3}
+  m_Name: DefaultPoolingService
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Framework.Systems.ObjectPooling.DefaultPoolingService
+  loadObjectService:
+    referenceType: 0
+    reference: {fileID: 11400000, guid: 2cd6628df64aba34fb15bbffdf5b233a, type: 2}
+  loadObjectServiceAsync:
+    referenceType: 0
+    reference: {fileID: 11400000, guid: f27845d8293f48da94177196ab632010, type: 2}

@@ -14,10 +14,10 @@ namespace WaterFlow.Game
         
         // Obstacle-based lose conditions 
         ValveFailed,
-        ShutterFailed,
+        ShutterFailed,        // RETIRED — obstacle removed; value reserved so LoseReasonConfig keeps its numbering
         BlockLayerFailed,
         TntExploded,
-        MovingGateLockStuck,
+        MovingGateLockStuck,  // RETIRED — obstacle removed; value reserved
         ChainGateLockFailed,
         BlockSwitchLayerFailed
     }
@@ -29,10 +29,8 @@ namespace WaterFlow.Game
             return state switch
             {
                 BlockGateState.GateValveLocked => LoseReason.ValveFailed,
-                BlockGateState.Shuttered => LoseReason.ShutterFailed,
                 BlockGateState.BlockLayerMissMatchColor => LoseReason.BlockLayerFailed,
                 BlockGateState.BlockSwitchLayerMissMatchColor => LoseReason.BlockSwitchLayerFailed,
-                BlockGateState.GateMovingLockMatchColor => LoseReason.MovingGateLockStuck,
                 BlockGateState.GateChainLocked => LoseReason.ChainGateLockFailed,
                 _ => LoseReason.None,
             };

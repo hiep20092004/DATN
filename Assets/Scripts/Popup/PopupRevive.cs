@@ -27,8 +27,8 @@ public class ReviveReasonConfig
     [LabelWidth(90)]
     public string descriptionFormat;
 
-    // Optional per-theme icon overrides, mirroring ObstacleUnlockEntry: when the active BlockTheme has an
-    // override here the popup uses it, otherwise GetIcon falls back to the default icon above.
+    // Optional per-theme icon overrides: when the active BlockTheme has an override here the popup
+    // uses it, otherwise GetIcon falls back to the default icon above.
     [BoxGroup("Display", showLabel: false)]
     [TableList(AlwaysExpanded = true, ShowIndexLabels = false)]
     public List<ThemeIcon> themeIcons = new List<ThemeIcon>();

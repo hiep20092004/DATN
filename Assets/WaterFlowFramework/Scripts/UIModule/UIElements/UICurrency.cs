@@ -40,7 +40,7 @@ namespace WaterFlow.Framework.UIModule.UIElements
         [SerializeField] protected ParticleSystem blastEffect;
 
         protected EventBinding<AddResourceVisualEvent> addCurrencyEvent;
-        [SerializeField] protected string openPanelName = "ShopPanel";
+        [SerializeField] protected string openPanelName = "";
         [SerializeField] protected string receiveSound;
 
         [Header("Haptic")]
@@ -162,6 +162,8 @@ namespace WaterFlow.Framework.UIModule.UIElements
         public virtual void OnClickCurrency()
         {
             if (blockClick) return;
+            if (string.IsNullOrEmpty(openPanelName) || openPanelName == "ShopPanel") return;
+
             var uidata = new UIData();
             uidata.Add("OpenBy", "UICurrency");
             PanelManager.Instance.OpenPanelByNameAsync<Panel>(openPanelName).Forget();

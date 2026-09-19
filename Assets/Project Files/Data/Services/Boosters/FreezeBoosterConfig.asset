@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f31165e6bd1c5b4bbcf5288f2c5164e, type: 3}
+  m_Name: FreezeBoosterConfig
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.BoosterConfig
+  type: 6
+  powerUpConfig: {fileID: 11400000, guid: 55af364da5530f04485b2fc25df2cda0, type: 2}
+  price:
+    currency: 2
+    value: 300
+  levelUnlock: 1
+  defaultValue: 3
+  header: Freeze
+  description: Freeze the timer for a short duration.
+  outOfTargetText: No valid target.
+  icon: {fileID: 21300000, guid: b99f0345df7a2e64b84f75fff3a35847, type: 3}
+  AmountPerBuy: 3

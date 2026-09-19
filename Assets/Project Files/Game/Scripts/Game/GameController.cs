@@ -14,6 +14,9 @@ namespace WaterFlow.Game
     {
         private const int MAX_GAMEPLAY_FRAME_RATE = 120;
 
+        // One ingame track for every level: presentation no longer varies with LevelType.
+        private const AudioId INGAME_MUSIC = AudioId.BGM_Ingame_Funny;
+
         [SerializeField] UIController uiController;
         [SerializeField] LevelDatabase levelDatabase;
         [SerializeField] private CanvasGroup MainUI;
@@ -58,33 +61,14 @@ namespace WaterFlow.Game
             var powerUpController = gameObject.GetOrAdd<PowerUpController>();
             powerUpController.Init();
 
-            var boosterNavController = gameObject.GetOrAdd<BoosterNavigationController>();
-            boosterNavController.Init();
-
             gameObject.GetOrAdd<NotifyPopupQueue>();
         }
 
         private static void UpdateGameMusic()
         {
             var audioService = Services.AudioService;
-            AudioId targetMusic = ResolveIngameMusic();
-            if (audioService.GetCurrentMusic() != targetMusic.ToString())
-                audioService.PlayMusic(targetMusic);
-        }
-
-        private static AudioId ResolveIngameMusic()
-        {
-            var representation = LevelController.Instance.LevelRepresentation;
-            LevelType levelType = representation?.LevelData ? representation.LevelData.Type : LevelType.Normal;
-            switch (levelType)
-            {
-                case LevelType.Hard:
-                    return AudioId.BGM_Ingame_Universal_HardLevel;
-                case LevelType.VeryHard:
-                    return AudioId.BGM_Ingame_Universal_SuperHardLevel;
-                default:
-                    return AudioId.BGM_Ingame_Funny;
-            }
+            if (audioService.GetCurrentMusic() != INGAME_MUSIC.ToString())
+                audioService.PlayMusic(INGAME_MUSIC);
         }
 
         private void Start()
@@ -136,7 +120,8 @@ namespace WaterFlow.Game
                 cancellationToken: this.GetCancellationTokenOnDestroy());
             UnblockUI("completeLevelUI");
 
-            PanelManager.Instance.OpenForget<PopupPreWin>();
+            // Straight to the win screen: the pre-win celebration popup is not part of this project.
+            PanelManager.Instance.OpenForget<PopupWin>();
         }
 
         // Entering a level at or above this 1-based index counts as the player being engaged

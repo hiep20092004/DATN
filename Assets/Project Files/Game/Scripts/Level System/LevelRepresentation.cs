@@ -144,7 +144,6 @@ namespace WaterFlow.Game
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
-                CombineBlocks();
                 BreakableLinkBlocks();
             }
 #endif
@@ -159,7 +158,6 @@ namespace WaterFlow.Game
 
                 if (Application.isPlaying)
                 {
-                    CombineBlocks();
                     BreakableLinkBlocks();
                 }
 
@@ -276,38 +274,15 @@ namespace WaterFlow.Game
             Physics.SyncTransforms();
         }
 
-        private void CombineBlocks()
-        {
-            // Blocks locked inside an active container can't share a combine rigidbody yet;
-            // their combine group is formed later, when the container dissolves and releases
-            // them (see ContainerBoxEffectBehavior.DissolveGroupImmediate).
-            FormCombineGroupsForBlocks(ActiveBlocks.Where(block => !block.IsHeldByContainer()));
-        }
-
-        /// <summary>
-        /// Groups the given blocks by combineGroupID and forms one combined (shared-rigidbody)
-        /// unit per group. Reused at spawn (free blocks) and on container release.
-        /// </summary>
-        public void FormCombineGroupsForBlocks(IEnumerable<LevelBlockBehavior> source)
-        {
-            IEnumerable<List<LevelBlockBehavior>> combinedBlocks = source
-                .Where(block => block.HasEffect(BlockEffectType.Combines))
-                .GroupBy(block => ((CombinesBlockEffectData)block.GetEffect(BlockEffectType.Combines).EffectData).combineGroupID)
-                .Select(group => group.ToList());
-
-            foreach (List<LevelBlockBehavior> blockGroup in combinedBlocks)
-                CombinesEffectBehavior.CombineBlocks(blockGroup, LevelTransform);
-        }
-
         private void BreakableLinkBlocks()
         {
-            // Same constraint as CombineBlocks: container-held blocks can't share a group rigidbody yet.
+            // Container-held blocks cannot share a group rigidbody yet.
             FormBreakableLinkGroupsForBlocks(ActiveBlocks.Where(block => !block.IsHeldByContainer()));
         }
 
         /// <summary>
         /// Links adjacent blocks that declare a matching {linkId, count} into breakable rigid groups.
-        /// Reused at spawn (free blocks) and on container release, mirroring FormCombineGroupsForBlocks.
+        /// Reused at spawn (free blocks) and on container release.
         /// </summary>
         public void FormBreakableLinkGroupsForBlocks(IEnumerable<LevelBlockBehavior> source)
         {

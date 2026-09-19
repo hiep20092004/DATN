@@ -22,8 +22,6 @@ namespace WaterFlow.Game
         [SerializeField] MeshRenderer outerRenderer;
         [SerializeField] WaterVisualModule waterVisualModule;
         [SerializeField] private WaterMinMaxConfig waterMinMaxConfig;
-        [SerializeField] Transform shutterBullHandleStart;
-        [SerializeField] Transform shutterBullHandleEnd;
         [SerializeField] Transform colliderParent;
 
         [Header("Collider")]
@@ -62,8 +60,6 @@ namespace WaterFlow.Game
         public BlockColorData OriginColorConfig => originColorConfig;
         public Vector2Int MatrixPosition => new (Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.z));
         public List<BlockEffectBehavior> Effects => effectController.Effects;
-        public Transform ShutterTransformStart => shutterBullHandleStart;
-        public Transform ShutterBullHandleEnd => shutterBullHandleEnd;
         /// <summary>
         /// Active water material: from dual visual when dual block, else from water module.
         /// </summary>

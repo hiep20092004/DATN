@@ -56,7 +56,6 @@ namespace WaterFlow.Game
     public class LayerBlockPrefabData
     {
         [SerializeField] private BlockGroupType blockGroupType;
-        [SerializeField] private GameObject newLayerPrefab;
         [SerializeField] private GameObject simpleLayerPrefab;
 
         public BlockGroupType BlockGroupType => blockGroupType;
@@ -68,15 +67,7 @@ namespace WaterFlow.Game
         
         public GameObject GetLayerPrefab(BlockTheme theme)
         {
-            if (theme == BlockTheme.New)
-            {
-                return newLayerPrefab;
-            }
-            if (theme == BlockTheme.Simple)
-            {
-                return simpleLayerPrefab;
-            }
-            return null;
+            return simpleLayerPrefab;
         }
     }
 }

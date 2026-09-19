@@ -6,6 +6,7 @@ using WaterFlow.Core;
 using WaterFlow.Framework.Systems.EventBus;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Ease = DG.Tweening.Ease;
 
@@ -16,7 +17,8 @@ namespace WaterFlow.Game
         [SerializeField] RectTransform botContainer;
         [SerializeField] RectTransform itemContainer;
         [SerializeField] GameObject itemPrefab;
-        [SerializeField] float heightWhenNoBannerAds = 200f;
+        [FormerlySerializedAs("heightWhenNoBannerAds")]
+        [SerializeField] float bottomContainerOffset = 200f;
         
         [Space]
         [SerializeField] GameObject selectionPanelObject;
@@ -34,6 +36,7 @@ namespace WaterFlow.Game
         
         private PowerUpItemView[] powerUpItemViews;
         private DG.Tweening.Tween containerTween;
+        private DG.Tweening.Tween arrowTween;
         private CanvasGroup containerCanvasGroup;
         private Vector2 containerInitialAnchoredPosition;
         
@@ -78,7 +81,7 @@ namespace WaterFlow.Game
         
         private void Start()
         {
-            containerInitialAnchoredPosition = new Vector2(0, heightWhenNoBannerAds);
+            containerInitialAnchoredPosition = new Vector2(0, bottomContainerOffset);
             PrepareContainerForSpawnTween();
             containerTween?.Kill();
             containerTween = DOVirtual.DelayedCall(ContainerSpawnDelay, () => { containerTween = CreateContainerTween(false); });
@@ -105,6 +108,7 @@ namespace WaterFlow.Game
 
         private void OnDisable()
         {
+            StopArrowTween();
             if (Services.BoosterService)
             {
                 Services.BoosterService.onUnlockBooster -= OnBoosterUnlocked;
@@ -116,6 +120,7 @@ namespace WaterFlow.Game
 
         private void OnDestroy()
         {
+            StopArrowTween();
             selectionCloseButton.onClick.RemoveListener(OnSelectionCloseButtonClicked);
         }
         
@@ -161,7 +166,7 @@ namespace WaterFlow.Game
         {
             NotifyPopupQueue notifyPopupQueue = NotifyPopupQueue.Instance;
             await UniTask.WaitUntil(
-                () => !ObstacleUnlockNotifyPopup.IsFlowPending && notifyPopupQueue.IsIdle,
+                () => notifyPopupQueue.IsIdle,
                 cancellationToken: this.GetCancellationTokenOnDestroy());
 
             if (powerUpItemViews == null) return;
@@ -170,6 +175,9 @@ namespace WaterFlow.Game
 
         private void ShowUnlockTutorial(BasePowerUpConfig powerUpConfig)
         {
+            if (!isActiveAndEnabled) return;
+
+            StopArrowTween();
             tutorialPanel.gameObject.SetActive(true);
             selectionCloseButton.gameObject.SetActive(false);
             tutorialIconImage.sprite = powerUpConfig.Icon;
@@ -191,14 +199,25 @@ namespace WaterFlow.Game
                     var t  = arrow.localPosition;
                     t.y += 200f;
                     arrow.localPosition = t;
-                    arrow.DOLocalMoveY(arrow.localPosition.y + 20f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                    arrowTween = arrow.DOLocalMoveY(arrow.localPosition.y + 20f, 0.5f)
+                        .SetLoops(-1, LoopType.Yoyo)
+                        .SetEase(Ease.InOutSine)
+                        .SetLink(arrow.gameObject)
+                        .OnKill(() => arrowTween = null);
                     return;
                 }
             }
         }
         private void OnPowerUpUnlockNotifyClick()
         {
+            StopArrowTween();
             tutorialPanel.gameObject.SetActive(false);
+        }
+
+        private void StopArrowTween()
+        {
+            arrowTween?.Kill();
+            arrowTween = null;
         }
         
         
@@ -276,22 +295,6 @@ namespace WaterFlow.Game
             }
 
             noTargetNotifyPresenter?.Show(notifyWhenNotFoundTarget);
-        }
-
-        public void SetNavigationHighlight(PowerUpType type)
-        {
-            foreach (var view in powerUpItemViews)
-            {
-                bool isTarget = view.Behavior.PowerUpConfig.Type == type;
-                view.SetNavigationHighlight(isTarget);
-            }
-        }
-
-        public void ClearNavigationHighlights()
-        {
-            if (powerUpItemViews == null) return;
-            foreach (var view in powerUpItemViews)
-                view.SetNavigationHighlight(false);
         }
 
         public Vector3 GetPowerUpItemPosition(PowerUpType type)

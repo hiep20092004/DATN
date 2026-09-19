@@ -5,7 +5,6 @@
         Enterable,
         
         Blocked,
-        Shuttered,
         BlockFullFilled,
         BlockLayerMissMatchColor,
         
@@ -14,8 +13,6 @@
         GateEmpty,
         MissMatchColor,
         GateFrozen,
-        GateMovingLock,
-        GateMovingLockMatchColor,
         GateChainLocked,
         BlockSwitchLayerMissMatchColor
     }

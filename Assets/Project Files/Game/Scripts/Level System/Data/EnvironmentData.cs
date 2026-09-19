@@ -57,7 +57,6 @@ namespace WaterFlow.Game
         [SerializeField] SpawnTweenConfig borderInnerGroundSpawnTween = new SpawnTweenConfig();
         [SerializeField] SpawnTweenConfig borderSpawnTween = new SpawnTweenConfig();
         [SerializeField] SpawnTweenConfig blockSpawnTween = new SpawnTweenConfig();
-        [SerializeField] SpawnTweenConfig containerBoxGroupVisualSpawnTween = new SpawnTweenConfig();
         [SerializeField] SpawnTweenConfig liftGroupVisualSpawnTween = new SpawnTweenConfig();
 
         public GameObject GatePrefab => gatePrefab;
@@ -91,7 +90,6 @@ namespace WaterFlow.Game
         public SpawnTweenConfig BorderInnerGroundSpawnTween => borderInnerGroundSpawnTween;
         public SpawnTweenConfig BorderSpawnTween => borderSpawnTween;
         public SpawnTweenConfig BlockSpawnTween => blockSpawnTween;
-        public SpawnTweenConfig ContainerBoxGroupVisualSpawnTween => containerBoxGroupVisualSpawnTween;
         public SpawnTweenConfig LiftGroupVisualSpawnTween => liftGroupVisualSpawnTween;
 
         public float GetTotalAnimationTime()

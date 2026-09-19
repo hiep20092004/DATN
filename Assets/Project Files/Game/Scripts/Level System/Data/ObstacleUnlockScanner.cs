@@ -64,32 +64,35 @@ namespace WaterFlow.Game
 
         /// <summary>
         /// Convenience wrapper: collects canonical effect keys for every obstacle in
-        /// <paramref name="levelData"/>. Used by runtime popup lookup.
+        /// <paramref name="levelData"/>.
         /// </summary>
         public static void CollectEffectKeys(LevelData levelData, HashSet<string> keys)
         {
             if (keys == null) return;
-            VisitEffects(levelData, (cat, b, g, i, e) =>
-                keys.Add(ObstacleUnlockEntry.ComputeEffectKey(cat, b, g, i, e)));
+            VisitEffects(levelData, (cat, b, g, i, e) => keys.Add(ComputeEffectKey(cat, b, g, i, e)));
         }
 
-#if UNITY_EDITOR
         /// <summary>
-        /// Convenience wrapper: builds template <see cref="ObstacleUnlockEntry"/> instances
-        /// keyed by canonical effect key. Used by editor unlock-data generation to seed new
-        /// entries while preserving existing ones (callers merge on key).
+        /// Canonical effect key for any (category, effect-fields) tuple. Static so scanners can derive
+        /// the key without allocating. Consumed by the level editor tag filter.
         /// </summary>
-        public static void CollectTemplates(LevelData levelData, Dictionary<string, ObstacleUnlockEntry> templates)
+        public static string ComputeEffectKey(
+            ObstacleCategory category,
+            BlockEffectType blockEffectType,
+            GateEffectType gateEffectType,
+            InteractableObjectType interactableObjectType,
+            ExtraLayerType extraLayerType)
         {
-            if (templates == null) return;
-            VisitEffects(levelData, (cat, b, g, i, e) =>
+            return category switch
             {
-                string key = ObstacleUnlockEntry.ComputeEffectKey(cat, b, g, i, e);
-                if (templates.ContainsKey(key)) return;
-                templates[key] = new ObstacleUnlockEntry(cat, b, g, i, e);
-            });
+                ObstacleCategory.Block => $"Block_{blockEffectType}",
+                ObstacleCategory.Gate => $"Gate_{gateEffectType}",
+                ObstacleCategory.InteractableObject => $"Interactable_{interactableObjectType}",
+                ObstacleCategory.Generator => "Generator",
+                ObstacleCategory.ExtraLayer => $"ExtraLayer_{extraLayerType}",
+                _ => category.ToString()
+            };
         }
-#endif
 
         private static void VisitBlockEffects(LevelElementData element, EffectVisitor visitor, bool applyIgnoreList)
         {

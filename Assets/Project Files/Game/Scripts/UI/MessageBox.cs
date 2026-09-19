@@ -41,9 +41,5 @@ namespace WaterFlow.Game
         {
             rectTransform.gameObject.SetActive(false);
         }
-
-        public void ActivateTutorial()
-        {
-        }
     }
 }

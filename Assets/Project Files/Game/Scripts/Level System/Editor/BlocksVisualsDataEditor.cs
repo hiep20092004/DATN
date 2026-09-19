@@ -315,7 +315,7 @@ namespace WaterFlow.Game
                 
                 EditorUtility.DisplayDialog(
                     "Success", 
-                    "New Blocks Visuals Data asset created successfully!", 
+                    "Blocks Visuals Data asset created successfully!",
                     "OK"
                 );
             }

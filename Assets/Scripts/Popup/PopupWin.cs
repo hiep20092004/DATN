@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using WaterFlow.Game;
@@ -8,31 +6,20 @@ using WaterFlow.Framework.UIModule;
 using Spine.Unity;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PopupWin : Panel
 {
-    [Serializable]
-    public class LevelTypeWinConfig
-    {
-        public Sprite Bg;
-        public Sprite HeaderBg;
-    }
-
     public Button CloseButton;
     public Button NextButton;
     public TMP_Text LevelTMP;
     public SkeletonGraphic CoinAnim;
     public TMP_Text CoinAmount;
     public ScalePerCharacter ScaleText;
-    public Image Bg;
-    public Image HeaderBg;
 
-    // Close and Next both finish the level, so the reward must be guarded against a double grant.
+    // Both exits finish the level (Next -> next level, Close -> main menu), so the reward must be
+    // guarded against a double grant.
     private static bool _hasAwarded;
-
-    public SerializedDictionary<LevelType, LevelTypeWinConfig> winConfig = new();
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void ResetStaticState()
@@ -50,25 +37,21 @@ public class PopupWin : Panel
         CloseButton.onClick.AddListener(OnCloseButtonClick);
         NextButton.onClick.AddListener(OnNextButtonClick);
 
-        LevelType levelType = LevelController.Instance.LevelRepresentation.LevelData.Type;
-
-        CoinAnim.GetAnimationState().SetAnimation(0, "Appear", false).Complete += (track) =>
+        // The coin flourish is optional — this project ships the win screen without Spine art — so the
+        // reward and button wiring below must not depend on it.
+        var coinAnimation = CoinAnim ? CoinAnim.GetAnimationState() : null;
+        if (coinAnimation != null)
         {
-            CoinAnim.GetAnimationState().SetAnimation(0, "Idle", true);
-        };
+            coinAnimation.SetAnimation(0, "Appear", false).Complete +=
+                track => coinAnimation.SetAnimation(0, "Idle", true);
+        }
+
         Services.AudioService.PlaySound(AudioId.Win);
 
         var coinReward = GameWinFlowService.GetWinReward().quantity;
 
         int completedLevel = ActiveSession.Current.Save.DisplayLevelIndex;
         string levelTitle = LevelLabel.ForCompletedLevel(completedLevel).ToUpper();
-
-        var levelConfig = winConfig.GetValueOrDefault(levelType);
-        if (levelConfig != null)
-        {
-            Bg.sprite = levelConfig.Bg;
-            HeaderBg.sprite = levelConfig.HeaderBg;
-        }
 
         LevelTMP.text = levelTitle;
         CoinAmount.text = coinReward.ToString();
@@ -107,12 +90,17 @@ public class PopupWin : Panel
     private void OnNextButtonClick()
     {
         Close();
+
+        // "Play next level?" -> Yes: the level index was already advanced on win, so reloading the
+        // gameplay scene starts the next level.
         CompleteWinFlow(GamePlacement.Game);
     }
 
     private void OnCloseButtonClick()
     {
         Close();
+
+        // "Play next level?" -> No: back to the main menu.
         CompleteWinFlow(GamePlacement.Home);
     }
 

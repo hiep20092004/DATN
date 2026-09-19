@@ -423,10 +423,9 @@ namespace WaterFlow.Game
         private sealed class LegacyBEff
         {
             public BlockEffectType Type;
-            public bool HorizontalDirection, ShutterIsOpen;
-            public BlockColor LayeredBlockColor, SecondDualColor, KeyColor, ScissorColor;
+            public bool HorizontalDirection;
+            public BlockColor LayeredBlockColor, SecondDualColor, KeyColor;
             public int BombDuration, IceTurnsAmount, KeysAmount, CombineGroupId, TntTurn;
-            public BlockColor[] RopesColors = Array.Empty<BlockColor>();
         }
 
         private sealed class LegacyGEff
@@ -573,8 +572,6 @@ namespace WaterFlow.Game
 
                     if (ln.StartsWith(fi + "horizontalDirection:", StringComparison.Ordinal))
                         eff.HorizontalDirection = Bool(ln);
-                    else if (ln.StartsWith(fi + "shutterIsOpen:", StringComparison.Ordinal))
-                        eff.ShutterIsOpen = Bool(ln);
                     else if (ln.StartsWith(fi + "layeredBlockColor:", StringComparison.Ordinal))
                         eff.LayeredBlockColor = Enum<BlockColor>(ln);
                     else if (ln.StartsWith(fi + "secondDualColor:", StringComparison.Ordinal))
@@ -591,10 +588,6 @@ namespace WaterFlow.Game
                         eff.KeyColor = Enum<BlockColor>(ln);
                     else if (ln.StartsWith(fi + "combineGroupID:", StringComparison.Ordinal))
                         eff.CombineGroupId = Int(ln);
-                    else if (ln.StartsWith(fi + "ropesColors:", StringComparison.Ordinal))
-                        eff.RopesColors = DecodeRopesColors(Val(ln).Trim());
-                    else if (ln.StartsWith(fi + "scissorColor:", StringComparison.Ordinal))
-                        eff.ScissorColor = Enum<BlockColor>(ln);
                     else if (ln.StartsWith(fi + "tntTurn:", StringComparison.Ordinal))
                         eff.TntTurn = Int(ln);
 
@@ -810,22 +803,6 @@ namespace WaterFlow.Game
                     : default;
             }
 
-            private static BlockColor[] DecodeRopesColors(string hex)
-            {
-                if (string.IsNullOrEmpty(hex)) return Array.Empty<BlockColor>();
-                int count = hex.Length / 8;
-                var arr = new BlockColor[count];
-                for (int i = 0; i < count; i++)
-                {
-                    string c = hex.Substring(i * 8, 8);
-                    int v = Convert.ToInt32(c.Substring(0, 2), 16) |
-                            Convert.ToInt32(c.Substring(2, 2), 16) << 8 |
-                            Convert.ToInt32(c.Substring(4, 2), 16) << 16 |
-                            Convert.ToInt32(c.Substring(6, 2), 16) << 24;
-                    arr[i] = (BlockColor)v;
-                }
-                return arr;
-            }
         }
 
         // ─── YAML Writer (generates new SerializeReference format) ───────────────
@@ -1059,10 +1036,6 @@ namespace WaterFlow.Game
                         sb.Append("      data:\n");
                         sb.Append($"        iceTurnsAmount: {e.IceTurnsAmount}\n");
                         break;
-                    case BlockEffectType.Hidden:
-                        sb.Append("      data:\n");
-                        sb.Append($"        hiddenTurnsAmount: {e.IceTurnsAmount}\n");
-                        break;
                     case BlockEffectType.Bomb:
                         sb.Append("      data:\n");
                         sb.Append($"        bombDuration: {e.BombDuration}\n");
@@ -1079,10 +1052,6 @@ namespace WaterFlow.Game
                         sb.Append("      data:\n");
                         sb.Append($"        secondDualColor: {(int)e.SecondDualColor}\n");
                         break;
-                    case BlockEffectType.Shutter:
-                        sb.Append("      data:\n");
-                        sb.Append($"        shutterIsOpen: {(e.ShutterIsOpen ? 1 : 0)}\n");
-                        break;
                     case BlockEffectType.Chain:
                         sb.Append("      data:\n");
                         sb.Append($"        keysAmount: {e.KeysAmount}\n");
@@ -1094,18 +1063,6 @@ namespace WaterFlow.Game
                     case BlockEffectType.KeyColor:
                         sb.Append("      data:\n");
                         sb.Append($"        keyColor: {(int)e.KeyColor}\n");
-                        break;
-                    case BlockEffectType.Combines:
-                        sb.Append("      data:\n");
-                        sb.Append($"        combineGroupID: {e.CombineGroupId}\n");
-                        break;
-                    case BlockEffectType.Ropes:
-                        sb.Append("      data:\n");
-                        sb.Append($"        ropesColors: {EncodeRopes(e.RopesColors)}\n");
-                        break;
-                    case BlockEffectType.Scissor:
-                        sb.Append("      data:\n");
-                        sb.Append($"        scissorColor: {(int)e.ScissorColor}\n");
                         break;
                     case BlockEffectType.Tnt:
                         sb.Append("      data:\n");
@@ -1136,10 +1093,6 @@ namespace WaterFlow.Game
                         sb.Append("      data:\n");
                         sb.Append($"        lockColor: {(int)e.LockColor}\n");
                         break;
-                    case GateEffectType.MovingLock:
-                        sb.Append("      data:\n");
-                        sb.Append($"        isClockwise: {(e.IsClockwise ? 1 : 0)}\n");
-                        break;
                     default:
                         sb.Append("      data: \n");
                         break;
@@ -1169,18 +1122,13 @@ namespace WaterFlow.Game
                 switch (t)
                 {
                     case BlockEffectType.Ice:           return "IceBlockEffectData";
-                    case BlockEffectType.Hidden:        return "HiddenBlockEffectData";
                     case BlockEffectType.Bomb:          return "BombBlockEffectData";
                     case BlockEffectType.Layered:       return "LayeredBlockEffectData";
                     case BlockEffectType.FixedDirection:return "FixedDirectionBlockEffectData";
                     case BlockEffectType.Dual:          return "DualBlockEffectData";
-                    case BlockEffectType.Shutter:       return "ShutterBlockEffectData";
                     case BlockEffectType.Chain:         return "ChainBlockEffectData";
                     case BlockEffectType.KeyChain:      return "KeyChainBlockEffectData";
                     case BlockEffectType.KeyColor:      return "KeyColorBlockEffectData";
-                    case BlockEffectType.Combines:      return "CombinesBlockEffectData";
-                    case BlockEffectType.Ropes:         return "RopesBlockEffectData";
-                    case BlockEffectType.Scissor:       return "ScissorBlockEffectData";
                     case BlockEffectType.Tnt:           return "TntBlockEffectData";
                     case BlockEffectType.Blocked:       return "BlockedBlockEffectData";
                     default:                            return null;
@@ -1194,7 +1142,6 @@ namespace WaterFlow.Game
                     case GateEffectType.IceGate:        return "IceGateEffectData";
                     case GateEffectType.Valve:      return "ValveGateEffectData";
                     case GateEffectType.LockedColor:return "LockedColorGateEffectData";
-                    case GateEffectType.MovingLock: return "MovingLockGateEffectData";
                     default:                        return null;
                 }
             }
@@ -1207,20 +1154,6 @@ namespace WaterFlow.Game
                 return 266889289000000000L + (ticks % 99_999_999L) * 1000L;
             }
 
-            private static string EncodeRopes(BlockColor[] colors)
-            {
-                if (colors == null || colors.Length == 0) return string.Empty;
-                var sb = new StringBuilder(colors.Length * 8);
-                foreach (var c in colors)
-                {
-                    uint v = (uint)(int)c;
-                    sb.Append((v & 0xFF).ToString("x2"));
-                    sb.Append(((v >> 8) & 0xFF).ToString("x2"));
-                    sb.Append(((v >> 16) & 0xFF).ToString("x2"));
-                    sb.Append(((v >> 24) & 0xFF).ToString("x2"));
-                }
-                return sb.ToString();
-            }
         }
     }
 }

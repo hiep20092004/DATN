@@ -209,12 +209,7 @@ namespace WaterFlow.Game
             {
                 if (!effect.IsActive) continue;
 
-                if (effect.Type == BlockEffectType.Shutter)
-                {
-                    var shutterEffect = (ShutterBlockEffectBehavior)effect;
-                    if (!shutterEffect.IsOpen) return false;
-                }
-                else if (!availableEffects.Contains(effect.Type))
+                if (!availableEffects.Contains(effect.Type))
                 {
                     return false;
                 }

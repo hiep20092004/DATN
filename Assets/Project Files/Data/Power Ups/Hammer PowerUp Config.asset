@@ -13,19 +13,9 @@ MonoBehaviour:
   m_Name: Hammer PowerUp Config
   m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.HammerPowerUpConfig
   type: 4
-  displayName:
-    mTerm: hammer
-    mRTL_IgnoreArabicFix: 0
-    mRTL_MaxLineLength: 0
-    mRTL_ConvertNumbers: 0
-    m_DontLocalizeParameters: 0
-  description:
-    mTerm: destroy_one_obstacle_ice_arrow_blocker_bomb_shutte
-    mRTL_IgnoreArabicFix: 0
-    mRTL_MaxLineLength: 0
-    mRTL_ConvertNumbers: 0
-    m_DontLocalizeParameters: 0
-  icon: {fileID: 21300000, guid: caf9c6d5cdcaae347bfa1fc1ce05ad53, type: 3}
+  displayName: Hammer
+  description: Smash any block on the board to clear it instantly.
+  icon: {fileID: 21300000, guid: 847649d2802b3fc4883ffffdd6172f6f, type: 3}
   resultIcon: {fileID: 21300000, guid: 6c7326beb1c793c46a891450d6a083ba, type: 3}
   tooltipBackground: {fileID: 21300000, guid: 409a317e0e7a86449a6088e5ecb65dbf, type: 3}
   tooltipTextSecondaryTerm: Text Pink

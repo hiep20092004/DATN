@@ -13,19 +13,9 @@ MonoBehaviour:
   m_Name: Freeze Timer PowerUp Config
   m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.FreezeTimerPowerUpConfig
   type: 1
-  displayName:
-    mTerm: freeze
-    mRTL_IgnoreArabicFix: 0
-    mRTL_MaxLineLength: 0
-    mRTL_ConvertNumbers: 0
-    m_DontLocalizeParameters: 0
-  description:
-    mTerm: freeze_timer_for_15_seconds
-    mRTL_IgnoreArabicFix: 0
-    mRTL_MaxLineLength: 0
-    mRTL_ConvertNumbers: 0
-    m_DontLocalizeParameters: 0
-  icon: {fileID: 21300000, guid: 6bff80eaa04f3da45be47f0e65d10457, type: 3}
+  displayName: Freeze
+  description: Stops the timer for 10 seconds so you can plan your next move.
+  icon: {fileID: 21300000, guid: b99f0345df7a2e64b84f75fff3a35847, type: 3}
   resultIcon: {fileID: 21300000, guid: 37ec0a37ca3387d419566ed80b08edbc, type: 3}
   tooltipBackground: {fileID: 21300000, guid: 04051008d7d419e48a4c8546d432256b, type: 3}
   tooltipTextSecondaryTerm: Text Blue
