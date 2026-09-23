@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Pump PowerUp Config
   m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.PumpPowerUpConfig
   type: 2
-  displayName: Pump
-  description: Drain a filled block to get it out of your way.
+  displayName: "M\xE1y b\u01A1m"
+  description: "B\u01A1m \u0111\u1EA7y n\u01B0\u1EDBc v\xE0o m\u1ED9t kh\u1ED1i b\u1EA5t
+    k\u1EF3"
   icon: {fileID: 21300000, guid: ff432df2916c87c408a6cb1fe17173c3, type: 3}
   resultIcon: {fileID: 21300000, guid: ec41a4923ecf98f4db9e7b74327332dd, type: 3}
   tooltipBackground: {fileID: 21300000, guid: f23f9a66f19baae40bb577e04d473abc, type: 3}

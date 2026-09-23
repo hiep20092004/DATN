@@ -19,8 +19,9 @@ MonoBehaviour:
     value: 300
   levelUnlock: 1
   defaultValue: 3
-  header: Water Gun
-  description: Fill a selected block with matching water.
+  header: "M\xE1y b\u01A1m"
+  description: "B\u01A1m \u0111\u1EA7y n\u01B0\u1EDBc v\xE0o m\u1ED9t kh\u1ED1i b\u1EA5t
+    k\u1EF3"
   outOfTargetText: No valid target.
   icon: {fileID: 21300000, guid: ff432df2916c87c408a6cb1fe17173c3, type: 3}
   AmountPerBuy: 3

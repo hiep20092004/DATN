@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Freeze Timer PowerUp Config
   m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.FreezeTimerPowerUpConfig
   type: 1
-  displayName: Freeze
-  description: Stops the timer for 10 seconds so you can plan your next move.
+  displayName: "\u0110\xF3ng b\u0103ng th\u1EDDi gian"
+  description: "D\u1EEBng b\u1ED9 \u0111\u1EBFm th\u1EDDi gian trong 10 gi\xE2y \u0111\u1EC3
+    b\u1EA1n c\xF3 th\u1EC3 l\xEAn k\u1EBF ho\u1EA1ch cho n\u01B0\u1EDBc \u0111i
+    ti\u1EBFp theo."
   icon: {fileID: 21300000, guid: b99f0345df7a2e64b84f75fff3a35847, type: 3}
   resultIcon: {fileID: 21300000, guid: 37ec0a37ca3387d419566ed80b08edbc, type: 3}
   tooltipBackground: {fileID: 21300000, guid: 04051008d7d419e48a4c8546d432256b, type: 3}

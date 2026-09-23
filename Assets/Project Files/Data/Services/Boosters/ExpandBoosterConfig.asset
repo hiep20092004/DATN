@@ -19,8 +19,8 @@ MonoBehaviour:
     value: 300
   levelUnlock: 1
   defaultValue: 3
-  header: Expand
-  description: Expand an available board border.
+  header: "\xD4 m\u1EDF r\u1ED9ng"
+  description: "N\u1EDBi r\u1ED9ng b\xE0n ch\u01A1i th\xEAm m\u1ED9t h\xE0ng \xF4"
   outOfTargetText: No valid target.
   icon: {fileID: 21300000, guid: bb1917987671a8b44a74eb8046d27890, type: 3}
   AmountPerBuy: 3

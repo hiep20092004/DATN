@@ -106,6 +106,6 @@ public class PopupBuyBooster : Panel
 
     private void UpdateButtonValueText()
     {
-        ValueCoinText.text = $"Buy x{boosterConfig.AmountPerBuy}";
+        ValueCoinText.text = $"Mua x{boosterConfig.AmountPerBuy}";
     }
 }

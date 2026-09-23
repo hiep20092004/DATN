@@ -19,8 +19,8 @@ MonoBehaviour:
     value: 300
   levelUnlock: 1
   defaultValue: 3
-  header: Hammer
-  description: Break one valid obstacle or block effect.
+  header: "B\xFAa"
+  description: "Ph\xE1 v\u1EE1 v\u1EADt c\u1EA3n \u0111ang g\u1EAFn tr\xEAn kh\u1ED1i"
   outOfTargetText: No valid target.
   icon: {fileID: 21300000, guid: 847649d2802b3fc4883ffffdd6172f6f, type: 3}
   AmountPerBuy: 3

@@ -204,7 +204,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap to continue
+  m_text: "B\u1EA5m \u0111\u1EC3 ti\u1EBFp t\u1EE5c\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47a9c1e6ae653a0478f3ec5d3dd2de6b, type: 2}
   m_sharedMaterial: {fileID: -5652379910724869817, guid: 47a9c1e6ae653a0478f3ec5d3dd2de6b, type: 2}
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Unlock new booster!
+  m_text: "M\u1EDF kho\xE1 v\u1EADt ph\u1EA9m h\u1ED7 tr\u1EE3!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: baf7395230d2b9141b31594a7cabc6c8, type: 2}
   m_sharedMaterial: {fileID: 2336657910095324302, guid: baf7395230d2b9141b31594a7cabc6c8, type: 2}

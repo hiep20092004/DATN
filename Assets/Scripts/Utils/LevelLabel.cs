@@ -11,7 +11,7 @@ public static class LevelLabel
         return ForLevel(ActiveSession.Current.Save.DisplayLevelIndex + 1);
     }
 
-    public static string ForLevel(int level) => $"Level {level}";
+    public static string ForLevel(int level) => $"Cấp {level}";
 
     public static string ForCompletedLevel(int completedLevel) => ForLevel(completedLevel);
 }
