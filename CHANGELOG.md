@@ -7,6 +7,7 @@
 - Add gameplay and UI art, prefabs, materials, shaders, and level content.
 
 ### Changed
+- Translate revive popup titles, descriptions, time bonuses, peek hint, and setup defaults into Vietnamese.
 - Simplify the level flow, boosters, and gameplay UI for Classic mode.
 - Use a local clock initialized safely when services first request the time.
 

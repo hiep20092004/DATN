@@ -16,57 +16,56 @@ MonoBehaviour:
   - reason: 1
     config:
       icon: {fileID: 21300000, guid: d79b4695bdfae1f4b9d2543e505777f4, type: 3}
-      title: Out of Time!
-      descriptionFormat: Continue with {[value]} seconds!
+      title: Hết giờ!
+      descriptionFormat: "Tiếp tục chơi với {[value]} giây!"
       themeIcons: []
       continueSeconds: 60
       additionText: 
   - reason: 2
     config:
       icon: {fileID: 21300000, guid: 607144bb8e020c54d804339c75cb463a, type: 3}
-      title: Bomb Exploded!
-      descriptionFormat: Get {[value]} seconds to keep playing!
+      title: Bom đã nổ!
+      descriptionFormat: "Nhận thêm {[value]} giây để tiếp tục chơi!"
       themeIcons: []
       continueSeconds: 20
       additionText: 
   - reason: 3
     config:
       icon: {fileID: 21300000, guid: 7d3f1a4b2c9e46d1a8b5c60f2e3d4a91, type: 3}
-      title: Valve Failed!
-      descriptionFormat: 'Reverse the valves: open the closed one, close the open
-        one.'
+      title: Van bị lỗi!
+      descriptionFormat: "Đảo trạng thái các van: mở van đang đóng, đóng van đang mở."
       themeIcons: []
       continueSeconds: 0
       additionText: 
   - reason: 5
     config:
       icon: {fileID: 21300000, guid: 5b8e2c1d9f3a47c2b6d0e18f4a3c9d72, type: 3}
-      title: Stack Block Failed!
-      descriptionFormat: Fill the entire inner block.
+      title: Khối xếp chồng bị lỗi!
+      descriptionFormat: "Bơm đầy nước vào toàn bộ khối bên trong."
       themeIcons: []
       continueSeconds: 0
       additionText: 
   - reason: 6
     config:
       icon: {fileID: 21300000, guid: a50275022e42ed442b24cd26120bbbe1, type: 3}
-      title: TnT Exploded!
-      descriptionFormat: Get 3 more turns to keep playing!
+      title: Thuốc nổ đã nổ!
+      descriptionFormat: "Nhận thêm 3 lượt để tiếp tục chơi!"
       themeIcons: []
       continueSeconds: 0
       additionText: +3
   - reason: 8
     config:
       icon: {fileID: 21300000, guid: 9becddaa82465ff4d99a434694e65a7a, type: 3}
-      title: Chain Locked!
-      descriptionFormat: Continue to break the chain locks open.
+      title: Bị khóa xích!
+      descriptionFormat: "Tiếp tục chơi để phá các khóa xích."
       themeIcons: []
       continueSeconds: 0
       additionText: 
   - reason: 9
     config:
       icon: {fileID: 21300000, guid: 2c9d4e7f1b6a48d3a5c8f20e93b1d6a4, type: 3}
-      title: Switch Block Failed!
-      descriptionFormat: Fill the current inner block.
+      title: Khối chuyển đổi bị lỗi!
+      descriptionFormat: "Bơm đầy nước vào khối bên trong hiện tại."
       themeIcons: []
       continueSeconds: 0
       additionText: 

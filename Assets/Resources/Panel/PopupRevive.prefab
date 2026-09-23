@@ -155,7 +155,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Out of Time!
+  m_text: Hết giờ!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: baf7395230d2b9141b31594a7cabc6c8, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: fde899f471045fe4ebe9c166a84531ea, type: 2}
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HOLD TO PEEK
+  m_text: NHẤN GIỮ ĐỂ XEM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: baf7395230d2b9141b31594a7cabc6c8, type: 2}
   m_sharedMaterial: {fileID: 2336657910095324302, guid: baf7395230d2b9141b31594a7cabc6c8, type: 2}
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Continue with {[value]} seconds!
+  m_text: Tiếp tục chơi với {[value]} giây!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: baf7395230d2b9141b31594a7cabc6c8, type: 2}
   m_sharedMaterial: {fileID: 2336657910095324302, guid: baf7395230d2b9141b31594a7cabc6c8, type: 2}
@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +60s
+  m_text: +60 giây
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1447,8 +1447,8 @@ MonoBehaviour:
   loseReasonConfig: {fileID: 11400000, guid: c1f4a91b0e2c4f0f8f8d1c1a2b3c4d5e, type: 2}
   defaultConfig:
     icon: {fileID: 0}
-    title: Out of Moves!
-    descriptionFormat: Continue and keep your progress!
+    title: Hết lượt!
+    descriptionFormat: "Tiếp tục chơi và giữ nguyên tiến độ!"
     themeIcons: []
     continueSeconds: 0
     additionText: 

@@ -300,7 +300,7 @@ public class PopupRevive : Panel
 
         if (seconds > 0)
         {
-            MoreTimeText.text = $"+{seconds}s";
+            MoreTimeText.text = $"+{seconds} giây";
             MoreTimeText.gameObject.SetActive(true);
         }
         else if (!string.IsNullOrEmpty(config.additionText))

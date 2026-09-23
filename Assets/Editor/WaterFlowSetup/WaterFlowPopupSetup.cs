@@ -73,7 +73,7 @@ public static partial class WaterFlowClassicSetup
 
             TextMeshProUGUI title = BuildLabel(container.transform, "Title", new Vector2(0f, 380f),
                 new Vector2(760f, 110f), 72f);
-            title.text = "Out of Time!";
+            title.text = "Hết giờ!";
 
             GameObject icon = NewUiObject("Icon", container.transform);
             RectTransform iconRect = icon.GetComponent<RectTransform>();
@@ -85,12 +85,12 @@ public static partial class WaterFlowClassicSetup
 
             TextMeshProUGUI moreTime = BuildLabel(container.transform, "More Time", new Vector2(0f, -70f),
                 new Vector2(400f, 100f), 64f);
-            moreTime.text = "+60s";
+            moreTime.text = "+60 giây";
             moreTime.color = PopupAccentColor;
 
             TextMeshProUGUI description = BuildLabel(container.transform, "Description", new Vector2(0f, -210f),
                 new Vector2(720f, 180f), 44f);
-            description.text = "Continue with {[value]} seconds!";
+            description.text = "Tiếp tục chơi với {[value]} giây!";
             SetWrapping(description, true);
 
             Button coinButton = BuildCoinCostButton(container.transform, out TextMeshProUGUI coinCost);
@@ -165,8 +165,8 @@ public static partial class WaterFlowClassicSetup
     private static void FillDefaultReviveConfig(SerializedObject serialized)
     {
         SerializedProperty defaultConfig = serialized.FindProperty("defaultConfig");
-        defaultConfig.FindPropertyRelative("title").stringValue = "Out of Moves!";
-        defaultConfig.FindPropertyRelative("descriptionFormat").stringValue = "Continue and keep your progress!";
+        defaultConfig.FindPropertyRelative("title").stringValue = "Hết lượt!";
+        defaultConfig.FindPropertyRelative("descriptionFormat").stringValue = "Tiếp tục chơi và giữ nguyên tiến độ!";
         defaultConfig.FindPropertyRelative("continueSeconds").intValue = 0;
         defaultConfig.FindPropertyRelative("additionText").stringValue = string.Empty;
     }
@@ -318,7 +318,7 @@ public static partial class WaterFlowClassicSetup
         image.raycastTarget = true;
 
         TextMeshProUGUI label = BuildLabel(root.transform, "Label", Vector2.zero, new Vector2(560f, 120f), 40f);
-        label.text = "HOLD TO PEEK";
+        label.text = "NHẤN GIỮ ĐỂ XEM";
         label.color = new Color(1f, 1f, 1f, 0.7f);
 
         return root.AddComponent<HoldButton>();
