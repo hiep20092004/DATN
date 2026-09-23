@@ -12,6 +12,7 @@
 - Use a local clock initialized safely when services first request the time.
 
 ### Removed
+- Remove the one-time Classic scene, popup, and material setup Editor tools after generating their assets.
 - Remove legacy container, hidden, shutter, moving-gate, and obstacle-unlock systems.
 
 ### Fixed

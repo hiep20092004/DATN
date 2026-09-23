@@ -1,5 +1,7 @@
 # Todo Setup Game WaterFlow
 
+> Cập nhật 2026-09-24: Đã gỡ bộ script Editor `WaterFlowSetup` theo yêu cầu dọn dẹp. Các mục bên dưới nhắc đến menu `WaterFlow/Setup/*` là ghi chép lịch sử, không còn là hướng dẫn có thể chạy. Scene, prefab và vật liệu đã tạo vẫn được giữ lại; kiểm tra trực tiếp bằng các asset hiện có trong Unity.
+
 ## Trạng thái hiện tại - 2026-08-31
 
 - [x] Service Manager đã được dựng lại với các service local/Classic cần dùng, không còn GUID missing trong danh sách service.
