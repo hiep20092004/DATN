@@ -14,7 +14,6 @@ namespace WaterFlow.Game
     {
         [SerializeField] EnvironmentData environmentData;
         [SerializeField] BlocksVisualsData BlocksVisualsSimple;
-        [SerializeField] BlocksVisualsData BlocksVisualsNew;
         [SerializeField] LevelDatabase levelDatabase;
         [SerializeField] BlockConfig blockConfig;
 
@@ -106,20 +105,8 @@ namespace WaterFlow.Game
         }
         private BlocksVisualsData LoadBLockVisualData()
         {
-            if (Application.isPlaying)
-            {
-                blockTheme = Services.GameplayConfig.GetBlockTheme();
-            }
-            else
-            {
-                blockTheme = BlockTheme.New;
-            }
-            return blockTheme switch
-            {
-                BlockTheme.New => BlocksVisualsNew,
-                BlockTheme.Simple => BlocksVisualsSimple,
-                _ => BlocksVisualsNew
-            };
+            blockTheme = BlockTheme.Simple;
+            return BlocksVisualsSimple;
         }
 
         public void OnGameEnd(bool isWin)
@@ -212,6 +199,25 @@ namespace WaterFlow.Game
             MovementUpdate();
         }
 
+        /// <summary>
+        /// A level index past the built content resolves to a null asset — the usual cause is
+        /// <c>LevelGeneralConfigData.MaxLevel</c> drifting away from the number of level slots actually
+        /// built, which also stops the randomizer from ever kicking in. Bailing out here keeps that a
+        /// readable error instead of a NullReferenceException deep inside LevelRepresentation.
+        /// </summary>
+        private bool HasLevelData(LevelData levelData, int levelIndex, string context)
+        {
+            if (levelData)
+                return true;
+
+            Debug.LogError(
+                $"[LevelController] {context}: no LevelData for index {levelIndex} (Level {levelIndex + 1:D3}). " +
+                "Check LevelGeneralConfigData.MaxLevel on the LevelDatabase against the built level slots, " +
+                "then re-run Tools/Level Build/1. Prepare Build.");
+
+            return false;
+        }
+
         public void LoadLevel(int levelIndex)
         {
             if (IsLevelLoaded)
@@ -224,6 +230,12 @@ namespace WaterFlow.Game
 #if DEBUG
             LogLevelLoadDebug(levelIndex);
 #endif
+            if (!HasLevelData(levelData, levelIndex, nameof(LoadLevel)))
+            {
+                levelLoaded = false;
+                return;
+            }
+
             LoadCamera();
 
             levelRepresentation = new LevelRepresentation(levelData, environmentData, cameraController, this);
@@ -457,6 +469,9 @@ namespace WaterFlow.Game
             LevelStarted = false;
 
             LevelData levelData = levelLoader.LoadLevel(levelIndex);
+            if (!HasLevelData(levelData, levelIndex, nameof(PrepareNextLevel)))
+                return;
+
             stagingRepresentation = new LevelRepresentation(
                 levelData, environmentData, cameraController, this, "[LEVEL_STAGING]");
             runtimePrecomputedCache = new LevelRuntimePrecomputedCache();
@@ -761,7 +776,6 @@ namespace WaterFlow.Game
                                     + Mathf.Abs(snapTargetPosition.y - pickedBlockGridPos.Value.y);
                     if (manhattan >= 1)
                     {
-                        BoosterNavigationController.Instance?.OnBlockMoved();
                         EventBus<BlockMoveEvent>.Raise(new BlockMoveEvent());
                         LevelRuntimeData.Current.RecordMove();
                     }
@@ -787,7 +801,6 @@ namespace WaterFlow.Game
             LevelRepresentation.OnBlockDestructed(destructedBlock);
 
             CellWatchNotifier?.NotifyBlockDestructed(destructedBlock);
-            BoosterNavigationController.Instance?.OnBlockCleared();
             LevelRuntimeData.Current.RecordBlockDestroyed(destructedBlock.BlockId);
             EventBus<BlockDestroyedEvent>.Raise(new BlockDestroyedEvent());
 
@@ -810,8 +823,6 @@ namespace WaterFlow.Game
 
         private void OnBlockEntered(LevelBlockBehavior collectedBlock, GateBehavior gateBehavior)
         {
-            BoosterNavigationController.Instance?.OnBlockCleared();
-
             List<LevelBlockBehavior> activeBlocks = LevelRepresentation.ActiveBlocks;
             foreach (LevelBlockBehavior block in activeBlocks)
                 block.OnBlockEnteredGate(collectedBlock, gateBehavior);

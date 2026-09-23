@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da562710079e5a4da6cd6ce9cd401d5, type: 3}
   m_Name: DefaultTimeService
   m_EditorClassIdentifier: 
-  dataService: {fileID: 0}
+  dataService:
+    referenceType: 1
+    reference: {fileID: 0}

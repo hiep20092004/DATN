@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325e21dbfca64d369fb7c8cfc1ef9607, type: 3}
+  m_Name: BlocksVisualsData
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.BlocksVisualsData
+  blocks:
+  - type: 0
+    prefab: {fileID: 6794029987324425618, guid: ed41cb21daf43d24ca14934aafc1a7e2, type: 3}
+  colors: []

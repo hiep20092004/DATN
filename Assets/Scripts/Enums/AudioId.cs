@@ -59,11 +59,8 @@
         Obstacle_LocknKey = 38,
         Obstacle_LocknKey_Unlock = 39,
 
-        Obstacle_Shutter = 40,
         Pre_Booster_MagicWand = 41,
         Pre_Booster_Time = 42,
-
-        Obstacle_Rope_cut = 43,
 
         Obstacle_Grinder_break_01 = 53,
         Obstacle_Grinder_break_02 = 54,
@@ -71,7 +68,6 @@
         Obstacle_Grinder_destroy = 56,
         
         Click_obs_ice = 44,
-        Click_obs_rope = 45,
         Click_obs_locked = 46,
 
         // Pass / daily / coins
@@ -134,4 +130,3 @@
         
     }
 }
-

@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom_WaterFlow_DualFill_Dissolve
+  m_Shader: {fileID: 4800000, guid: 38ea691552f4865489c4a44e2468ba11, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: f7fd8e97178a0ee4da2d8c74a55b95c4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterPatternTex:
+        m_Texture: {fileID: 2800000, guid: 8f75c688f03ea4c42b3c43438a3a6f3c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 1}
+    m_Ints: []
+    m_Floats:
+    - _AOContrast: 1.3
+    - _AODarkness: 1
+    - _AOPower: 1.17
+    - _AOStrength: 0.82
+    - _BackfaceDarkness: 1
+    - _DepthFalloff: 2.32
+    - _DepthGradient: 1
+    - _DissolveDropletCurve: 0.1
+    - _DissolveDropletMax: 2.94
+    - _DissolveDropletMin: 0.365
+    - _DissolveSize: 0.5
+    - _DissolveSmoothness: 1
+    - _DissolveStretchX: 1.09
+    - _DissolveStretchY: 1
+    - _DissolveStretchZ: -0.25
+    - _Distortion: 0.19
+    - _DistortionVertex: 0.05
+    - _FakeLightIntensity: 1
+    - _FillAmount: 1
+    - _FillAmountBottom: 0.619
+    - _FoamDropletFrequency: 7.06
+    - _FoamStretch: -53.51
+    - _FoamThickness: 0
+    - _FresnelPower: 4.48
+    - _FresnelStrength: 0.05
+    - _NormalStrength: -0.47
+    - _NormalTiling: 1
+    - _RimAngle: -0.13
+    - _RimIntensity: 0.67
+    - _RimPower: 0.36
+    - _RimStrength: 1.58
+    - _RimlightDarkness: 0.363
+    - _RimlightEdgeWidth: 0.094
+    - _RimlightPower: 4.96
+    - _RimlightStrength: 0.784
+    - _RimlightWidth: 0.105
+    - _ShadowIntensity: 0.392
+    - _Smoothness: 1
+    - _SpecularFloat: 0
+    - _ToonLightAngle: 1
+    - _ToonLightIntensity: 0.25
+    - _ToonRampSmoothness: 0.246
+    - _ToonRampSteps: 6.87
+    - _VertexWaveFrequency: 104.71
+    - _VertexWaveSpeed: 5
+    - _VerticalGradient: 0.558
+    - _WaterPatternScale: -0.5
+    - _WaterPatternSpeed: -0.1
+    - _WaterPatternStrength: 0.31
+    - _WaveFalloff: 0.5
+    m_Colors:
+    - _AmbientColor: {r: 0.28675684, g: 0.28675684, b: 0.33962262, a: 1}
+    - _DepthColor: {r: 0, g: 0.057338864, b: 0.16981131, a: 1}
+    - _FakeLightColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FakeLightDirection: {r: 1, g: 1, b: -0.78, a: 0}
+    - _FlowDirection: {r: 0, g: 0.5, b: 6.3, a: 0}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 1, g: 0.2028302, b: 0.25161293, a: 1}
+    - _RimColor: {r: 0.2924528, g: 0.027148591, b: 0.009656467, a: 1}
+    - _TopColor: {r: 0.8, g: 0.9, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

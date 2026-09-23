@@ -5,8 +5,8 @@ using UnityEngine;
 namespace WaterFlow.Game
 {
     /// <summary>
-    /// Combine-style effect: adjacent blocks that declare a matching <see cref="BreakableLinkEntry"/>
-    /// ({linkId, count}) link into one rigid group and move together. Unlike Combines, EACH link has its
+    /// Adjacent blocks that declare a matching <see cref="BreakableLinkEntry"/>
+    /// ({linkId, count}) link into one rigid group and move together. EACH link has its
     /// own counter that ticks down once per board clear and breaks (splitting the group) when it reaches 0.
     /// A block holding any alive link cannot be filled at a gate (<see cref="AllowGateEntered"/>), but it
     /// stays clickable so the whole group can still be dragged.
@@ -24,7 +24,7 @@ namespace WaterFlow.Game
             public int LinkId;
             public int RemainingCount;
             public BreakableLinkVisuals Visual;
-            public CombinesEffectBehavior.ConnectedBlocks Connection;
+            public ConnectedBlocks Connection;
 
             public bool IsAlive => RemainingCount > 0;
         }
@@ -186,7 +186,7 @@ namespace WaterFlow.Game
         {
             if (!visualPrefab) return;
 
-            CombinesEffectBehavior.ConnectedBlocks conn = edge.Connection;
+            ConnectedBlocks conn = edge.Connection;
             Vector3 spawnPosition = (conn.PositionA + conn.PositionB) / 2f;
 
             GameObject visualObject = Instantiate(visualPrefab, spawnPosition, Quaternion.identity);
@@ -234,7 +234,7 @@ namespace WaterFlow.Game
                         Other = other,
                         LinkId = linkId,
                         RemainingCount = count,
-                        Connection = new CombinesEffectBehavior.ConnectedBlocks(owner.linkedBlock, other.linkedBlock, cellA, cellB),
+                        Connection = new ConnectedBlocks(owner.linkedBlock, other.linkedBlock, cellA, cellB),
                     };
                     owner.links.Add(edge);
                     other.links.Add(edge);
@@ -355,7 +355,7 @@ namespace WaterFlow.Game
             }
         }
 
-        // Mirrors BaseContainerBoxEffectBehavior.ForceReleaseGroupIfPicked: settle an in-flight drag whose
+        // Settle an in-flight drag whose
         // picked block belongs to the group about to be rebuilt, so the shared group rigidbody is never
         // destroyed out from under the movement manager.
         private static void ForceReleasePickedIfAffected(List<BreakableLinkEffectBehavior> affected)

@@ -35,7 +35,6 @@ public class UICollectEffectItemMultiple : UICollectEffectItem
 
     [Header("Particle")] [SerializeField] private ParticleSystem psDisappear;
     [SerializeField] private ParticleSystem psCoin;
-    [SerializeField] private ParticleSystem psLive;
     [SerializeField] private ParticleSystem psButtonCollectEffect;
 
     [Tooltip("Gọi onFinish (punch UI…) tại tỷ lệ thời gian bay về đích. <1 = sớm hơn OnComplete, khớp cảm giác va chạm trước khi tween kết thúc hẳn.")]
@@ -44,7 +43,6 @@ public class UICollectEffectItemMultiple : UICollectEffectItem
     
 
     private bool isCoin = false;
-    private bool isLive = false;
     private bool isPlayButtonCollectEffect = false;
 
     private void ResetState()
@@ -53,6 +51,8 @@ public class UICollectEffectItemMultiple : UICollectEffectItem
         transform.localScale = Vector3.one;
         transform.localRotation = Quaternion.identity;
         transform.localPosition = Vector3.zero;
+        isCoin = false;
+        isPlayButtonCollectEffect = false;
     }
 
     public override void SetData(int index, GameResourceKey key, int quantity, Vector3 startPos, Vector3 endPos, Action<int> onFinish)
@@ -62,9 +62,8 @@ public class UICollectEffectItemMultiple : UICollectEffectItem
         {
             uiResourceItem.Icon?.gameObject.SetActive(true);
             isCoin = false;
-            if (key == GameResource.UnlimitedLive.ToGameResourceKey()) isLive = true;
             coinAnimation.SetActive(false);
-            if (key != GameResource.UnlimitedLive.ToGameResourceKey())
+            if (key != GameResource.Coin.ToGameResourceKey())
             {
                 isPlayButtonCollectEffect = true;
                 if (psButtonCollectEffect != null)
@@ -102,10 +101,6 @@ public class UICollectEffectItemMultiple : UICollectEffectItem
         if (isCoin && psCoin != null)
         {
             psCoin.Play();
-        }
-        else if (isLive && psLive != null)
-        {
-             psLive.Play();
         }
         else {
             HapticFeedback.Play(HapticType.ClickButton);

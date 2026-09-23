@@ -10,10 +10,10 @@
         FixedDirection = 1,
         Layered = 2,
         Ice = 3,
-        Combines = 4,
+        Combines = 4,         // RETIRED — implementation removed; value reserved
         Blocked = 5,
         Bomb = 6,
-        Shutter = 7,
+        Shutter = 7,          // RETIRED — implementation removed; value reserved (see note above)
         Dual = 8,
         Chain = 9,
         KeyChain = 10,
@@ -21,12 +21,12 @@
         Ropes = 12,
         Scissor = 13,
         Tnt = 14,
-        Hidden = 15,
+        Hidden = 15,          // RETIRED — implementation removed; value reserved
         TimeCapsule = 16,
-        ContainerBox = 17,
-        ContainerMoveBox = 18,
+        ContainerBox = 17,    // RETIRED — implementation removed; value reserved
+        ContainerMoveBox = 18, // RETIRED — implementation removed; value reserved
         SwitchLayer = 19,
         BreakableLink = 20,
-        ContainerColorBox = 21
+        ContainerColorBox = 21 // RETIRED — implementation removed; value reserved
     }
 }

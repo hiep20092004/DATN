@@ -289,10 +289,6 @@ namespace WaterFlow.Game
             if (pendingRiseCompletions > 0)
                 return;
 
-            // Combine groups reparent blocks into a shared-rigidbody object, which changes their
-            // local-space frame; defer until every rise tween has settled at its final position so
-            // the DOLocalMove targets (captured relative to LevelTransform) stay valid.
-            level?.FormCombineGroupsForBlocks(spawnedBlocks);
             UnregisterPendingSpawn();
         }
 

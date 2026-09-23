@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using WaterFlow.Framework.Systems;
 using WaterFlow.Framework.Systems.InventoryManagement.GameResources;
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace WaterFlow.Game
 {
@@ -15,25 +12,19 @@ namespace WaterFlow.Game
         [SerializeField] LevelDatabase levelDatabase;
 
 
-        private BlockTheme remoteBlockTheme = BlockTheme.New;
-        private BlockTheme currentBlockTheme = BlockTheme.New;
-
-        // Albedo that represents the New theme, captured once before any runtime clearing.
-        private Texture resolvedAlbedo;
-        private bool albedoResolved;
+        private BlockTheme currentBlockTheme = BlockTheme.Simple;
 
         public List<RewardByLevelType> winRewards = new ();
         public LevelDatabase LevelDatabase => levelDatabase;
 
         public void ChangeBlockTheme(BlockTheme theme)
         {
-            currentBlockTheme = theme;
+            currentBlockTheme = BlockTheme.Simple;
         }
 
         public void Initialize()
         {
-            remoteBlockTheme = FetchRemoteBlockTheme();
-            currentBlockTheme = remoteBlockTheme;
+            currentBlockTheme = BlockTheme.Simple;
         }
         
         public ResourceData GetWinReward(LevelType levelType)
@@ -43,9 +34,6 @@ namespace WaterFlow.Game
         }
         
         public BlockTheme GetBlockTheme() => currentBlockTheme;
-
-
-        private BlockTheme FetchRemoteBlockTheme() => BlockTheme.New;
         
         [Serializable]
         public class RewardByLevelType

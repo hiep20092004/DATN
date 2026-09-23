@@ -1,0 +1,399 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7844359584401425324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2296701040572820466}
+  - component: {fileID: 347100709014697364}
+  m_Layer: 0
+  m_Name: DualBlock_L_Top2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2296701040572820466
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844359584401425324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4857654099037458238}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &347100709014697364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844359584401425324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8daa6d9cfcdb4c8b97892fb8cd5c8137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.DualBlockVisualBehavior
+  meshRenderer1: {fileID: 5444927343552343798}
+  meshGlass1: {fileID: 6315647049874196305}
+  waterModule1: {fileID: 8603052548809244716}
+  water1MinValue: -8
+  water1MaxValue: 2.5
+  meshRenderer2: {fileID: 1063077429673610906}
+  meshGlass2: {fileID: 8373618910711523579}
+  waterModule2: {fileID: 6095192317373504323}
+  water2MinValue: -14
+  water2MaxValue: -10.85
+--- !u!1001 &4963920993528867029
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2296701040572820466}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8110095322558249437, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d549afe4cdaa74041880d757b85b2954, type: 2}
+    - target: {fileID: -7834349856484577404, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ed58ec16960c2548a07b376c15011f9, type: 2}
+    - target: {fileID: 919132149155446097, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: m_Name
+      value: DualBlock_Block_L_Long
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519125362654068782, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c882f933d08c874d9e81dfa9e422939, type: 2}
+    - target: {fileID: 5342303376724600399, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d65c2268adcbb584fa3e94b400573f68, type: 2}
+    - target: {fileID: 7426611842684643613, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d240f57af4b440c42b688f7aff84e771, type: 2}
+    - target: {fileID: 8678063836315574673, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 93e93e03fb36def47ac67b468930ad4b, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -2401245597225579680, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 437178154629754263}
+    - targetCorrespondingSourceObject: {fileID: 8931222276609694780, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4522927326586970746}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4133871328825130556, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8603052548809244716}
+    - targetCorrespondingSourceObject: {fileID: -8457147459863116894, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6095192317373504323}
+  m_SourcePrefab: {fileID: 100100000, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+--- !u!23 &1063077429673610906 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5342303376724600399, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1895571300529890229 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2401245597225579680, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2590629476702945736 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7426611842684643613, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4363370952342669636 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8678063836315574673, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4544537197256389865 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8931222276609694780, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4857654099037458238 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5444927343552343798 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8110095322558249437, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5638874960503466871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8457147459863116894, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6095192317373504323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5638874960503466871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3099014fc8ff554e9219aec0067877c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.WaterVisualModule
+  waterRenderer: {fileID: 4363370952342669636}
+  bubbleEffect: {fileID: 5300118107173680601}
+  fillMinValue: -14
+  fillMaxValue: -10.85
+--- !u!23 &6315647049874196305 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7834349856484577404, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8373618910711523579 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3519125362654068782, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9060421964374431465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4133871328825130556, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+  m_PrefabInstance: {fileID: 4963920993528867029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8603052548809244716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060421964374431465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3099014fc8ff554e9219aec0067877c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.WaterVisualModule
+  waterRenderer: {fileID: 2590629476702945736}
+  bubbleEffect: {fileID: 8167361563656206900}
+  fillMinValue: -8
+  fillMaxValue: 2.5
+--- !u!1001 &6604485902738679870
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1895571300529890229}
+    m_Modifications:
+    - target: {fileID: 1371597550740094192, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_Name
+      value: BubbleEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371597550740094192, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363082968895390986, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8705465178710162532, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000000076293944
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.547473e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+--- !u!4 &437178154629754263 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+  m_PrefabInstance: {fileID: 6604485902738679870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8167361563656206900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3098358889129202186, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+  m_PrefabInstance: {fileID: 6604485902738679870}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f202f11087ffa4eb691cd66560221b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.BubbleEffect
+--- !u!1001 &7165888536137934803
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4544537197256389865}
+    m_Modifications:
+    - target: {fileID: 1371597550740094192, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_Name
+      value: BubbleEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371597550740094192, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363082968895390986, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6704210635559764853, guid: 960b0893a0e5529469b17008348f965f, type: 3}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000000076293944
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.547473e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+--- !u!4 &4522927326586970746 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6752852802987623849, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+  m_PrefabInstance: {fileID: 7165888536137934803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5300118107173680601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3098358889129202186, guid: 16220724c793adf4685ec4a864cee913, type: 3}
+  m_PrefabInstance: {fileID: 7165888536137934803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f202f11087ffa4eb691cd66560221b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.BubbleEffect

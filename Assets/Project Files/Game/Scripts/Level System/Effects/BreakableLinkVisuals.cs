@@ -7,9 +7,9 @@ using UnityEngine;
 namespace WaterFlow.Game
 {
     /// <summary>
-    /// One visual per linked PAIR (unlike Combines which spawns one per touching cell). Shows the link's
+    /// One visual per linked PAIR. Shows the link's
     /// remaining clear counter and plays a break FX when the link is destroyed. Placement/orientation and
-    /// the per-block materials are driven by the reused <see cref="CombinesEffectBehavior.ConnectedBlocks"/>.
+    /// the per-block materials are driven by <see cref="ConnectedBlocks"/>.
     /// </summary>
     public class BreakableLinkVisuals : MonoBehaviour
     {
@@ -26,14 +26,14 @@ namespace WaterFlow.Game
         [SerializeField] GameObject linkVertical;
         [SerializeField] GameObject linkHorizontal;
 
-        private CombinesEffectBehavior.ConnectedBlocks connectedBlocks;
+        private ConnectedBlocks connectedBlocks;
         private Tweener punchTween;
 
-        public void Init(CombinesEffectBehavior.ConnectedBlocks connection, int count)
+        public void Init(ConnectedBlocks connection, int count)
         {
             connectedBlocks = connection;
 
-            var isVertical = connection.Direction == CombinesEffectBehavior.Direction.Down || connection.Direction == CombinesEffectBehavior.Direction.Up;
+            var isVertical = connection.Direction == BlockConnectionDirection.Down || connection.Direction == BlockConnectionDirection.Up;
 
             linkVertical.SetActive(isVertical);
             linkHorizontal.SetActive(!isVertical);

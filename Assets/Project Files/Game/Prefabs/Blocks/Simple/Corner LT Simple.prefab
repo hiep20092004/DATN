@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3018854983311956148
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 822923737227206726, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: outerRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967518667503591299, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1137407136515938567, guid: 67b91b0295393804fac8729688a7d2fb, type: 3}
+    - target: {fileID: 3371996874330621549, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6142446139900024033, guid: 67b91b0295393804fac8729688a7d2fb, type: 3}
+    - target: {fileID: 6662116136490491997, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1667235380870051563, guid: 67b91b0295393804fac8729688a7d2fb, type: 3}
+    - target: {fileID: 6857890007763129834, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 978c6dd07ca394341aa39410d9265ac5, type: 2}
+    - target: {fileID: 8527222271933565482, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527222271933565482, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527222271933565482, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527222271933565482, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527222271933565482, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527222271933565482, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527222271933565482, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527222271933565482, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527222271933565482, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527222271933565482, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915688494270743905, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+      propertyPath: m_Name
+      value: Corner LT Simple
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 4244575478746051402, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}

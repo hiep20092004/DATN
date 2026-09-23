@@ -52,7 +52,6 @@ namespace WaterFlow.Game
                 new GridCoverageRule(),
                 new ColorBalanceRule(),
                 new KeyColorLockedGatePairingRule(),
-                new ContainerBoxBoundsMemberRule(),
                 new BlockEffectCompatibilityRule(),
                 new GrinderShapeRule(),
                 new LevelDurationRule(),

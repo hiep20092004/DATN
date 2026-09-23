@@ -40,8 +40,6 @@ namespace WaterFlow.Game
 
         [SerializeField, HideInInspector] LevelRuntimeInfo[] runtimeLevelInfos = Array.Empty<LevelRuntimeInfo>();
         
-        [Space]
-        [SerializeField] ObstacleUnlockDatabase obstacleUnlockDatabase;
 
         public int AmountOfLevels
         {
@@ -75,10 +73,6 @@ namespace WaterFlow.Game
         }
 
         public LevelGeneralConfigData LevelGeneralConfigData => levelGeneralConfigData;
-        public List<ObstacleUnlockEntry> ObstacleUnlockEntries =>
-            obstacleUnlockDatabase != null ? obstacleUnlockDatabase.Entries : null;
-        
-        public ObstacleUnlockDatabase ObstacleUnlockDatabase => obstacleUnlockDatabase;
 
 #if UNITY_EDITOR
         private const string PREFS_TEST_VARIANT_ASSET_PATH = "editor_test_variant_asset_path";
@@ -483,18 +477,6 @@ namespace WaterFlow.Game
 
             return null;
         }
-        
-        /// <summary>
-        /// Returns active obstacle unlock entries whose effect appears anywhere in
-        /// <paramref name="levelData"/>'s elements. Driven by the loaded LevelData so
-        /// remote-loaded levels still resolve to the right unlock entries.
-        /// </summary>
-        public List<ObstacleUnlockEntry> GetObstacleUnlockEntriesForLevel(LevelData levelData)
-        {
-            return obstacleUnlockDatabase
-                ? obstacleUnlockDatabase.GetEntriesForLevel(levelData)
-                : new List<ObstacleUnlockEntry>(0);
-        }
 
         /// <summary>Returns true if the level at <paramref name="index"/> contains at least one Generator element.</summary>
         public bool LevelHasGenerator(int index)
@@ -512,20 +494,6 @@ namespace WaterFlow.Game
             return false;
         }
 
-        /// <summary>
-        /// Returns the <see cref="ObstacleCategory.Generator"/> unlock entry, or null if not present / inactive.
-        /// </summary>
-        public ObstacleUnlockEntry GetGeneratorObstacleUnlockEntry()
-        {
-            var entries = ObstacleUnlockEntries;
-            if (entries == null) return null;
-            foreach (var entry in entries)
-            {
-                if (entry != null && entry.Category == ObstacleCategory.Generator) return entry;
-            }
-            return null;
-        }
-
 #if UNITY_EDITOR
         private const string LEVEL_PREFIX = "Level ";
         private const string ASSET_SUFFIX = ".asset";
@@ -533,7 +501,6 @@ namespace WaterFlow.Game
 
         /// <summary>
         /// Quét thư mục levels, load tất cả level asset và gán vào mảng levels (chỉ Editor).
-        /// Đồng thời generate dữ liệu ObstacleUnlockEntry cho từng effect xuất hiện lần đầu.
         /// </summary>
         public void Editor_PopulateLevels(string levelsFolderPath)
         {
@@ -577,9 +544,6 @@ namespace WaterFlow.Game
             so.ApplyModifiedProperties();
 
             Editor_PruneVariantEntries();
-
-            // Generate obstacle unlock data based on first appearance of effects
-            Editor_GenerateObstacleUnlockData(loadedLevels);
 
             Validate();
 
@@ -632,17 +596,6 @@ namespace WaterFlow.Game
 
             variantEntries = kept.ToArray();
             EditorUtility.SetDirty(this);
-        }
-
-        public void Editor_GenerateObstacleUnlockData(List<LevelData> loadedLevels)
-        {
-            if (obstacleUnlockDatabase == null)
-            {
-                Debug.LogWarning("[LevelDatabase] ObstacleUnlockDatabase is missing. Skipping obstacle unlock generation.", this);
-                return;
-            }
-
-            obstacleUnlockDatabase.Editor_GenerateObstacleUnlockData(loadedLevels);
         }
 
         /// <summary>Palette color from <see cref="editorColorData"/> for level editor UI (inspector pickers).</summary>

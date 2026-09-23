@@ -30,7 +30,7 @@ namespace WaterFlow.Game
     /// <summary>
     /// Editor-only vocabulary of level tags, generated automatically from the effect/obstacle enums
     /// so it never drifts when a new effect is added. Each tag is assigned a stable bit index used by
-    /// <see cref="LevelTagScanner"/>; the canonical key matches <see cref="ObstacleUnlockEntry.ComputeEffectKey"/>
+    /// <see cref="LevelTagScanner"/>; the canonical key matches <see cref="ObstacleUnlockScanner.ComputeEffectKey"/>
     /// so the same level scan that drives obstacle unlocks also drives filtering.
     /// </summary>
     public static class LevelTagRegistry
@@ -71,7 +71,7 @@ namespace WaterFlow.Game
             {
                 if (effect == BlockEffectType.None) continue;
                 Register(ObstacleCategory.Block,
-                    ObstacleUnlockEntry.ComputeEffectKey(ObstacleCategory.Block, effect, GateEffectType.None,
+                    ObstacleUnlockScanner.ComputeEffectKey(ObstacleCategory.Block, effect, GateEffectType.None,
                         InteractableObjectType.None, default),
                     GetBlockDisplayName(effect));
             }
@@ -80,7 +80,7 @@ namespace WaterFlow.Game
             {
                 if (effect == GateEffectType.None) continue;
                 Register(ObstacleCategory.Gate,
-                    ObstacleUnlockEntry.ComputeEffectKey(ObstacleCategory.Gate, BlockEffectType.None, effect,
+                    ObstacleUnlockScanner.ComputeEffectKey(ObstacleCategory.Gate, BlockEffectType.None, effect,
                         InteractableObjectType.None, default),
                     GetGateDisplayName(effect));
             }
@@ -90,20 +90,20 @@ namespace WaterFlow.Game
             {
                 if (type == InteractableObjectType.None) continue;
                 Register(ObstacleCategory.InteractableObject,
-                    ObstacleUnlockEntry.ComputeEffectKey(ObstacleCategory.InteractableObject, BlockEffectType.None,
+                    ObstacleUnlockScanner.ComputeEffectKey(ObstacleCategory.InteractableObject, BlockEffectType.None,
                         GateEffectType.None, type, default),
                     GetInteractableDisplayName(type));
             }
 
             Register(ObstacleCategory.Generator,
-                ObstacleUnlockEntry.ComputeEffectKey(ObstacleCategory.Generator, BlockEffectType.None,
+                ObstacleUnlockScanner.ComputeEffectKey(ObstacleCategory.Generator, BlockEffectType.None,
                     GateEffectType.None, InteractableObjectType.None, default),
                 "Printer");
 
             foreach (ExtraLayerType type in (ExtraLayerType[])System.Enum.GetValues(typeof(ExtraLayerType)))
             {
                 Register(ObstacleCategory.ExtraLayer,
-                    ObstacleUnlockEntry.ComputeEffectKey(ObstacleCategory.ExtraLayer, BlockEffectType.None,
+                    ObstacleUnlockScanner.ComputeEffectKey(ObstacleCategory.ExtraLayer, BlockEffectType.None,
                         GateEffectType.None, InteractableObjectType.None, type),
                     type.ToString());
             }
@@ -135,16 +135,11 @@ namespace WaterFlow.Game
             {
                 case BlockEffectType.FixedDirection: return "Vector";
                 case BlockEffectType.Layered: return "Stack";
-                case BlockEffectType.Combines: return "Combine";
                 case BlockEffectType.Blocked: return "Blocker";
                 case BlockEffectType.KeyChain: return "Keychain";
                 case BlockEffectType.KeyColor: return "Key Color";
-                case BlockEffectType.Ropes: return "Tied";
                 case BlockEffectType.Tnt: return "TNT";
                 case BlockEffectType.TimeCapsule: return "Time Capsule";
-                case BlockEffectType.ContainerBox: return "Box";
-                case BlockEffectType.ContainerMoveBox: return "Move Box";
-                case BlockEffectType.ContainerColorBox: return "Color Box";
                 case BlockEffectType.SwitchLayer: return "Switch Layer";
                 case BlockEffectType.BreakableLink: return "Linked";
                 default: return effect.ToString();
@@ -157,21 +152,12 @@ namespace WaterFlow.Game
             {
                 case GateEffectType.IceGate: return "Ice Gate";
                 case GateEffectType.LockedColor: return "Locked Color";
-                case GateEffectType.MovingLock: return "Moving Lock";
                 case GateEffectType.ChainGate: return "Chained Gate";
                 default: return effect.ToString();
             }
         }
 
-        private static string GetInteractableDisplayName(InteractableObjectType type)
-        {
-            switch (type)
-            {
-                case InteractableObjectType.ColorObstacle: return "Color Obstacle";
-                case InteractableObjectType.MoveableColorObstacle: return "Moving Obstacle";
-                default: return type.ToString();
-            }
-        }
+        private static string GetInteractableDisplayName(InteractableObjectType type) => type.ToString();
     }
 
     /// <summary>
@@ -206,7 +192,7 @@ namespace WaterFlow.Game
             ulong mask = 0UL;
             ObstacleUnlockScanner.VisitEffects(level, (category, blockEffect, gateEffect, interactable, extraLayer) =>
             {
-                string key = ObstacleUnlockEntry.ComputeEffectKey(category, blockEffect, gateEffect, interactable,
+                string key = ObstacleUnlockScanner.ComputeEffectKey(category, blockEffect, gateEffect, interactable,
                     extraLayer);
                 if (LevelTagRegistry.TryGetBit(key, out int bitIndex))
                     mask |= 1UL << bitIndex;

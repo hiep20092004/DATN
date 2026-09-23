@@ -28,7 +28,6 @@ namespace WaterFlow.Game
                 case GateEffectType.IceGate:      return new IceGateEffectData();
                 case GateEffectType.Valve:        return new ValveGateEffectData();
                 case GateEffectType.LockedColor:  return new LockedColorGateEffectData();
-                case GateEffectType.MovingLock:   return new MovingLockGateEffectData();
                 case GateEffectType.ChainGate:   return new ChainGateEffectData();
                 default:
                     UnityEngine.Debug.LogWarning($"[GateEffectData] Unknown GateEffectType '{type}'.");
@@ -64,15 +63,6 @@ namespace WaterFlow.Game
         public override string GetEditorLabel() => "Lock: " + lockColor;
     }
 
-    [Serializable]
-    public sealed class MovingLockGateEffectData : GateEffectData
-    {
-        [SerializeField] public bool isClockwise = true;
-
-        public override GateEffectType Type => GateEffectType.MovingLock;
-        public override string GetEditorLabel() => "LockMove: " + (isClockwise ? "\u21bb" : "\u21ba");
-    }
-    
     [Serializable]
     public sealed class ChainGateEffectData : GateEffectData
     {

@@ -1,0 +1,232 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325e21dbfca64d369fb7c8cfc1ef9607, type: 3}
+  m_Name: Simple Blocks Visuals Data
+  m_EditorClassIdentifier: Assembly-CSharp::WaterFlow.Game.BlocksVisualsData
+  blocks:
+  - type: 0
+    prefab: {fileID: 7027668412828176619, guid: 0c1e58bdfde8f4440a6a6f70e6e217f9, type: 3}
+  - type: 1
+    prefab: {fileID: 9178206756122226064, guid: 354575f5d48f7c240a15f25285c199e8, type: 3}
+  - type: 2
+    prefab: {fileID: 2242993267459543557, guid: 7e5967b9ad3974c449138b06d6aca16d, type: 3}
+  - type: 3
+    prefab: {fileID: 3698753086460864164, guid: fbc74cf7087f2964b8a8caddb2cbf987, type: 3}
+  - type: 4
+    prefab: {fileID: 6738085585935693941, guid: 627f3fe1c71b400498c6edd8cfc5cbe7, type: 3}
+  - type: 5
+    prefab: {fileID: 1199308744150649410, guid: 942e374ea7df26542b8e52059b0ec032, type: 3}
+  - type: 6
+    prefab: {fileID: 2097355965778712977, guid: 106221ddcff6c534c9b51547d2799360, type: 3}
+  - type: 7
+    prefab: {fileID: 2632329750998981566, guid: f189084c5b15ea34c81ad6d86554098e, type: 3}
+  - type: 8
+    prefab: {fileID: 8915688494270743905, guid: c2806d363c7a8d74aac60ffa1aa07c10, type: 3}
+  - type: 9
+    prefab: {fileID: 6794029987324425618, guid: ed41cb21daf43d24ca14934aafc1a7e2, type: 3}
+  - type: 10
+    prefab: {fileID: 6719821506749766693, guid: 5912d9399da9bb147aea3fd87465883e, type: 3}
+  - type: 11
+    prefab: {fileID: 71372553870868329, guid: c01b473650775154cb8fefa8c15ddcb5, type: 3}
+  - type: 12
+    prefab: {fileID: 1053618792683185654, guid: c5a77d0e80ebaf948998e49783fc8923, type: 3}
+  - type: 13
+    prefab: {fileID: 4949983121207666417, guid: c1abd756c16f84d4bb7b22a193ea4f19, type: 3}
+  - type: 14
+    prefab: {fileID: 6144295253733974607, guid: 6e997b48b011ef34c801889ea4dad670, type: 3}
+  - type: 15
+    prefab: {fileID: 1865711469269404899, guid: bc26fbefa408f7d4e8e29aa0b6c093f5, type: 3}
+  - type: 16
+    prefab: {fileID: 5124401299679071224, guid: b8b9f7f0acedc294aaca5e4375cfa956, type: 3}
+  - type: 17
+    prefab: {fileID: 1676472516462419072, guid: aaf11184df057e640ba695465512775c, type: 3}
+  - type: 18
+    prefab: {fileID: 4714688651006957820, guid: 28650217edb407d48b564c6fd683cd24, type: 3}
+  - type: 19
+    prefab: {fileID: 2423423392100034260, guid: d5e841e398e7c954e963e2acd31598e3, type: 3}
+  - type: 20
+    prefab: {fileID: 3924523797086065290, guid: 666fa40f20200de4091b0683654dcc17, type: 3}
+  - type: 21
+    prefab: {fileID: 6686188425622218921, guid: 482ecec6121c9c94bae04f3c2e66f9b2, type: 3}
+  - type: 22
+    prefab: {fileID: 8471186265318389542, guid: 9b3e6d1d6909e024c8ba299e9a1d6321, type: 3}
+  - type: 23
+    prefab: {fileID: 4714688651006957820, guid: 04121e877d0168d42b7fbdcc484a60f2, type: 3}
+  - type: 24
+    prefab: {fileID: 4714688651006957820, guid: 234101b402699f84ea61652b3743c928, type: 3}
+  - type: 25
+    prefab: {fileID: 4714688651006957820, guid: 4de75600ac106fe4d87aecb6ab2532cb, type: 3}
+  - type: 26
+    prefab: {fileID: 4714688651006957820, guid: 62f4fc94ebd4ee54aa405f5c66d4eeed, type: 3}
+  - type: 27
+    prefab: {fileID: 4714688651006957820, guid: eac904509ca8b2d45a3e82fe64434866, type: 3}
+  - type: 28
+    prefab: {fileID: 4714688651006957820, guid: 5923dec1bcb89cc4a87e9791347b831c, type: 3}
+  - type: 29
+    prefab: {fileID: 4714688651006957820, guid: 780c8ea00f7559f488c8e46c8d217d18, type: 3}
+  - type: 30
+    prefab: {fileID: 4714688651006957820, guid: 34d4c46ebbb89a64588f943e4a0bb9b2, type: 3}
+  - type: 31
+    prefab: {fileID: 9178206756122226064, guid: 3d391c90c8817c9428f6c427b7a3bd0f, type: 3}
+  colors:
+  - type: 0
+    material: {fileID: 2100000, guid: 481522d483c0f4f468d8e1925daece14, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: a1c0217fbc255c64aa81a60d680027cc, type: 2}
+    glassMaterial: {fileID: 2100000, guid: ebaa26c5a42aba64da7f700b16f9024e, type: 2}
+    waterMaterial: {fileID: 2100000, guid: c737512f8b6cd9a4aada452f973d1980, type: 2}
+    waterInPipe: {fileID: 2100000, guid: dd8592b31a779bc49a301c307523c1ac, type: 2}
+    flowMaterial: {fileID: 2100000, guid: d766fea7f56ae6a4e8cd5f704946e81a, type: 2}
+    color: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 0}
+  - type: 1
+    material: {fileID: 2100000, guid: d549afe4cdaa74041880d757b85b2954, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: e26bbd63a32372d4cb5877d105827388, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 7ed58ec16960c2548a07b376c15011f9, type: 2}
+    waterMaterial: {fileID: 2100000, guid: d240f57af4b440c42b688f7aff84e771, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 1064f440d11307848b98210d669ba1a4, type: 2}
+    flowMaterial: {fileID: 2100000, guid: 73e78432b4d45c747a879509bf18426b, type: 2}
+    color: {r: 1, g: 0.4117647, b: 0.5058824, a: 0}
+  - type: 2
+    material: {fileID: 2100000, guid: f1005571887418b45a51bba7f8bbf8be, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 94416c2033951e94f9393abd4adde89e, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 3111bffe0c891e44cac8fba90de18f16, type: 2}
+    waterMaterial: {fileID: 2100000, guid: d04c9718a1df4674e818ebae0de769cb, type: 2}
+    waterInPipe: {fileID: 2100000, guid: e14f963d01e35474bbd10bcda178323d, type: 2}
+    flowMaterial: {fileID: 2100000, guid: 440e8cd651d78f6498be234ed94164cd, type: 2}
+    color: {r: 1, g: 0.6862745, b: 0.16470589, a: 0}
+  - type: 3
+    material: {fileID: 2100000, guid: a482ed2227ee0914787f455bc5b1f59e, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 8525bb55190af6444af420684ab072d9, type: 2}
+    glassMaterial: {fileID: 2100000, guid: b4f8e94fffd76f94ebcb92f0c8e85ce6, type: 2}
+    waterMaterial: {fileID: 2100000, guid: 62311463a8217f148b6b9bb8021e8be2, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 000c93c4f25fe664d98e63d080f878bc, type: 2}
+    flowMaterial: {fileID: 2100000, guid: 0fc0a230c44db6b4a94017ff8686429e, type: 2}
+    color: {r: 1, g: 0.90588236, b: 0, a: 0}
+  - type: 4
+    material: {fileID: 2100000, guid: 3719594370e9bb74a90d17371aeb11b6, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 1ea78360149de7d4c96a87d46aa539b9, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 68c828d0da3bc504ebc608b8ee9152b2, type: 2}
+    waterMaterial: {fileID: 2100000, guid: 8a0396d4d5051d04e99a1f5e881c5f34, type: 2}
+    waterInPipe: {fileID: 2100000, guid: ea5508b415f5ca54cb031e60dd7d04f6, type: 2}
+    flowMaterial: {fileID: 2100000, guid: dd8749c12875bae4a99595c4eb4fcd8f, type: 2}
+    color: {r: 0.5882353, g: 0.9529412, b: 0.53333336, a: 0}
+  - type: 5
+    material: {fileID: 2100000, guid: 4f44083a653145f48a5e13e1787a74e9, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 594b86ce5ef0f544ebff6c48c8eeb54c, type: 2}
+    glassMaterial: {fileID: 2100000, guid: ae355e08141c4d4418333f1325ce2eb2, type: 2}
+    waterMaterial: {fileID: 2100000, guid: cf242705c69c8a547a0877eec36bac5a, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 35a56d8fd13d30342bc87749a4d677c1, type: 2}
+    flowMaterial: {fileID: 2100000, guid: 05caae3e3d62ae24b8dabc54c8dd6503, type: 2}
+    color: {r: 0.2, g: 0.77254903, b: 0.41960785, a: 0}
+  - type: 6
+    material: {fileID: 2100000, guid: 2265268e954b79b47a188902be4a4492, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 22fffa4aa70dc1640a111215d2a77688, type: 2}
+    glassMaterial: {fileID: 2100000, guid: d2bb6e830b8ff4a44952e3dc748c80d9, type: 2}
+    waterMaterial: {fileID: 2100000, guid: fa0094d8947bf37488f0821044382846, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 7e647ae8cfc97714893a68be79086e1e, type: 2}
+    flowMaterial: {fileID: 2100000, guid: 3f11115f5c75d2242a5ca80915c57768, type: 2}
+    color: {r: 0.14509805, g: 0.85882354, b: 1, a: 0}
+  - type: 7
+    material: {fileID: 2100000, guid: d65c2268adcbb584fa3e94b400573f68, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 620451da4f4ae40498f76cf1c818e703, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 8c882f933d08c874d9e81dfa9e422939, type: 2}
+    waterMaterial: {fileID: 2100000, guid: 93e93e03fb36def47ac67b468930ad4b, type: 2}
+    waterInPipe: {fileID: 2100000, guid: a2c393204bdb1c2408832e438dc04d88, type: 2}
+    flowMaterial: {fileID: 2100000, guid: a0dd23d0a54b0ba439a541a6d529f1ab, type: 2}
+    color: {r: 0.22352941, g: 0.654902, b: 1, a: 0}
+  - type: 8
+    material: {fileID: 2100000, guid: 00a60de9e5fea1d4a90981487f7638ba, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 229a4ac4fdf0ffb4c902a6461e62e8c0, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 8a6390b531fbc6249af8bcd909331b9c, type: 2}
+    waterMaterial: {fileID: 2100000, guid: 472f827b0383bc3489885c71caf6615a, type: 2}
+    waterInPipe: {fileID: 2100000, guid: f04237cdbc3e3de4da28b742aea58014, type: 2}
+    flowMaterial: {fileID: 2100000, guid: a0c5dbe9770cfc545aa79f1fede3f65c, type: 2}
+    color: {r: 0.7372549, g: 0.57254905, b: 1, a: 0}
+  - type: 9
+    material: {fileID: 2100000, guid: 8cbcf8f0552ed4247993977958bddd24, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: e7e4142d3c541f04da2dd0de22055e36, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 634698dcb4c3fc2459e77389e119821b, type: 2}
+    waterMaterial: {fileID: 2100000, guid: dcfe9a8d3ef446a47b78759256b56e20, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 9eb0cc61b846a3e4cb285a8e88c3b74d, type: 2}
+    flowMaterial: {fileID: 2100000, guid: a8722f45e7f939944b8e7f0959774594, type: 2}
+    color: {r: 1, g: 0.6, b: 0.88235295, a: 0}
+  - type: 10
+    material: {fileID: 2100000, guid: aa0e24b3bcf0de641bd3b663e6ed5ddc, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 5d41a1ea15c6c4c409d97d1b55ba9e15, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 5e7b937a7fb49104b968f8dbc95f86f6, type: 2}
+    waterMaterial: {fileID: 2100000, guid: b694fc3a75f7449419f44f54bf81ae09, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 83e85bca481161f4e87e3c64c7728068, type: 2}
+    flowMaterial: {fileID: 2100000, guid: ff6b10c400a22994394e2b0c366de4ef, type: 2}
+    color: {r: 0.5529412, g: 0.33333334, b: 0.2627451, a: 1}
+  - type: 11
+    material: {fileID: 2100000, guid: 37e4ffae672343d4796a76cafc598cf9, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 7fdc82dc3a5c6064581228b6ed99a0d7, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 8c43843561a7eab4eb1d6eda2694e545, type: 2}
+    waterMaterial: {fileID: 2100000, guid: baba834329d7c284cae6e328ba8dafec, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 3b7274dba8b3f814183f78adf7c9cb5a, type: 2}
+    flowMaterial: {fileID: 2100000, guid: f8bb1350648496049b0560fbde4b5311, type: 2}
+    color: {r: 0.29411766, g: 0.97647065, b: 0.67058825, a: 1}
+  - type: 12
+    material: {fileID: 2100000, guid: e9db740560c1f4a4e8c98108ca681d8e, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 9a460f931df0ff0419a4247b1e1baee9, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 2b91530efef723d43b32ab68c388ead2, type: 2}
+    waterMaterial: {fileID: 2100000, guid: 71c47cb3edeaab3418c5f247a515c51d, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 1eaba8ab801d34646812c202cd6a30be, type: 2}
+    flowMaterial: {fileID: 2100000, guid: 4f1cfb7649ad18c44b938cd0fcfc66f8, type: 2}
+    color: {r: 0.46274513, g: 0.6313726, b: 0.2392157, a: 1}
+  - type: 13
+    material: {fileID: 2100000, guid: b3d9a295bc6e4864485948562a22034a, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: b4eedc1f337e785428b80543ea668e24, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 29f54a204d9853a45b2edc318690fed8, type: 2}
+    waterMaterial: {fileID: 2100000, guid: ef3843316a1e4b447891378e77e54a40, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 303278139d876374dbb2b9d86847cc39, type: 2}
+    flowMaterial: {fileID: 2100000, guid: 2073d7948075a2b4b9fc7d11075ae92f, type: 2}
+    color: {r: 0.6901961, g: 0.18823531, b: 0.43921572, a: 1}
+  - type: 14
+    material: {fileID: 2100000, guid: 143d8e0e6b46eba4a849dd7b5e4534cf, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: f5fcc1694da689d4fa1cc49bbfe254f6, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 71ca77bc56a1dc64686acb851fbaddff, type: 2}
+    waterMaterial: {fileID: 2100000, guid: 5a331bbd6111bd04ab593ac9c4c0d7af, type: 2}
+    waterInPipe: {fileID: 2100000, guid: c780e957d535c73488ab57f2f6188732, type: 2}
+    flowMaterial: {fileID: 2100000, guid: 7683900bfcd7eb745a7c275d1f8bfdaf, type: 2}
+    color: {r: 0.48627454, g: 0.4901961, b: 0.9333334, a: 1}
+  - type: 15
+    material: {fileID: 2100000, guid: f228a9ee33872cc40b647b460a0adc5a, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 87e0ef36c54e3794293dd4d89f595951, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 32ec5e744d230b84cac66ed13d9376fc, type: 2}
+    waterMaterial: {fileID: 2100000, guid: 663899c7b8628354e9bb9dc1883b546c, type: 2}
+    waterInPipe: {fileID: 2100000, guid: f6920324c1403a340846bfe5c92ab7c6, type: 2}
+    flowMaterial: {fileID: 2100000, guid: 1bd79c89ab9bc6a40b475decf2a9eaa4, type: 2}
+    color: {r: 0.60784316, g: 0.4666667, b: 0.027450982, a: 1}
+  - type: 16
+    material: {fileID: 2100000, guid: 8ddcb072b1c288c4793f3c63ead7bdb5, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: 6bd85f15b33ac004d85d9b61d89f7549, type: 2}
+    glassMaterial: {fileID: 2100000, guid: fc3f47cfc7e4e1242bc4170fdb76d988, type: 2}
+    waterMaterial: {fileID: 2100000, guid: fb2f3f221bdfada41a5b432e9cb8e93f, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 1bff550d97966d44e8baadf6c595a52e, type: 2}
+    flowMaterial: {fileID: 2100000, guid: 02ee226ef77482040b6feee9e1805caf, type: 2}
+    color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+  - type: 17
+    material: {fileID: 2100000, guid: 80e9231029d442a44a59e8b8f2ccf67d, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: f8eb40908f915c74386d6599206f8372, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 6dba7dc4c31b9f143a9047dd14946af0, type: 2}
+    waterMaterial: {fileID: 2100000, guid: ae7072140336a844488cfca43a520718, type: 2}
+    waterInPipe: {fileID: 2100000, guid: b618de0fbfe4ddb4da3f35ba351240d0, type: 2}
+    flowMaterial: {fileID: 2100000, guid: ec037a36e75c8d046b9f8f8fd9c43ad3, type: 2}
+    color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
+  - type: 18
+    material: {fileID: 2100000, guid: 2653f7895c3b00f4ca8e286f59bc1cc4, type: 2}
+    pipeMaterial: {fileID: 2100000, guid: abda2c3ad86edd7409d16d892ce898df, type: 2}
+    glassMaterial: {fileID: 2100000, guid: 8c7d9e1268d54054daa9225b38ac887e, type: 2}
+    waterMaterial: {fileID: 2100000, guid: 451a84cdffbc640499257ec24a3363ea, type: 2}
+    waterInPipe: {fileID: 2100000, guid: 94913248678b8ba4a96bff73c29e5062, type: 2}
+    flowMaterial: {fileID: 2100000, guid: f660eec6952e24644847bbb0e62f801d, type: 2}
+    color: {r: 1, g: 0.8235294, b: 0.09803922, a: 1}

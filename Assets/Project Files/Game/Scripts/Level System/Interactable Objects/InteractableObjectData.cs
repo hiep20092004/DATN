@@ -8,21 +8,17 @@ namespace WaterFlow.Game
     public class InteractableObjectData
     {
         /// <summary>Type the level editor sidebar starts on when painting InteractableObject cells.</summary>
-        public const InteractableObjectType EditorPaintedType = InteractableObjectType.ColorObstacle;
+        public const InteractableObjectType EditorPaintedType = InteractableObjectType.Grinder;
 
 #if UNITY_EDITOR
         // Mapping from type to the serialized field names we should draw
         public static readonly Dictionary<InteractableObjectType, string[]> FIELDS = new Dictionary<InteractableObjectType, string[]>
         {
-            { InteractableObjectType.ColorObstacle, new[] { "obstacleColor" } },
-            { InteractableObjectType.MoveableColorObstacle, new[] { "obstacleColor" } },
             { InteractableObjectType.Grinder, new[] { "grinderConfig" } },
         };
 
         public static readonly InteractableObjectType[] EDITOR_PAINTABLE_TYPES =
         {
-            InteractableObjectType.ColorObstacle,
-            InteractableObjectType.MoveableColorObstacle,
             InteractableObjectType.Grinder,
         };
 

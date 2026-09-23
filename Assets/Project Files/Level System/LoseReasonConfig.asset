@@ -15,170 +15,58 @@ MonoBehaviour:
   entries:
   - reason: 1
     config:
-      icon: {fileID: 21300000, guid: aa991080b73f65b4baa3f5958210fa0e, type: 3}
-      title:
-        mTerm: out_of_time
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      descriptionFormat:
-        mTerm: continue_with_value_seconds
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
+      icon: {fileID: 21300000, guid: d79b4695bdfae1f4b9d2543e505777f4, type: 3}
+      title: Out of Time!
+      descriptionFormat: Continue with {[value]} seconds!
       themeIcons: []
       continueSeconds: 60
       additionText: 
   - reason: 2
     config:
-      icon: {fileID: 21300000, guid: ec07d2c1e9199654887b113cf58d8cbc, type: 3}
-      title:
-        mTerm: bomb_exploded
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      descriptionFormat:
-        mTerm: get_value_seconds_to_keep_playing
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
+      icon: {fileID: 21300000, guid: 607144bb8e020c54d804339c75cb463a, type: 3}
+      title: Bomb Exploded!
+      descriptionFormat: Get {[value]} seconds to keep playing!
       themeIcons: []
       continueSeconds: 20
       additionText: 
   - reason: 3
     config:
-      icon: {fileID: 21300000, guid: 6715b883a71606d49b5b14cb34e58d32, type: 3}
-      title:
-        mTerm: valve_failed
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      descriptionFormat:
-        mTerm: reverse_the_valvesopen_valve_closed_closed_valve_o
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
+      icon: {fileID: 21300000, guid: 7d3f1a4b2c9e46d1a8b5c60f2e3d4a91, type: 3}
+      title: Valve Failed!
+      descriptionFormat: 'Reverse the valves: open the closed one, close the open
+        one.'
       themeIcons: []
-      continueSeconds: 0
-      additionText: 
-  - reason: 4
-    config:
-      icon: {fileID: 21300000, guid: e56aed44daeb2c04b8686b05aefe33a2, type: 3}
-      title:
-        mTerm: shutter_failed
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      descriptionFormat:
-        mTerm: reverse_the_shuttersopen_shutter_closed_closed_shu
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      themeIcons:
-      - theme: 1
-        icon: {fileID: 21300000, guid: f69f1f1767c336c409841d9e655d8f0f, type: 3}
       continueSeconds: 0
       additionText: 
   - reason: 5
     config:
-      icon: {fileID: 21300000, guid: 18a629b9f8ec20647bc70db30cb1466f, type: 3}
-      title:
-        mTerm: stack_block_failed
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      descriptionFormat:
-        mTerm: fill_the_entire_inner_block
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      themeIcons:
-      - theme: 1
-        icon: {fileID: 21300000, guid: b621273b3e300304597adb166a6afc64, type: 3}
+      icon: {fileID: 21300000, guid: 5b8e2c1d9f3a47c2b6d0e18f4a3c9d72, type: 3}
+      title: Stack Block Failed!
+      descriptionFormat: Fill the entire inner block.
+      themeIcons: []
       continueSeconds: 0
       additionText: 
   - reason: 6
     config:
       icon: {fileID: 21300000, guid: a50275022e42ed442b24cd26120bbbe1, type: 3}
-      title:
-        mTerm: TnT Exploded!
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      descriptionFormat:
-        mTerm: Get 3 more turns to keep playing!
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
+      title: TnT Exploded!
+      descriptionFormat: Get 3 more turns to keep playing!
       themeIcons: []
       continueSeconds: 0
       additionText: +3
-  - reason: 7
-    config:
-      icon: {fileID: 21300000, guid: fec21751045fa6c4ca9de39bc95eb5b7, type: 3}
-      title:
-        mTerm: Moving Lock Stuck
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      descriptionFormat:
-        mTerm: The moving lock is in the way. Continue, and it moves to the next
-          gate.
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      themeIcons: []
-      continueSeconds: 0
-      additionText: 
   - reason: 8
     config:
-      icon: {fileID: 21300000, guid: 1722cf660128e3f4ebe84d93d7b3adcc, type: 3}
-      title:
-        mTerm: The Chain Locked
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      descriptionFormat:
-        mTerm: Remove Chain?
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
+      icon: {fileID: 21300000, guid: 9becddaa82465ff4d99a434694e65a7a, type: 3}
+      title: Chain Locked!
+      descriptionFormat: Continue to break the chain locks open.
       themeIcons: []
       continueSeconds: 0
       additionText: 
   - reason: 9
     config:
-      icon: {fileID: 21300000, guid: 4ac75e68fac56644b8bcba94d8d97a61, type: 3}
-      title:
-        mTerm: Switch Block Failed!
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      descriptionFormat:
-        mTerm: Fill the current inner block.
-        mRTL_IgnoreArabicFix: 0
-        mRTL_MaxLineLength: 0
-        mRTL_ConvertNumbers: 0
-        m_DontLocalizeParameters: 0
-      themeIcons:
-      - theme: 1
-        icon: {fileID: 21300000, guid: 418205bc09eaf0540b271a4a7b9707eb, type: 3}
+      icon: {fileID: 21300000, guid: 2c9d4e7f1b6a48d3a5c8f20e93b1d6a4, type: 3}
+      title: Switch Block Failed!
+      descriptionFormat: Fill the current inner block.
+      themeIcons: []
       continueSeconds: 0
       additionText: 

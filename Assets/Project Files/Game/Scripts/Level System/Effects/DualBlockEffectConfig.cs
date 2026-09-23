@@ -7,27 +7,9 @@ namespace WaterFlow.Game
     public class DualBlockEffectConfig : BaseBlockEffectConfig
     {
         [SerializeField] private DualVisualsData[] dualVisualsDatas;
-        [SerializeField] private DualVisualsData[] newDualVisualsDatas;
         
         public bool TryGetDualVisualsData(BlockTheme blockTheme, BlockType blockType, out DualVisualsData data)
         {
-            if (blockTheme == BlockTheme.New)
-            {
-                if (newDualVisualsDatas != null)
-                {
-                    for (int i = 0; i < newDualVisualsDatas.Length; i++)
-                    {
-                        if (newDualVisualsDatas[i].BlockType == blockType)
-                        {
-                            data = newDualVisualsDatas[i];
-                            return true;
-                        }
-                    }
-                }
-                data = null;
-                return false; 
-            }
-            
             if (dualVisualsDatas != null)
             {
                 for (int i = 0; i < dualVisualsDatas.Length; i++)

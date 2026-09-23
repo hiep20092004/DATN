@@ -34,6 +34,18 @@
             GamePlacement.Game => "Game",
             _ => "Loading",
         };
+
+        /// <summary>
+        /// Reverse of <see cref="ToBuildSceneName"/>. Needed because the boot scene is loaded by
+        /// GameLoading rather than the transition service, so the active scene — not a cached
+        /// field — is the only reliable source for "where am I right now".
+        /// </summary>
+        public static GamePlacement FromBuildSceneName(this string sceneName) => sceneName switch
+        {
+            "Home" => GamePlacement.Home,
+            "Game" => GamePlacement.Game,
+            _ => GamePlacement.Loading,
+        };
     }
 
     public enum NavigationType : byte

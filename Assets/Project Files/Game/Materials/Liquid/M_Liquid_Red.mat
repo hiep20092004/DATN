@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Liquid_Red
+  m_Shader: {fileID: -6465566751694194690, guid: 9a25513738b2a2d408a5c6dd27fd28e0, type: 3}
+  m_Parent: {fileID: 2100000, guid: 978c6dd07ca394341aa39410d9265ac5, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _ALPHATEST_ON
+  m_InvalidKeywords:
+  - _RECEIVE_SHADOWS_OFF
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: TransparentCutout
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  - SHADOWCASTER
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _WaterPatternTEX_1:
+        m_Texture: {fileID: 2800000, guid: a36bcab55ec51a1408cff2716c28ae9f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _FillAmount: 0.495
+    - _FillBoundsMax: 8
+    - _FillBoundsMin: -15
+    - _Foam_Smoothness: 0
+    - _WaterAlpha: 0.2
+    - _WaterPatternScale_1: 14.89
+    - _WaterPatternStrength_1: 13.16
+    m_Colors:
+    - _FoamColor: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
+    - _Rim_Color: {r: 1, g: 0.25, b: 0.25, a: 1}
+    - _Tint: {r: 0.8207547, g: 0.10453009, b: 0.11447761, a: 1}
+    - _TopColor: {r: 0.7924528, g: 0.31772873, b: 0.32182118, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &2330727547880825926
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
+  version: 10

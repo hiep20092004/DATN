@@ -60,11 +60,6 @@ MonoBehaviour:
     duration: 0.5
     delay: 0.75
     ease: 12
-  containerBoxGroupVisualSpawnTween:
-    enabled: 1
-    duration: 0.6
-    delay: 0.65
-    ease: 21
   liftGroupVisualSpawnTween:
     enabled: 1
     duration: 0.5

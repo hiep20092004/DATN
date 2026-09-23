@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Serialization;
 
 namespace WaterFlow.Game
 {
@@ -21,7 +22,8 @@ namespace WaterFlow.Game
 
         [Header("Level Padding")]
         public float verticalPadding = 2f;
-        public float bannerAdsPadding = 1.5f;
+        [FormerlySerializedAs("bannerAdsPadding")]
+        public float bottomReservedPadding = 1.5f;
 
         [Header("Target Offset")]
         [Tooltip("Offset applied to the camera target position on Z axis.")]
@@ -65,4 +67,3 @@ namespace WaterFlow.Game
 #endif
     }
 }
-

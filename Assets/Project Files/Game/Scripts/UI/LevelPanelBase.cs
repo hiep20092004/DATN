@@ -3,10 +3,9 @@ using UnityEngine;
 namespace WaterFlow.Game
 {
     /// <summary>
-    /// Common contract for the top-of-screen level panel. UIGame spawns the concrete
-    /// implementation (<see cref="LevelPanel"/> for normal/difficulty levels,
-    /// based on the
-    /// active level, instead of having one panel hard-wired into the UIGame prefab.
+    /// Common contract for the top-of-screen level panel. UIGame spawns the concrete implementation
+    /// (<see cref="LevelPanel"/>) rather than hard-wiring one panel into the UIGame prefab, so the
+    /// panel can be swapped without touching UIGame.
     /// </summary>
     public abstract class LevelPanelBase : MonoBehaviour
     {
